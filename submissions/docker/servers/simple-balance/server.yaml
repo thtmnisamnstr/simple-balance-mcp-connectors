@@ -1,0 +1,23 @@
+name: simple-balance
+type: remote
+dynamic:
+  tools: true
+meta:
+  category: finance
+  tags:
+    - finance
+    - personal-finance
+    - budgeting
+    - accounting
+    - remote
+about:
+  title: Simple Balance
+  description: Read balances, budgets and reports, and stage or record transactions in Simple Balance
+  icon: https://smpl.money/apple-touch-icon.png
+remote:
+  transport_type: streamable-http
+  url: https://app.smpl.money/mcp
+oauth:
+  - provider: simple-balance
+    secret: simple-balance.personal_access_token
+    env: SIMPLE_BALANCE_PERSONAL_ACCESS_TOKEN

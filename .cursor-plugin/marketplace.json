@@ -1,0 +1,17 @@
+{
+  "name": "simple-balance",
+  "owner": {
+    "name": "Gavin Johnson",
+    "email": "info@smpl.money"
+  },
+  "metadata": {
+    "description": "Connect Cursor to your Simple Balance ledger at app.smpl.money."
+  },
+  "plugins": [
+    {
+      "name": "simple-balance",
+      "source": "plugin",
+      "description": "Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money."
+    }
+  ]
+}

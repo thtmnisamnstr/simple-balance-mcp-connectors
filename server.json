@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "money.smpl/simple-balance",
+  "title": "Simple Balance",
+  "description": "Personal double-entry ledger: read balances, budgets and reports, and stage or record transactions.",
+  "version": "1.0.0",
+  "websiteUrl": "https://smpl.money/docs/agents-and-mcp/",
+  "repository": {
+    "url": "https://github.com/thtmnisamnstr/simple-balance",
+    "source": "github",
+    "id": "1317782078"
+  },
+  "icons": [
+    {
+      "src": "https://smpl.money/favicon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": ["any"]
+    },
+    {
+      "src": "https://smpl.money/apple-touch-icon.png",
+      "mimeType": "image/png",
+      "sizes": ["180x180"]
+    },
+    {
+      "src": "https://smpl.money/favicon-48.png",
+      "mimeType": "image/png",
+      "sizes": ["48x48"]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://app.smpl.money/mcp"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "simple-balance-mcp-connectors",
+  "private": true,
+  "type": "module",
+  "description": "Listing files, copy and checks for the Simple Balance MCP server's marketplace and directory listings.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "check:live": "node scripts/check.mjs --live",
+    "build:openai": "node scripts/build-openai-zip.mjs",
+    "set-version": "node scripts/set-version.mjs",
+    "sync-tools": "node scripts/sync-tools.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

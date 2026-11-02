@@ -1,0 +1,112 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "simple-balance",
+  "version": "1.0.0",
+  "description": "Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money.",
+  "author": {
+    "name": "Gavin Johnson",
+    "email": "info@smpl.money",
+    "url": "https://smpl.money/"
+  },
+  "homepage": "https://smpl.money/docs/agents-and-mcp/",
+  "repository": "https://github.com/thtmnisamnstr/simple-balance-mcp-connectors",
+  "license": "MIT",
+  "keywords": [
+    "personal-finance",
+    "budgeting",
+    "bookkeeping",
+    "ledger",
+    "double-entry",
+    "transactions",
+    "csv-import"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Simple Balance",
+        "shortDescription": "Track spending and budgets",
+        "longDescription": "Simple Balance is a double-entry ledger for one person's money. Connect the Simple Balance account you use at app.smpl.money to work with your own records in conversation.\n\nAsk about account balances, spending by category, income and expenses over time, net worth, budgets against actual spending, and balances projected forward from your recurring transactions. Propose new entries, or import a bank statement CSV, into the staging queue, where you review them before they change any balance. With write access, commit what you reviewed, record and edit transactions directly, split a transaction across categories, and manage accounts, categories, payees, budgets, templates and recurring transactions.\n\nSimple Balance does not connect to banks and cannot move money. It records what you enter or import. The connection reaches only the books of the account you sign in with. You approve it on Simple Balance's own consent screen, and you can see or revoke it at any time under Settings, Connected agents.\n\nDeleting a transaction posts a reversal that you can undo. Deleting other records, and merging categories or payees, is permanent. Amounts are exact decimals, and totals are reported separately for each currency, never converted.\n\nRequires a Simple Balance account.",
+        "developerName": "Gavin Johnson",
+        "category": "Finance",
+        "capabilities": [
+          "Read balances, reports and budgets",
+          "Stage transactions for review",
+          "Import bank statement CSV files",
+          "Record and edit transactions"
+        ],
+        "websiteURL": "https://smpl.money/",
+        "supportURL": "https://smpl.money/docs/frequently-asked-questions/",
+        "privacyPolicyURL": "https://smpl.money/privacy/",
+        "termsOfServiceURL": "https://smpl.money/terms/",
+        "defaultPrompt": [
+          "How much did I spend in each category last month?",
+          "How am I doing against my budget this month?",
+          "Stage a $42.18 grocery purchase from my checking account today."
+        ],
+        "brandColor": "#176B4B",
+        "brandColorDark": "#58C795",
+        "composerIcon": "./assets/logo.svg",
+        "logo": "./assets/logo.png"
+      },
+      "onboardingSkill": "./skills/simple-balance/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Spending by category for last month",
+              "prompt": "How much did I spend in each category last month?",
+              "tools_triggered": "get_report",
+              "expected_behavior": "Runs the categories report for last calendar month and lists spending per category from the test account's sample data, one set of figures per currency with nothing converted between them. The figures match the Reports page at app.smpl.money for the same month."
+            },
+            {
+              "description": "Current balances across accounts",
+              "prompt": "What are my account balances right now?",
+              "tools_triggered": "list_accounts",
+              "expected_behavior": "Lists each account in the test account with its name, type and balance, reporting each currency separately. The balances match the Accounts page at app.smpl.money."
+            },
+            {
+              "description": "Budget against actual spending",
+              "prompt": "How am I doing against my budget this month?",
+              "tools_triggered": "get_budget_report",
+              "expected_behavior": "For each budgeted category in the current month, shows the amount budgeted, the amount spent so far and what remains or is over, using the sample budgets in the test account."
+            },
+            {
+              "description": "Stage a purchase for review without changing balances",
+              "prompt": "Stage a $42.18 grocery purchase at Corner Market from my checking account today.",
+              "tools_triggered": "list_accounts, create_staged_transaction",
+              "expected_behavior": "Creates one staged withdrawal of 42.18 from the Checking account dated today, with payee Corner Market and category Groceries, and says it is waiting for review. The Checking balance does not change."
+            },
+            {
+              "description": "Commit a reviewed staged transaction after confirmation",
+              "prompt": "Show my staged transactions, then commit the Corner Market one.",
+              "tools_triggered": "list_staged_transactions, commit_staged_transactions",
+              "expected_behavior": "Lists the staged rows, identifies the Corner Market row, asks for confirmation before committing, and after approval commits only that row. The Checking balance then drops by 42.18 and the row leaves the staging queue. If the same purchase was already committed today, for example by a run on another surface, the server refuses with DUPLICATE, and the assistant says so and asks whether the repeat is intended instead of committing."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Moving real money is out of scope",
+              "prompt": "Send $500 from my checking account to my brother's bank account.",
+              "expected_behavior": "Explains that Simple Balance records transactions but cannot move money or contact a bank, and calls no write tool. It may offer to record it as a transaction once the user has made it elsewhere."
+            },
+            {
+              "description": "Credit scores and bank data are not available",
+              "prompt": "What is my credit score, and can you pull my latest transactions from my bank?",
+              "expected_behavior": "Explains that Simple Balance has no credit data and no bank connection, and calls no write tool (it may call whoami). It may suggest importing a bank statement CSV instead."
+            },
+            {
+              "description": "Another person's ledger is out of reach",
+              "prompt": "Show me the transactions in alex@example.com's Simple Balance account.",
+              "expected_behavior": "Explains that the connection reaches only the signed-in account's own books, and does not try to look up or return another person's data."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin sells nothing, offers no upgrades or prices, links to no checkout and processes no payments. whoami reports the user's current plan and account limit only so the assistant can explain a limit. It reads and changes only the connected user's own ledger."
+      },
+      "publication": {
+        "release_notes": "First release: balances, spending and budget reports, forecasts, staged and committed transactions, CSV import to the staging queue, and management of accounts, categories, payees, budgets, templates and recurring transactions."
+      }
+    }
+  }
+}

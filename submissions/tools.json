@@ -1,0 +1,931 @@
+{
+  "appVersion": "0.2.1",
+  "appCommit": "5a251d7b4d0d0da8e937bcbd4264f2708a39127d",
+  "count": 77,
+  "tools": [
+    {
+      "name": "list_accounts",
+      "title": "List accounts",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_account_balances",
+      "title": "Get account balance snapshot",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_categories",
+      "title": "List categories",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_duplicate_categories",
+      "title": "List duplicate categories",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_payees",
+      "title": "List payees",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_duplicate_payees",
+      "title": "List duplicate payees",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_transactions",
+      "title": "List committed transactions",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_transaction",
+      "title": "Get transaction",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "preview_bulk_transaction_selection",
+      "title": "Preview a bulk transaction selection",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_account",
+      "title": "Get account",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_category",
+      "title": "Get category",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "whoami",
+      "title": "Who this ledger belongs to",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_preferences",
+      "title": "Get preferences",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_payee_suggestions",
+      "title": "Suggest payee spellings",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_import_batches",
+      "title": "List import batches",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "preview_csv",
+      "title": "Preview CSV columns",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "summarize_own_data",
+      "title": "Count everything in this ledger",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_recurrences",
+      "title": "List recurring transactions",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_recurrence",
+      "title": "Get recurring transaction",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_transaction_templates",
+      "title": "List transaction templates",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_transaction_template",
+      "title": "Get transaction template",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "preview_bulk_staged_selection",
+      "title": "Preview a bulk staged selection",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_staged_transactions",
+      "title": "List staged transactions",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_staged_transaction",
+      "title": "Get staged transaction",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_financial_summary",
+      "title": "Get financial summary",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_staged_duplicate",
+      "title": "Open a staged row beside what it repeats",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_report",
+      "title": "Run a financial report",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_account_register",
+      "title": "List one account's postings with a running balance",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "export_transactions_csv",
+      "title": "Export transactions as CSV",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_audit_events",
+      "title": "List activity history",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_connected_agents",
+      "title": "List connected agents",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_category_groups",
+      "title": "List category groups",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_budget_plans",
+      "title": "List standing budgets",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_budget_plan",
+      "title": "Get a standing budget",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_budget_entries",
+      "title": "List single-period budget overrides",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_forecast",
+      "title": "Project balances forward",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_budget_report",
+      "title": "Get budget against actual",
+      "scope": "ledger:read",
+      "kind": "read",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_staged_transaction",
+      "title": "Stage a transaction",
+      "scope": "ledger:stage",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "update_staged_transaction",
+      "title": "Update a staged transaction",
+      "scope": "ledger:stage",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_staged_transactions",
+      "title": "Delete staged transactions",
+      "scope": "ledger:stage",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "bulk_edit_staged_transactions",
+      "title": "Bulk edit staged transactions",
+      "scope": "ledger:stage",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "stage_csv",
+      "title": "Stage CSV transactions",
+      "scope": "ledger:stage",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_category_group",
+      "title": "Create a category group",
+      "scope": "ledger:write",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "update_category_group",
+      "title": "Rename a group or change how it is budgeted",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_category_group",
+      "title": "Delete a category group",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_budget_plan",
+      "title": "Set a standing budget",
+      "scope": "ledger:write",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "update_budget_plan",
+      "title": "Change a standing budget",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_budget_plan",
+      "title": "Delete a standing budget",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "set_budget_entry",
+      "title": "Budget one period only",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_budget_entry",
+      "title": "Remove a single-period budget",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_recurrence",
+      "title": "Create recurring transaction",
+      "scope": "ledger:write",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "update_recurrence",
+      "title": "Update recurring transaction",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_recurrence",
+      "title": "Delete recurring transaction",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "revoke_connected_agent",
+      "title": "Revoke a connected agent",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_account",
+      "title": "Create account",
+      "scope": "ledger:write",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "update_account",
+      "title": "Update account",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "archive_account",
+      "title": "Archive or restore account",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "set_active_accounts",
+      "title": "Choose which accounts stay usable",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_account",
+      "title": "Delete unused account",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_category",
+      "title": "Create category",
+      "scope": "ledger:write",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "update_category",
+      "title": "Update category",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "archive_category",
+      "title": "Archive or restore category",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "set_preferences",
+      "title": "Set preferences",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_transaction_template",
+      "title": "Create transaction template",
+      "scope": "ledger:write",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "update_transaction_template",
+      "title": "Update transaction template",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_transaction_template",
+      "title": "Delete transaction template",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "bulk_edit_transaction_templates",
+      "title": "Bulk edit transaction templates",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "bulk_delete_transaction_templates",
+      "title": "Bulk delete transaction templates",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "delete_category",
+      "title": "Delete unused category",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "merge_categories",
+      "title": "Merge categories",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "merge_payees",
+      "title": "Merge payees",
+      "scope": "ledger:write",
+      "kind": "unrecoverable",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "create_transaction",
+      "title": "Write a new transaction straight into the books",
+      "scope": "ledger:write",
+      "kind": "additive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "update_transaction",
+      "title": "Update committed transaction",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "bulk_delete_transactions",
+      "title": "Bulk delete committed transactions",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "bulk_edit_transactions",
+      "title": "Bulk edit committed transactions",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "set_transaction_deleted",
+      "title": "Delete or restore transaction",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "commit_staged_transactions",
+      "title": "Commit staged transactions",
+      "scope": "ledger:write",
+      "kind": "destructive",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ]
+}

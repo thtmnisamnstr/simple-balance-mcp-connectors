@@ -1,0 +1,15 @@
+{
+  "name": "simple-balance",
+  "version": "1.0.0",
+  "description": "Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money. Signs in with OAuth; no API key.",
+  "mcpServers": {
+    "simple-balance": {
+      "url": "https://app.smpl.money/mcp",
+      "type": "http",
+      "oauth": {
+        "enabled": true
+      }
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}

@@ -1,0 +1,33 @@
+{
+  "registry-server": {
+    "url": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+    "sha256": "3fba09590c99f61735d234822279f4223fab9e300c0a81e81c91ab62a4114de0"
+  },
+  "agent-plugin": {
+    "url": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+    "sha256": "0a4aad95ce337878ad38802ebf0daa3fde76abe3f65400c86bcbb1ec0b3ab883"
+  },
+  "agent-mcp": {
+    "url": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+    "sha256": "6539175bfcdf43085855183e86da40ea94b166547a72b47ae9a0a390516d3acb"
+  },
+  "cursor-plugin": {
+    "url": "https://raw.githubusercontent.com/cursor/plugins/ae5650febf4320793844c12c4adaa937f417f8da/schemas/plugin.schema.json",
+    "sha256": "31db124b1c7e43c22abb13ebf7e7c74556482e480fd492b80638d815c85b96b1"
+  },
+  "cursor-marketplace": {
+    "url": "https://raw.githubusercontent.com/cursor/plugins/ae5650febf4320793844c12c4adaa937f417f8da/schemas/marketplace.schema.json",
+    "sha256": "50c85058bf329588401fd2fc93180a574fa64abbb6c2606400febfb6f4d094e8"
+  },
+  "cline-mcp": {
+    "url": "https://raw.githubusercontent.com/cline/marketplace/6969aa8505f2be81bb3627e47ab0037d234aeaf7/schemas/mcp.schema.json",
+    "sha256": "2321317a9f0b506082207d4e20e0e7865c457c7a409972e4b12bc0f8e0817d02",
+    "requires": [
+      "cline-common"
+    ]
+  },
+  "cline-common": {
+    "url": "https://raw.githubusercontent.com/cline/marketplace/6969aa8505f2be81bb3627e47ab0037d234aeaf7/schemas/common.schema.json",
+    "sha256": "ecc424118999614bbeeede9c8d91e51d72acbb881c7b89f00f7be4fd4b4416a5"
+  }
+}
