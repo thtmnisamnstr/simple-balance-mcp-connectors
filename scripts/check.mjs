@@ -88,6 +88,24 @@ if (!NAME || !VERSION || !URL_ || !REGISTRY_NAME || !DISPLAY_NAME) {
 const pins = JSON.parse(await readFile(path.join(ROOT, "scripts", "schemas.json"), "utf8"));
 const cacheDir = path.join(ROOT, "node_modules", ".cache", "connector-schemas");
 
+// raw.githubusercontent.com rate-limits shared CI runners by address, so a
+// token is sent there when one is set, and a 429 or 5xx is retried.
+async function fetchSchema(url) {
+  const headers = {};
+  if (process.env.GITHUB_TOKEN && new URL(url).hostname === "raw.githubusercontent.com") {
+    headers.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+  for (let attempt = 1; ; attempt++) {
+    const response = await fetch(url, { headers });
+    if (response.ok) return Buffer.from(await response.arrayBuffer());
+    const retryable = response.status === 429 || response.status >= 500;
+    if (!retryable || attempt === 4) throw new Error(`HTTP ${response.status}`);
+    const after = Number(response.headers.get("retry-after"));
+    const wait = Number.isFinite(after) && after > 0 ? Math.min(after, 30) * 1000 : 2000 * 2 ** (attempt - 1);
+    await new Promise((resolve) => setTimeout(resolve, wait));
+  }
+}
+
 async function schema(key) {
   const pin = pins[key];
   const cached = path.join(cacheDir, `${key}.json`);
@@ -97,9 +115,7 @@ async function schema(key) {
   } catch {}
   let body;
   try {
-    const response = await fetch(pin.url);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    body = Buffer.from(await response.arrayBuffer());
+    body = await fetchSchema(pin.url);
   } catch (error) {
     fail("scripts/schemas.json", `could not fetch ${key} from ${pin.url} (${error.message})`);
     return null;
