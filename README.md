@@ -1,11 +1,15 @@
 # Simple Balance MCP connectors
 
-[Simple Balance](https://smpl.money/) keeps one person's double-entry ledger at
-[app.smpl.money](https://app.smpl.money/). Its MCP server lets an AI assistant
-read your balances, budgets and reports, propose transactions for you to
-review, and, if you allow it, change the books. This repository holds what it
-takes to connect that server to AI tools and list it in their directories:
-manifests, a plugin, listing copy and the checks that keep them in agreement.
+[Simple Balance](https://smpl.money/) is a free budget app and spending
+tracker. Every account is on one page, and any total you doubt opens into the
+payments behind it. Its MCP server connects your AI assistant to the same
+records you see at [app.smpl.money](https://app.smpl.money/), and you decide
+how far it goes: reading only, queuing transactions for you to approve, or
+making the change itself.
+
+This repository holds what it takes to connect that server to AI tools and
+list it in their directories: manifests, a plugin, listing copy and the checks
+that keep them in agreement.
 
 | | |
 | --- | --- |
@@ -39,8 +43,9 @@ check what a connection got, ask the assistant to run `whoami`, or open
 where you revoke one. Everything an agent changes shows on **Activity** with an
 **Agent** badge.
 
-Simple Balance doesn't connect to banks and can't move money. It records what
-you enter or import.
+There's no automatic pull from your bank today: you download the file your
+bank gives you and bring it in, or hand it to your assistant. Simple Balance
+keeps track of your money; it can't move it.
 
 ## Connect your assistant
 

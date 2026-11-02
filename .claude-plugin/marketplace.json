@@ -1,18 +1,18 @@
 {
   "name": "simple-balance",
-  "description": "Connect Claude Code, claude.ai and Cowork to your Simple Balance ledger at app.smpl.money.",
+  "description": "Connect Claude Code, claude.ai and Cowork to Simple Balance, a budget app and spending tracker.",
   "owner": {
     "name": "Gavin Johnson",
-    "email": "info@smpl.money",
+    "email": "gavin@smpl.money",
     "url": "https://smpl.money/"
   },
   "plugins": [
     {
       "name": "simple-balance",
       "source": "./plugin",
-      "description": "Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money.",
+      "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.",
       "category": "finance",
-      "tags": ["personal-finance", "budgeting", "bookkeeping", "ledger", "mcp"]
+      "tags": ["budget-app", "spending-tracker", "budgeting", "personal-finance", "mcp"]
     }
   ]
 }

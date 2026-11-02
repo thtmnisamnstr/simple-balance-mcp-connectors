@@ -4,7 +4,7 @@
 
 **Repository URL:** https://github.com/thtmnisamnstr/simple-balance
 
-**Brief Description:** Simple Balance keeps one person's double-entry ledger at https://app.smpl.money. This adds its hosted MCP server, `https://app.smpl.money/mcp` (Streamable HTTP, OAuth 2.1 with dynamic client registration and PKCE). Within the scopes the person approves, an assistant can read balances, budgets and reports, propose transactions for the person to review, and record or edit transactions. Simple Balance doesn't connect to banks and can't move money.
+**Brief Description:** Simple Balance is a free budget app and spending tracker at https://app.smpl.money. This adds its hosted MCP server, `https://app.smpl.money/mcp` (Streamable HTTP, OAuth 2.1 with dynamic client registration and PKCE). The assistant reads the same records the person does, and the person decides how far it goes: reading only, queuing transactions for them to approve, or making the change itself. There's no automatic pull from a bank today, and Simple Balance can't move money.
 
 ## Basic Requirements
 

@@ -1,14 +1,15 @@
 ---
 name: simple-balance
-description: Work in the user's Simple Balance ledger through the simple-balance MCP server. Use when the user asks about their balances, spending, income, budgets, net worth, cash flow or forecast in Simple Balance, wants to import a bank or card statement CSV, categorize or clean up transactions, find duplicates, or record, fix or delete entries there, or asks what Simple Balance can do and what this connection may change.
+description: Work in Simple Balance, the user's budget app and spending tracker, through the simple-balance MCP server. Use when the user asks about their balances, spending, income, budgets, net worth, cash flow or forecast in Simple Balance, wants to import a bank or card statement CSV, categorize or clean up transactions, find duplicates, or record, fix or delete entries there, or asks what Simple Balance can do and what this connection may change.
 ---
 
 # Simple Balance
 
-Simple Balance is the user's own double-entry ledger at app.smpl.money. The
-`simple-balance` MCP server reads and changes that ledger, within the scopes the
-user approved when they connected. It records bookkeeping entries only: nothing
-here moves money, contacts a bank or makes a payment. Follow each tool's schema
+Simple Balance is the user's budget app and spending tracker at
+app.smpl.money, built on a double-entry ledger. The `simple-balance` MCP server
+reads and changes the user's records, within the scopes they approved when they
+connected. It keeps track of money and never moves it: nothing here contacts a
+bank or makes a payment. Follow each tool's schema
 for its arguments. The user's own instructions come before anything below.
 
 ## Starting out

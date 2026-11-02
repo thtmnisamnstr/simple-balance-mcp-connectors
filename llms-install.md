@@ -1,8 +1,8 @@
 # Installing the Simple Balance MCP server
 
 These instructions are for an AI agent, such as Cline, that has been asked to
-set up Simple Balance. Simple Balance (https://smpl.money) is a hosted app that
-keeps one person's double-entry ledger. Its MCP server is remote.
+set up Simple Balance. Simple Balance (https://smpl.money) is a budget app and
+spending tracker at app.smpl.money. Its MCP server is remote.
 
 - Don't clone, build, download or run anything. There is no package and no
   local process.

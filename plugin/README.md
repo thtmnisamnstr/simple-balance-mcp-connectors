@@ -1,7 +1,7 @@
 # Simple Balance plugin
 
-Connects your AI assistant to your own [Simple Balance](https://smpl.money/)
-ledger. The plugin holds no code. It adds one remote MCP server,
+Connects your AI assistant to [Simple Balance](https://smpl.money/), a budget
+app and spending tracker. The plugin holds no code. It adds one remote MCP server,
 `https://app.smpl.money/mcp`, and one skill that tells the assistant how to use
 it. The plugin sends requests only to `app.smpl.money`. What the tools return
 goes to the assistant you connected, under its provider's terms, and nowhere
@@ -19,14 +19,20 @@ How to add it to each of the others is in the
 
 ## What it can do
 
-Read balances, transactions, budgets, reports and forecasts. Propose
-transactions, or import a bank statement CSV, into the Staged queue, where
-nothing changes a balance until it's committed. With write access, commit
-staged rows, record and edit transactions, and manage accounts, categories,
-payees, budgets, templates and recurring transactions.
+Your assistant reads the same records you do. Ask what you have in each
+account, where last month's money went, how a budget is doing, or when you last
+paid the electric bill.
 
-Simple Balance doesn't connect to banks and can't move money. It records what
-you enter or import.
+You decide how far it goes: reading only, queuing transactions for you to
+approve, or making the change itself. Nothing it queues counts until you've
+looked at it on **Staged**, including the rows of a bank statement file it
+brings in for you. Allowed to make changes, it can also record and fix
+transactions, split a purchase across categories, and set up budgets,
+templates and repeating payments.
+
+There's no automatic pull from your bank today: you download the file your
+bank gives you and bring it in, or hand it to the assistant. Simple Balance
+keeps track of your money; it can't move it.
 
 ## Signing in
 

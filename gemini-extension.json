@@ -1,7 +1,7 @@
 {
   "name": "simple-balance",
   "version": "1.0.0",
-  "description": "Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money. Signs in with OAuth; no API key.",
+  "description": "Ask Gemini CLI about your accounts, spending and budgets in Simple Balance, the free budget app and spending tracker, and queue or record transactions as far as you allow. Signs in with OAuth; no API key.",
   "mcpServers": {
     "simple-balance": {
       "url": "https://app.smpl.money/mcp",

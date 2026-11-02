@@ -147,7 +147,7 @@ gh pr create -R punkpeye/awesome-remote-mcp-servers --base main \
 - [x] Entry has its Glama connector badge on the second line
 - [x] Auth marker matches what the endpoint actually does
 
-Simple Balance keeps one person's double-entry ledger. Its hosted server reads balances, budgets and reports, and stages or records transactions within the OAuth scopes the person approves. Sign-up is free.
+Simple Balance is a free budget app and spending tracker. Its hosted server reads the same records the person does, and they decide how far it goes: reading only, queuing transactions for them to approve, or making the change itself. Sign-up is free.
 EOF
 ```
 

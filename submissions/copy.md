@@ -5,26 +5,44 @@ in a manifest, the manifest is the source: change it there, run
 `npm run check`, and copy it from there. Counts are JavaScript string lengths, the measure
 `scripts/check.mjs` uses, so a line break counts as one character.
 
-Some guides carry text written for one directory. Paste theirs in that
-directory:
-
-| Directory | Text | Where |
-| --- | --- | --- |
-| OpenAI | Listing copy, starter prompts, capabilities and test cases | `plugin/plugin.json`. The portal imports it read-only from the ZIP, so there's nothing to retype. |
-| Claude Directory, MCP connector | One-liner, short tagline, description, use cases | [claude-directory.md](claude-directory.md) |
-| Cursor Marketplace and cursor.directory | **Description** fields | [cursor.md](cursor.md) |
-| Docker MCP Catalog | Pull request **Brief Description** | [docker/pull-request.md](docker/pull-request.md) |
-| MCP.so, MCP Servers, MCP.Directory, MCP Market | Descriptions, overview, tags, features, use cases, FAQ | [directories.md](directories.md) |
-| awesome-copilot | **Short description**, **Keywords** | [vscode-copilot.md](vscode-copilot.md) |
-| This repository's GitHub **About** box | Description, website, topics | [gemini-cli.md](gemini-cli.md), which uses the values [directories.md](directories.md) gives |
-
-The rest of this file holds what they share: the strings already in the
-manifests, the names, scopes, prompts, categories, links and logos, and house
-versions of the one-liner and descriptions for any form no guide covers.
+Every guide pastes these strings rather than writing its own, so a reader
+meets the same product in every directory.
 
 Check: when a form shows a character counter, it should match the count given
 here. A count that is higher by the number of line breaks means the form counts
 each break as two characters. The long description fits 2,000 even then.
+
+## Messaging
+
+The listings reuse the lines that [smpl.money](https://smpl.money/) and the
+application's README already use, so somebody who arrives from a directory
+reads what the site told them.
+
+| Line | Where it comes from |
+| --- | --- |
+| Free budget app and spending tracker | The site's title, tab and social card (`titleTagline` in simple-balance-web `src/content/home.ts`) |
+| Every account is on one page, and any total you doubt opens into the payments behind it | The site description: "your accounts on one page ... and totals you can follow back to the payments behind them" |
+| Your assistant reads the same records you do | The homepage's assistant section: "Connect an AI assistant to Simple Balance and it reads the same records you do." |
+| You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself | The same section: "You decide how far it goes: reading only, or allowed to queue things up for you to approve, or allowed to make the change itself." |
+| Settings lists what each assistant can do, and cuts an assistant off when you want it gone | The same section, word for word |
+| Nothing it queues counts until you've looked at it | The homepage import card: "Nothing counts until you've looked at it" |
+| There's no automatic pull from your bank today: you download the file your bank gives you and bring it in | The import card, and rule 1.4 of the site's `docs/standards/content.md` |
+| Free gives you everything Simple Balance does, for three accounts you can use at once | The homepage's plans section, word for word |
+
+The site's content standard also sets these, and the listings follow them:
+
+- **Category words first.** "Budget app" and "spending tracker" are what people
+  search for, so every listing says them before anything else.
+- **Plain words.** Ledger, double-entry, bookkeeping, posting, staged and
+  commit stay out of user-facing copy unless the sentence says what they mean.
+  Technical text (scopes, tool names, agent instructions) keeps the app's own
+  words.
+- **The bank sentence goes after the value, in the present tense.** Never lead
+  with it, and never promise there will never be a connection.
+- **"Free" stays out of OpenAI's listing**, which bars pricing claims. Everywhere
+  else it's in the tagline, because it's true of every feature.
+- **No em dashes in copy**, contractions where a person would use them, and
+  American English.
 
 ## Names
 
@@ -35,11 +53,11 @@ each break as two characters. The long description fits 2,000 even then.
 | Plugin install id | `simple-balance@simple-balance` | Claude Code and Codex, once the marketplace is added |
 | MCP Registry name | `money.smpl/simple-balance` | `server.json` `name`, the Glama connector page and badge, mcpservers.org's **Official MCP Registry Name** |
 | Publisher | `Gavin Johnson` | Every author, developer, owner, company or provider field. The privacy policy names him as data controller, so the listing and the policy name the same publisher. |
-| Contact | `info@smpl.money` | Every contact or support email field |
+| Author and publisher email | `gavin@smpl.money` | Every author, owner, maintainer or publisher-contact field, and anything signed with Gavin Johnson's name |
+| Contact | `info@smpl.money` | Every other contact or support email field |
 
-- Never add "MCP", "MCP Server" or "Plugin" to the name. OpenAI's guidelines
-  say not to, `npm run check` fails a display name that ends in MCP or Plugin,
-  and Docker's `about.title` may not contain `MCP` or `Server`.
+- Keep the product name alone, with no "MCP", "MCP Server" or "Plugin" after
+  it. Docker's `about.title` may not contain `MCP` or `Server`.
 - The Claude Directory slug can't change once the listing is published, and
   the plugin `name` must never change, or OpenAI refuses the next upload.
 - If you fall back to `io.github.thtmnisamnstr/simple-balance`, change
@@ -51,90 +69,95 @@ each break as two characters. The long description fits 2,000 even then.
 
 | Tightest limit | Text | Characters | Used by |
 | --- | --- | --- | --- |
-| 30 | `Track spending and budgets` | 26 | OpenAI subtitle: `interface.shortDescription` in `plugin/plugin.json` |
-| 55, unconfirmed | `Your personal ledger: balances, budgets and reports` | 51 | Claude Directory, only if the portal asks for a tagline of 55 characters or fewer, as [claude-directory.md](claude-directory.md) says |
-| About 97 | `Read balances, budgets and reports, and stage or record transactions in Simple Balance` | 86, or 87 with the period Docker adds | Docker Hub and Docker Desktop: `about.description` in `submissions/docker/servers/simple-balance/server.yaml` |
-| 100 | `Personal double-entry ledger: read balances, budgets and reports, and stage or record transactions.` | 99 | MCP Registry: `description` in `server.json`, which Glama and the other directories that import from the registry show. Also MCP.Directory's **Short Description** (100 at most), and line 3 of `submissions/awesome-remote/entry.md` for Awesome Remote MCP Servers (120 at most). |
-| 120 | `Your personal ledger: ask about balances, spending and budgets, and stage transactions to review` | 96 | Cline marketplace: `tagline` in `submissions/cline/entry.json` |
-| 200 | `Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money.` | 117 | `description` in `plugin/plugin.json`, both plugin manifests and every marketplace entry. Also Claude Directory's **One-liner**, per [claude-directory.md](claude-directory.md), and cursor.directory's **Description**, per [cursor.md](cursor.md). |
-| 200 | `Read balances, spending, budgets and reports in your Simple Balance ledger, stage new transactions for your review, and record the ones you approve. It doesn't connect to banks or move money.` | 191 | Any field of about 200 characters that no guide covers. MCP.so, MCP Servers, MCP Market and awesome-copilot have their own text in their guides. |
-| None published | `Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money. Signs in with OAuth; no API key.` | 150 | Gemini CLI gallery card: `description` in `gemini-extension.json` |
+| 30 | `Budget and spending tracker` | 27 | OpenAI subtitle: `interface.shortDescription` in `plugin/plugin.json` |
+| 55, unconfirmed | `Free budget app and spending tracker` | 36 | Claude Directory, only if the portal asks for a short tagline, as [claude-directory.md](claude-directory.md) says. Also in the GitHub **About** description, which [gemini-cli.md](gemini-cli.md#1-set-the-about-fields-and-topics) sets. |
+| About 97 | `Free budget app and spending tracker: ask about your money, and queue or record transactions` | 92 | Docker Hub and Docker Desktop: `about.description` in `submissions/docker/servers/simple-balance/server.yaml`. Docker adds the period. |
+| 100 | `Free budget app and spending tracker: ask about your money, and queue or record transactions.` | 93 | MCP Registry: `description` in `server.json`, which Glama, GitHub's registry and the directories that import from the registry show. Also MCP.Directory's **Short Description**, the Cline `tagline` (without the period), and line 3 of `submissions/awesome-remote/entry.md` (120 at most). |
+| 200 | `Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.` | 134 | `description` in `plugin/plugin.json`, both plugin manifests and every marketplace entry. Also Claude Directory's **One-liner**, Cursor's **Description**, and awesome-copilot's **Short description**. It has no price in it, because the same file goes to OpenAI. |
+| None published | `Ask Gemini CLI about your accounts, spending and budgets in Simple Balance, the free budget app and spending tracker, and queue or record transactions as far as you allow. Signs in with OAuth; no API key.` | 204 | Gemini CLI gallery card: `description` in `gemini-extension.json` |
 
 - Docker's catalog adds a final period only when the field has none (`addDot`
   in Docker's `pkg/catalog/tile.go`), so the card ends in one period either
   way. `npm run check` fails if the field ends in one, so leave it off.
-- The 117-character description must be the same in every manifest and
-  marketplace entry, or `npm run check` fails. Change all of them together.
+- The 200-row description must be the same in every manifest and marketplace
+  entry, or `npm run check` fails. Change all of them together.
 
 ## Descriptions
 
-None of the three names a plan or a price, so each is safe for OpenAI, whose
-guidelines bar advertising "pricing, subscriptions, free trials, discounts, or
-promotions". Outside OpenAI you may add this sentence (62 characters):
-
-```text
-Simple Balance's free plan covers up to three active accounts.
-```
+The long description is `interface.longDescription` in `plugin/plugin.json`,
+which OpenAI shows. It names no plan or price, because OpenAI's guidelines bar
+advertising "pricing, subscriptions, free trials, discounts, or promotions".
+The other three say "free" and end on the plans line, for every directory but
+OpenAI.
 
 ### Short, 322 characters
 
-For a form that wants a few sentences and has no text of its own in its guide,
-such as a description field with no stated limit or an email asking a directory
-to list the server.
+For a field that wants a few sentences, or an email asking a directory to list
+the server.
 
 ```text
-Simple Balance is a double-entry ledger for one person's money. Its MCP server lets an AI assistant answer questions about your balances, spending, budgets and reports, and propose transactions that wait for your review before they count. It records what you enter or import, and it doesn't connect to banks or move money.
+Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Connect your AI assistant and it reads the same records you do. You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself.
 ```
 
-### Medium, 1,063 characters
+### Medium, 1,107 characters
 
-For a description or overview field of about 1,000 characters that no guide
-covers.
+For a description or overview field of about 1,000 characters.
 
 ```text
-Simple Balance is a double-entry ledger for one person's money, kept in your own account at app.smpl.money. Its MCP server, at https://app.smpl.money/mcp, gives an AI assistant the ledger the web app uses.
+Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-Ask about balances, spending by category, income and expenses, net worth, budgets against actual spending, and balances projected from your recurring transactions. Have the assistant propose transactions, or import a bank statement CSV, into the staging queue, where nothing changes a balance until it's committed. With write access, it can commit what you approved, record and edit transactions, and manage accounts, categories, payees, budgets and recurring transactions.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
 
-You approve each connection on Simple Balance's own consent screen, which lists the scopes the assistant asked for. Tools outside the grant don't appear. Everything an assistant changes shows on Activity with an Agent badge, and you can revoke it under Settings > Connected agents.
+There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
-Simple Balance doesn't connect to banks and can't move money. It records what you enter or import.
+Settings lists what each assistant can do, and cuts an assistant off when you want it gone. Free gives you everything Simple Balance does, for three accounts you can use at once.
 ```
 
-### Long, 1,968 characters
+### Long, 1,360 characters
 
-For a description field of 2,000 characters or more that no guide covers. It
-fits a 2,000 limit even with each line break counted twice.
+For a description field of 2,000 characters or more, outside OpenAI.
 
 ```text
-Simple Balance is a double-entry ledger for one person's money, kept in your own account at app.smpl.money. Its MCP server, at https://app.smpl.money/mcp, gives an AI assistant the ledger the web app uses.
+Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-Ask about balances, spending by category, income and expenses, net worth, cash flow, budgets against actual spending, and balances projected from your recurring transactions. Every figure traces back to the entries behind it. Amounts are exact decimals, and totals are reported separately for each currency, never converted.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
 
-Have the assistant propose transactions, or import a bank statement CSV, into the staging queue. A staged row appears in no balance or report until it's committed, and an import flags rows that look like duplicates before they count.
+There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
-With write access, the assistant can commit what you approved, record and edit transactions, split one across categories, change many at once after previewing them, merge duplicate categories or payees, and manage accounts, budgets, templates and recurring transactions.
+Settings lists what each assistant can do, and cuts an assistant off when you want it gone. Everything an assistant changes shows on Activity. Deleting a transaction can be undone, but deleting anything else, or merging categories or payees, is permanent. Each currency keeps its own totals instead of being blended.
 
-Sign-in is OAuth in your browser, with no API key. Simple Balance's own consent screen names the assistant and lists the scopes it asked for: read, stage or write. Tools outside the grant don't appear. Every tool carries read-only and destructive hints, which clients use to decide when to ask you first. Everything an assistant changes shows on Activity with an Agent badge, and you can revoke a connection under Settings > Connected agents.
+Free gives you everything Simple Balance does, for three accounts you can use at once. Sign up at app.smpl.money.
+```
 
-Deleting a transaction posts a reversal that you can undo. Deleting other records, and merging categories or payees, is permanent. No connection can delete your Simple Balance account, set a sign-in password or change anything about billing. Those happen only in a signed-in browser session.
+### Long for OpenAI, 1,294 characters
 
-Simple Balance doesn't connect to banks and can't move money. It records what you enter or import, and it isn't financial, tax, accounting or legal advice.
+`interface.longDescription` in `plugin/plugin.json`, imported read-only from
+the ZIP. Change it there, not here.
 
-Requires a Simple Balance account.
+```text
+Simple Balance is a budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
+
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
+
+There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
+
+Settings lists what each assistant can do, and cuts an assistant off when you want it gone. Everything an assistant changes shows on Activity. Deleting a transaction can be undone, but deleting anything else, or merging categories or payees, is permanent. Each currency keeps its own totals instead of being blended.
+
+Requires a Simple Balance account at app.smpl.money.
 ```
 
 ### Capability lines
 
 From `interface.capabilities` in `plugin/plugin.json` (OpenAI allows 20, at
-most 120 characters each). Use them for a features field that no guide covers.
+most 120 characters each). Use them for any features field.
 
 | Line | Characters |
 | --- | --- |
-| `Read balances, reports and budgets` | 34 |
-| `Stage transactions for review` | 29 |
-| `Import bank statement CSV files` | 31 |
-| `Record and edit transactions` | 28 |
+| `See where your money goes` | 25 |
+| `Check how a budget is doing` | 27 |
+| `Queue transactions for you to approve` | 37 |
+| `Bring in a bank statement file` | 30 |
+| `Record and fix transactions` | 27 |
 
 ## What the connection can and cannot do
 
@@ -184,32 +207,32 @@ at most 1,000. Paste each question and its answer into their own fields.
 
 ```text
 Does Simple Balance connect to my bank?
-No. Download a statement from your bank as a CSV file and import it, or give it to your assistant to import. Imported rows wait on Staged, and none of them counts until it's committed.
+Not today. There's no automatic pull from your bank: you download the file your bank gives you and bring it in, or hand it to your assistant to bring in. Nothing in it counts until you've looked at it.
 
 Can my assistant move money or pay someone?
-No. Simple Balance records transactions. It can't send, receive or move money, and it has no connection to a bank or card.
+No. Simple Balance keeps track of your money; it can't move it, and it has no connection to a bank or card.
 
 Can the assistant change my records without asking?
-That depends on the scopes you approve. With ledger:read it only reads. With ledger:stage it can also propose transactions, which wait on Staged and count in no balance or report until you commit them, and it can edit or delete rows on Staged, including imported ones. A deleted staged row can't be restored. Only ledger:write lets it change the books. Everything an assistant changes shows on Activity with an Agent badge.
+You decide how far it goes when you connect it. With ledger:read it only reads. With ledger:stage it can also queue transactions for you to approve, and nothing it queues counts until you've looked at it; it can also edit or delete rows waiting on Staged, including imported ones, and a deleted one can't be restored. Only ledger:write lets it make the change itself. Everything an assistant changes shows on Activity with an Agent badge.
 
 What can an assistant never do?
-Delete your Simple Balance account, set a sign-in password or change anything about billing. Those happen only in a signed-in browser session at app.smpl.money.
+Delete your Simple Balance account, set a sign-in password or change anything about billing. Those happen only when you're signed in at app.smpl.money in a browser.
 
 How do I disconnect an assistant?
-In Simple Balance, open Settings, find it under Connected agents, choose Revoke, then Revoke access. It loses access at once, and what it already recorded stays.
+Settings lists what each assistant can do, and cuts an assistant off when you want it gone: find it under Connected agents, choose Revoke, then Revoke access. What it already recorded stays.
 
 How do I connect it?
-Add https://app.smpl.money/mcp as a remote MCP server, with no API key or header. Your assistant opens a browser, where you sign in to Simple Balance and approve the scopes it asked for.
+Add https://app.smpl.money/mcp as a remote MCP server, with no API key or header. Your assistant opens a browser, where you sign in to Simple Balance and approve what it asked for.
 ```
 
 | Question | Question characters | Answer characters |
 | --- | --- | --- |
-| Does Simple Balance connect to my bank? | 39 | 184 |
-| Can my assistant move money or pay someone? | 43 | 122 |
-| Can the assistant change my records without asking? | 51 | 423 |
-| What can an assistant never do? | 31 | 160 |
-| How do I disconnect an assistant? | 33 | 161 |
-| How do I connect it? | 20 | 186 |
+| Does Simple Balance connect to my bank? | 39 | 201 |
+| Can my assistant move money or pay someone? | 43 | 107 |
+| Can the assistant change my records without asking? | 51 | 438 |
+| What can an assistant never do? | 31 | 164 |
+| How do I disconnect an assistant? | 33 | 190 |
+| How do I connect it? | 20 | 180 |
 
 ## Scopes
 
@@ -260,9 +283,11 @@ form, and confirm the answer uses that account's data.
 
 | Prompt | Tools | Needs | In `plugin.json` |
 | --- | --- | --- | --- |
-| `How much did I spend in each category last month?` | `get_report` | Categorized transactions dated last month | Starter prompt 1, positive test 1 |
+| `Where did my money go last month?` | `get_report` | Categorized transactions dated last month | Starter prompt 1 |
+| `How much did I spend in each category last month?` | `get_report` | Categorized transactions dated last month | Positive test 1 |
+| `What day did I pay the electric bill last month?` | `list_payees`, `list_transactions` | A utility payment last month (the seed's City Power & Water) | Starter prompt 2, and the homepage's own example |
 | `What are my account balances right now?` | `list_accounts` | At least one account | Positive test 2 |
-| `How am I doing against my budget this month?` | `get_budget_report` | A budget covering this month | Starter prompt 2, positive test 3 |
+| `How am I doing against my budget this month?` | `get_budget_report` | A budget covering this month | Positive test 3 |
 | `What's my net worth today?` | `get_report` | At least one account | |
 | `What will my checking balance be at the end of next month?` | `get_forecast` | A Checking account. The answer is a projection, and the assistant should call it one. | |
 
@@ -270,7 +295,7 @@ form, and confirm the answer uses that account's data.
 
 | Prompt | Tools | Needs | In `plugin.json` |
 | --- | --- | --- | --- |
-| `Stage a $42.18 grocery purchase from my checking account today.` | `create_staged_transaction` | A Checking account and a Groceries category | Starter prompt 3 |
+| `Add a $42.18 grocery purchase on checking for me to approve.` | `create_staged_transaction` | A Checking account and a Groceries category | Starter prompt 3 |
 | `Stage a $42.18 grocery purchase at Corner Market from my checking account today.` | `create_staged_transaction` | A Checking account and a Groceries category | Positive test 4 |
 | `Here's my checking account statement as CSV. Stage it, and show me any row that looks like a duplicate.` | `preview_csv`, `stage_csv`, `list_staged_transactions`, `get_staged_duplicate` | A Checking account, and the statement's text pasted with the prompt | |
 
@@ -307,9 +332,9 @@ write tool for any of them.
 | Codex marketplace in this repository | `category` | `Finance` | `.agents/plugins/marketplace.json` |
 | Claude Directory, MCP connector | **Categories** (1 to 5) | Financial services, Productivity, Data & analytics | The portal, per [claude-directory.md](claude-directory.md) |
 | Claude Directory, plugin bundle | None | The portal reads `plugin/.claude-plugin/plugin.json` and `plugin/README.md` | |
-| Claude Code marketplace in this repository | `category`, `tags` | `finance`; `personal-finance`, `budgeting`, `bookkeeping`, `ledger`, `mcp` | `.claude-plugin/marketplace.json` |
-| Cursor Marketplace and cursor.directory | `category`, `tags` | `integrations`; `finance`, `budgeting`, `mcp` | `plugin/.cursor-plugin/plugin.json` |
-| Docker MCP Catalog | `meta.category`, `meta.tags` | `finance`; `finance`, `personal-finance`, `budgeting`, `accounting`, `remote` | `submissions/docker/servers/simple-balance/server.yaml` |
+| Claude Code marketplace in this repository | `category`, `tags` | `finance`; `budget-app`, `spending-tracker`, `budgeting`, `personal-finance`, `mcp` | `.claude-plugin/marketplace.json` |
+| Cursor Marketplace and cursor.directory | `category`, `tags` | `integrations`; `finance`, `budget-app`, `spending-tracker`, `mcp` | `plugin/.cursor-plugin/plugin.json` |
+| Docker MCP Catalog | `meta.category`, `meta.tags` | `finance`; `finance`, `personal-finance`, `budgeting`, `budget-app`, `spending-tracker`, `remote` | `submissions/docker/servers/simple-balance/server.yaml` |
 | Cline | `tags` | `finance`, `productivity` | `submissions/cline/entry.json` |
 | MCP.so | **Category**, **Tags** | Finance & Commerce; the tags in [directories.md](directories.md) | The edit page after submitting |
 | mcpservers.org | **Category** | Finance | The submit form |
@@ -320,8 +345,9 @@ write tool for any of them.
 | Gemini CLI gallery | Repository topic | `gemini-cli-extension` | This repository's **About** settings |
 | MCP Registry, Glama, PulseMCP | None | | |
 
-- The plugin keywords are `personal-finance, budgeting, bookkeeping, ledger, double-entry, transactions, csv-import`,
-  the `keywords` in `plugin/plugin.json` and both plugin manifests. Use them for
+- The plugin keywords are `budget-app, spending-tracker, budgeting, personal-finance, transactions, csv-import, double-entry`,
+  the `keywords` in `plugin/plugin.json` and both plugin manifests. The first
+  two are the searches the site's title is written for. Use them for
   a free-text tag field that no guide covers.
 - MCP Market has no Finance category. Productivity & Workflow and Analytics &
   Monitoring are the nearest of its 20.
@@ -395,13 +421,15 @@ Screenshots of the web app: seven WebP images, 1200 x 750, at
 
 | Avoid | Why | Write instead |
 | --- | --- | --- |
-| Transfer money, send money, move money, as something it does | Claude's review criteria reject connectors that "Transfer money, cryptocurrency, or other financial assets", and OpenAI prohibits "Execution of money transfers". Simple Balance moves nothing, and an automated scan judges the wording. | Record a transaction. "Doesn't move money" is fine: it states the limit. |
-| Payment | Reads as making or processing payments, which the same rules cover. Nothing in Simple Balance pays anyone. | Purchase, expense, transaction |
-| Bank sync, connects to your bank, bank feeds | False. Statements come in as CSV files the person downloads and imports. | Import a bank statement CSV |
-| Free trial | There's no trial, and OpenAI bars advertising "pricing, subscriptions, free trials, discounts, or promotions". | Outside OpenAI only: "Simple Balance's free plan covers up to three active accounts." |
+| Transfer money, send money, move money, as something it does | Claude's review criteria reject connectors that "Transfer money, cryptocurrency, or other financial assets", and OpenAI prohibits "Execution of money transfers". Simple Balance moves nothing, and an automated scan judges the wording. | "Keeps track of your money; it can't move it." Stating the limit is fine. |
+| Make payments, pay bills, as something it does | The same rules. The payments a person made are fine to talk about: the site's own line is "the payments behind them". | "Record a payment", "when you last paid the electric bill" |
+| Syncs, connects to your bank, link your accounts, automatically updated, real time, live balances | False today, and banned by rule 1.4 of the site's content standard. | "There's no automatic pull from your bank today: you download the file your bank gives you and bring it in." |
+| Ledger, double-entry, bookkeeping, posting, staged, commit, CSV, in user-facing copy | The site keeps accounting and operations words off its pages unless the sentence explains them (rule 1.3). Scopes, tool names and agent instructions keep the app's words. | Budget app and spending tracker; queue for you to approve; make the change itself; a bank statement file |
+| Free trial, prices, upgrades | There's no trial, and OpenAI bars advertising "pricing, subscriptions, free trials, discounts, or promotions". | Outside OpenAI only: "Free gives you everything Simple Balance does, for three accounts you can use at once." |
 | Best | A comparison nobody can check. OpenAI bars comparisons and unverifiable claims in subtitles and descriptions. | Say what it does. |
-| Easy, and simply, just or seamlessly | Says nothing a reader can check, and the house style rules them out. | Name the step: "add the URL and sign in". |
+| Easy, simply, just, seamlessly, effortless, unlock, empower | Says nothing a reader can check, and the site's content standard bans them (rule 1.1). | Name the step: "add the URL and sign in". |
 | Official, or endorsed by Anthropic or OpenAI | Anthropic's Directory Terms bar any statement that suggests "partnership with, sponsorship by, or endorsement by Anthropic". OpenAI says plugins "should not imply that they are made or endorsed by OpenAI". | Simple Balance's own server |
+| An em dash | The site keeps them out of its copy (rule 1.5). | A period, a colon or a comma |
 
 ## Sources
 
@@ -432,3 +460,5 @@ Screenshots of the web app: seven WebP images, 1200 x 750, at
 - https://smpl.money/docs/frequently-asked-questions/
 - https://smpl.money/terms/
 - https://smpl.money/
+- https://github.com/thtmnisamnstr/simple-balance-web/blob/main/src/content/home.ts
+- https://github.com/thtmnisamnstr/simple-balance-web/blob/main/docs/standards/content.md

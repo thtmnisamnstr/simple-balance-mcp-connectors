@@ -445,7 +445,7 @@ and commands work without it; see [vscode-copilot.md](vscode-copilot.md).
    comment below and choose **Comment**. It carries the fields the thread's
    pinned notes ask for. If a later version is live by then, change the
    **Version** row.
-4. Optional: send the same text from `info@smpl.money` to
+4. Optional: send the same text from `gavin@smpl.money` to
    `partnerships@github.com`, subject
    `GitHub MCP Registry onboarding: money.smpl/simple-balance`. GitHub's
    October 2025 blog post names that address. Whether anyone still reads it is
@@ -476,7 +476,7 @@ Simple Balance is published to the official MCP Registry, and its entry is activ
 | Repository | https://github.com/thtmnisamnstr/simple-balance |
 | License | AGPL-3.0 |
 | Docs | https://smpl.money/docs/agents-and-mcp/ |
-| What it does | Connects an assistant to one person's double-entry ledger in Simple Balance: read balances, budgets and reports, import bank statement CSVs, and stage or record transactions. 77 tools, each with a title and annotations. Tools outside the granted scopes are left out of `tools/list`. It doesn't connect to banks and can't move money. |
+| What it does | Connects an assistant to Simple Balance, a free budget app and spending tracker: ask about your accounts, spending and budgets, bring in a bank statement file, and queue or record transactions, as far as the person allows. 77 tools, each with a title and annotations. Tools outside the granted scopes are left out of `tools/list`. There's no automatic pull from a bank today, and it can't move money. |
 
 Lookup: `curl -s "https://registry.modelcontextprotocol.io/v0.1/servers/money.smpl%2Fsimple-balance/versions/latest"`
 ```

@@ -2,46 +2,47 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "simple-balance",
   "version": "1.0.0",
-  "description": "Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money.",
+  "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.",
   "author": {
     "name": "Gavin Johnson",
-    "email": "info@smpl.money",
+    "email": "gavin@smpl.money",
     "url": "https://smpl.money/"
   },
   "homepage": "https://smpl.money/docs/agents-and-mcp/",
   "repository": "https://github.com/thtmnisamnstr/simple-balance-mcp-connectors",
   "license": "MIT",
   "keywords": [
-    "personal-finance",
+    "budget-app",
+    "spending-tracker",
     "budgeting",
-    "bookkeeping",
-    "ledger",
-    "double-entry",
+    "personal-finance",
     "transactions",
-    "csv-import"
+    "csv-import",
+    "double-entry"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Simple Balance",
-        "shortDescription": "Track spending and budgets",
-        "longDescription": "Simple Balance is a double-entry ledger for one person's money. Connect the Simple Balance account you use at app.smpl.money to work with your own records in conversation.\n\nAsk about account balances, spending by category, income and expenses over time, net worth, budgets against actual spending, and balances projected forward from your recurring transactions. Propose new entries, or import a bank statement CSV, into the staging queue, where you review them before they change any balance. With write access, commit what you reviewed, record and edit transactions directly, split a transaction across categories, and manage accounts, categories, payees, budgets, templates and recurring transactions.\n\nSimple Balance does not connect to banks and cannot move money. It records what you enter or import. The connection reaches only the books of the account you sign in with. You approve it on Simple Balance's own consent screen, and you can see or revoke it at any time under Settings, Connected agents.\n\nDeleting a transaction posts a reversal that you can undo. Deleting other records, and merging categories or payees, is permanent. Amounts are exact decimals, and totals are reported separately for each currency, never converted.\n\nRequires a Simple Balance account.",
+        "shortDescription": "Budget and spending tracker",
+        "longDescription": "Simple Balance is a budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.\n\nYou decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.\n\nThere's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.\n\nSettings lists what each assistant can do, and cuts an assistant off when you want it gone. Everything an assistant changes shows on Activity. Deleting a transaction can be undone, but deleting anything else, or merging categories or payees, is permanent. Each currency keeps its own totals instead of being blended.\n\nRequires a Simple Balance account at app.smpl.money.",
         "developerName": "Gavin Johnson",
         "category": "Finance",
         "capabilities": [
-          "Read balances, reports and budgets",
-          "Stage transactions for review",
-          "Import bank statement CSV files",
-          "Record and edit transactions"
+          "See where your money goes",
+          "Check how a budget is doing",
+          "Queue transactions for you to approve",
+          "Bring in a bank statement file",
+          "Record and fix transactions"
         ],
         "websiteURL": "https://smpl.money/",
         "supportURL": "https://smpl.money/docs/frequently-asked-questions/",
         "privacyPolicyURL": "https://smpl.money/privacy/",
         "termsOfServiceURL": "https://smpl.money/terms/",
         "defaultPrompt": [
-          "How much did I spend in each category last month?",
-          "How am I doing against my budget this month?",
-          "Stage a $42.18 grocery purchase from my checking account today."
+          "Where did my money go last month?",
+          "What day did I pay the electric bill last month?",
+          "Add a $42.18 grocery purchase on checking for me to approve."
         ],
         "brandColor": "#176B4B",
         "brandColorDark": "#58C795",
@@ -105,7 +106,7 @@
         "commerce_description": "The plugin sells nothing, offers no upgrades or prices, links to no checkout and processes no payments. whoami reports the user's current plan and account limit only so the assistant can explain a limit. It reads and changes only the connected user's own ledger."
       },
       "publication": {
-        "release_notes": "First release: balances, spending and budget reports, forecasts, staged and committed transactions, CSV import to the staging queue, and management of accounts, categories, payees, budgets, templates and recurring transactions."
+        "release_notes": "First release: ask about balances, spending, budgets and forecasts; queue transactions for your approval, including a bank statement file; and, when allowed, record and fix transactions and manage accounts, categories, budgets, templates and repeating payments."
       }
     }
   }

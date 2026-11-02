@@ -52,17 +52,17 @@ Hello,
 
 I'd like to apply to list the Simple Balance plugin
 (https://github.com/thtmnisamnstr/simple-balance-mcp-connectors). It connects
-Cursor to Simple Balance (https://smpl.money/), a hosted double-entry ledger.
+Cursor to Simple Balance (https://smpl.money/), a free budget app and spending tracker.
 
-The plugin is free. Simple Balance's free plan includes every feature, the MCP
-server among them, for up to three active accounts. A paid Premium plan
+The plugin is free. Simple Balance's free plan gives you everything it does,
+the MCP server included, for three accounts you can use at once. A paid Premium plan
 ($3 a month or $30 a year) removes that limit and the ads. The plugin sells
 nothing and shows no prices.
 
 Does that meet section 3.1 of the Publisher Terms?
 
 Gavin Johnson
-info@smpl.money
+gavin@smpl.money
 ```
 
 Check: keep the reply. If the answer is no, skip the application. cursor.directory and the install link don't depend on it.
@@ -78,7 +78,7 @@ Cursor pins a listing to the commit it reviews, so apply once `main` holds the r
    | --- | --- | --- |
    | Organization name | `Gavin Johnson` | Required. The publisher name: the `author` in every manifest and the data controller in the privacy policy. |
    | Organization handle | `simple-balance` | Required. A unique namespace in kebab-case. Replace the `gavin-johnson` the form fills in. Whether it can change after approval is unconfirmed, so settle it now. |
-   | Contact email | `info@smpl.money` | Required. It starts as your Cursor login email. Replace it, or Cursor's follow-up goes to that address. |
+   | Contact email | `gavin@smpl.money` | Required. It starts as your Cursor login email. Replace it, or Cursor's follow-up goes to that address. |
    | Logotype URL | `https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-512.png` | Required. The hint asks for a "1:1 SVG or PNG with background plate", and the mark sits on its own green plate. Before the merge, use `https://smpl.money/favicon.svg`. |
    | Description | The block below this table | Optional. |
    | GitHub repository | `https://github.com/thtmnisamnstr/simple-balance-mcp-connectors` | Required. The form accepts only `https://github.com/<org>/<repo>`, so a link to `plugin/` is refused. `.cursor-plugin/marketplace.json` at the root points Cursor to `plugin/`, as approved listings such as `naturalpay/agent-plugins` do. |
@@ -86,7 +86,7 @@ Cursor pins a listing to the commit it reviews, so apply once `main` holds the r
    | Website URL | `https://smpl.money/` | Optional. |
 
    ```text
-   Connects Cursor to the user's own Simple Balance ledger (https://smpl.money/), a hosted double-entry bookkeeping app for one person's money. The plugin adds one remote MCP server, https://app.smpl.money/mcp (Streamable HTTP; OAuth 2.1 with PKCE and dynamic client registration; no API key), and a skill that tells the agent to stage new entries for the user's review unless asked for a specific change. Within the scopes the user approves, the agent can read balances, transactions, budgets, forecasts and reports (ledger:read), stage entries or a bank statement CSV for review (ledger:stage), and record, edit and delete entries (ledger:write). All 77 tools carry titles and read-only or destructive annotations. Simple Balance doesn't connect to banks and can't move money. The free plan includes every feature for up to three active accounts. The plugin holds no code: JSON manifests, Markdown and a logo, under the MIT license.
+   Connects Cursor to Simple Balance (https://smpl.money/), a budget app and spending tracker. The plugin adds one remote MCP server, https://app.smpl.money/mcp (Streamable HTTP; OAuth 2.1 with PKCE and dynamic client registration; no API key), and a skill that tells the agent to queue new transactions for the user to approve unless asked for a specific change. The agent reads the same records the user does, and the user decides how far it goes: reading only (ledger:read), queuing transactions or a bank statement file for approval (ledger:stage), or making the change itself (ledger:write). All 77 tools carry titles and read-only or destructive hints. There's no automatic pull from the user's bank today, and Simple Balance can't move money.
    ```
 
 3. Choose **Submit Application**. That accepts the [Publisher Terms](https://cursor.com/marketplace-publisher-terms), last updated May 6, 2026.
@@ -163,7 +163,7 @@ cursor.directory is Cursor's community directory, built from `cursor/community-p
    | --- | --- | --- |
    | Logo | Upload `assets/logo-512.png` | Optional, but the scan finds none for a plugin in a subfolder. Images only, 1 MB at most. |
    | Name | `Simple Balance` | The scan fills `simple-balance`, the marketplace's id. |
-   | Description | `Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money.` | The scan fills `simple-balance-mcp-connectors plugin for Cursor`. |
+   | Description | `Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.` | The scan fills `simple-balance-mcp-connectors plugin for Cursor`. |
 
 5. Choose **Publish Plugin**.
 

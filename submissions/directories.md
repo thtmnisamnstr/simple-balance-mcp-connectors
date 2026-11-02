@@ -15,16 +15,18 @@ The steps are those of the [order of work](README.md#order-of-work). The release
 
 ## Text used by several forms
 
-Short description, 192 characters. MCP.so, MCP Servers and MCP Market use it; MCP Market's limit is 200.
+Both come from [copy.md](copy.md#taglines-and-one-liners), so these listings say what every other one does.
+
+Short description, 139 characters. MCP.so, MCP Servers and MCP Market use it; MCP Market's limit is 200. It's the plugin manifests' description with "Free" in front, which every directory but OpenAI may say.
 
 ```text
-Hosted MCP server for Simple Balance, a personal double-entry ledger. Read balances, budgets and reports, import bank CSV files, and stage or record transactions within the scopes you approve.
+Free budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.
 ```
 
-One-line description, 99 characters, for MCP.Directory's 100-character field. It's the `description` in `server.json`, so a listing built from the MCP Registry and one built from the form say the same thing.
+One-line description, 93 characters, for MCP.Directory's 100-character field. It's the `description` in `server.json`, so a listing built from the MCP Registry and one built from the form say the same thing.
 
 ```text
-Personal double-entry ledger: read balances, budgets and reports, and stage or record transactions.
+Free budget app and spending tracker: ask about your money, and queue or record transactions.
 ```
 
 To see whether the MCP Registry entry is live:
@@ -69,7 +71,7 @@ curl -s -o /dev/null -w '%{http_code}\n' 'https://registry.modelcontextprotocol.
 | Avatar | Upload `assets/logo-512.png` |
 | Description | The [short description](#text-used-by-several-forms) |
 | Category | **Finance & Commerce** |
-| Tags (comma separated) | `personal-finance, budgeting, bookkeeping, ledger, double-entry, csv-import, oauth` |
+| Tags (comma separated) | `budget-app, spending-tracker, budgeting, personal-finance, csv-import, oauth` |
 | GitHub URL | `https://github.com/thtmnisamnstr/simple-balance` |
 | Website URL | `https://smpl.money/` |
 | Docs URL | `https://smpl.money/docs/agents-and-mcp/` |
@@ -107,11 +109,13 @@ done
 Overview:
 
 ~~~markdown
-Simple Balance keeps one person's double-entry ledger at app.smpl.money. Its hosted MCP server gives an AI assistant the ledger the web app uses: accounts and balances, transactions and splits, categories and payees, budgets, recurring transactions and templates, reports and forecasts, CSV import and the activity history, through up to 77 tools.
+Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
+
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
 
 ## Connect
 
-Add `https://app.smpl.money/mcp` as a remote MCP server (Streamable HTTP), with no token or header. The client reads the OAuth 2.1 configuration from the server, registers itself (dynamic client registration, PKCE S256) and opens a browser, where you sign in to Simple Balance and approve the scopes it asked for.
+Add `https://app.smpl.money/mcp` as a remote MCP server (Streamable HTTP), with no token or header. The client reads the OAuth 2.1 configuration from the server, registers itself (dynamic client registration, PKCE S256) and opens a browser, where you sign in to Simple Balance and approve what it asked for.
 
 ```json
 {
@@ -125,20 +129,20 @@ Add `https://app.smpl.money/mcp` as a remote MCP server (Streamable HTTP), with 
 
 Setup for Claude, ChatGPT, Codex, Cursor, VS Code, Gemini CLI, Cline and other clients: https://github.com/thtmnisamnstr/simple-balance-mcp-connectors
 
-## Scopes
+## How far it goes
 
-- `ledger:read`: read accounts, transactions, reports and history, and change nothing.
-- `ledger:stage`: also propose transactions on Staged, where they count in no balance or report until someone commits them.
-- `ledger:write`: also commit, create, edit and delete.
+- `ledger:read`: reading only.
+- `ledger:stage`: also queue transactions for you to approve on Staged. Nothing queued counts until you've looked at it.
+- `ledger:write`: also make the change itself, including creating, editing and deleting.
 
-The consent screen grants every scope the client asked for, or none. Tools outside the grant are left out of the tool list, and every tool has a title and read-only, destructive, idempotent and open-world hints. Deleting the account, setting a password and billing are never reachable over MCP.
+The consent screen grants every scope the client asked for, or none, and tools outside the grant are left out of the tool list. Every tool has a title and read-only, destructive, idempotent and open-world hints. Deleting your account, setting a password and billing are never reachable over MCP.
 
 ## Good to know
 
-- Everything an agent changes is listed on Activity with an Agent badge. Revoke a connection under Settings > Connected agents.
-- Simple Balance doesn't connect to banks and can't move money. Statements come in as CSV files you download from your bank.
-- Amounts are exact decimal strings, and totals are reported per currency, never converted.
-- The free plan includes every feature for up to three active accounts.
+- There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
+- Settings lists what each assistant can do, and cuts an assistant off when you want it gone. Everything an assistant changes shows on Activity.
+- Each currency keeps its own totals instead of being blended.
+- Free gives you everything Simple Balance does, for three accounts you can use at once.
 - Docs: https://smpl.money/docs/agents-and-mcp/
 - Source (AGPL-3.0): https://github.com/thtmnisamnstr/simple-balance
 ~~~
@@ -225,9 +229,9 @@ There's no self-serve editing. Email `contact@mcpservers.org` with the listing's
 
    | Field | Value |
    | --- | --- |
-   | Description | `Plugin, manifests and directory listings for Simple Balance's hosted MCP server at https://app.smpl.money/mcp` |
+   | Description | `Plugin and directory listings that connect Simple Balance, a free budget app and spending tracker, to AI assistants over MCP` |
    | Website | `https://smpl.money/docs/agents-and-mcp/` |
-   | Topics | `mcp`, `mcp-server`, `remote-mcp`, `personal-finance`, `ledger`, `oauth` |
+   | Topics | `mcp`, `mcp-server`, `remote-mcp`, `budget-app`, `spending-tracker`, `personal-finance`, `oauth` |
 
 2. Open https://mcp.directory/submit (no sign-in) and fill:
 
@@ -303,8 +307,8 @@ If you list it anyway:
    | --- | --- | --- |
    | Server name | 80 characters | `Simple Balance` |
    | MCP endpoint URL | https only | `https://app.smpl.money/mcp` |
-   | Short description | 200 characters | The [short description](#text-used-by-several-forms) (192) |
-   | Full description | 4,000 characters | The full description below (1,832) |
+   | Short description | 200 characters | The [short description](#text-used-by-several-forms) (139) |
+   | Full description | 4,000 characters | The full description below (1,577) |
    | Supports Dynamic Client Registration | Checkbox | Checked |
    | Categories | 1 to 3 | **Productivity & Workflow**, **Analytics & Monitoring** |
    | Provider / company name | 80 characters | `Gavin Johnson` |
@@ -324,13 +328,15 @@ Unconfirmed: how a remote listing is edited after purchase. Claims run through G
 Full description:
 
 ```text
-Simple Balance keeps one person's double-entry ledger at app.smpl.money. Its hosted MCP server gives an AI assistant the ledger the web app uses: accounts and balances, transactions and splits, categories and payees, budgets, recurring transactions and templates, reports and forecasts, CSV import and the activity history, through up to 77 tools.
+Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-To connect, add https://app.smpl.money/mcp as a remote MCP server (Streamable HTTP), with no token or header. The client reads the OAuth 2.1 configuration from the server, registers itself with dynamic client registration and PKCE, and opens a browser where you sign in to Simple Balance and approve the scopes it asked for.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
 
-Three ledger scopes set what a connection may do. ledger:read reads accounts, transactions, reports and history, and changes nothing. ledger:stage also proposes transactions on Staged, where they count in no balance or report until someone commits them. ledger:write also commits, creates, edits and deletes. The consent screen grants every scope the client asked for, or none, and tools outside the grant are left out of the tool list. Every tool has a title and read-only, destructive, idempotent and open-world hints. Deleting the account, setting a password and billing are never reachable over MCP.
+There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
-Everything an agent changes is listed on Activity with an Agent badge, and any connection can be revoked under Settings > Connected agents. Simple Balance doesn't connect to banks and can't move money: statements come in as CSV files you download from your bank. Amounts are exact decimal strings, and totals are reported per currency, never converted.
+Settings lists what each assistant can do, and cuts an assistant off when you want it gone. Free gives you everything Simple Balance does, for three accounts you can use at once.
+
+To connect, add https://app.smpl.money/mcp as a remote MCP server (Streamable HTTP), with no token or header. The client registers itself with dynamic client registration and PKCE, and opens a browser where you sign in to Simple Balance and approve what it asked for.
 
 Docs: https://smpl.money/docs/agents-and-mcp/
 Setup for each client: https://github.com/thtmnisamnstr/simple-balance-mcp-connectors
@@ -340,40 +346,40 @@ Source (AGPL-3.0): https://github.com/thtmnisamnstr/simple-balance
 Key features, one per field:
 
 ```text
-Up to 77 tools for accounts, transactions and splits, categories, payees, budgets, recurring transactions, templates, reports, forecasts and CSV import
-OAuth 2.1 with dynamic client registration and PKCE: add the URL, sign in, and approve the scopes on Simple Balance's consent screen
-Three ledger scopes: ledger:read reads, ledger:stage proposes transactions for review, and ledger:write changes the books
-Staged transactions count in no balance or report until someone commits them
-Tools outside the granted scopes are left out of the tool list, and every tool carries read-only and destructive hints
-Every change an agent makes is listed on Activity with an Agent badge, and any connection can be revoked in Settings
+Every account on one page, and any total you doubt opens into the payments behind it
+Your assistant reads the same records you do, through up to 77 tools
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself
+Nothing the assistant queues counts until you've looked at it, including a bank statement file it brings in
+Sign in with OAuth on Simple Balance's own consent screen: no API key, no header
+Settings lists what each assistant can do, and cuts an assistant off when you want it gone
 ```
 
 Use cases, one per field:
 
 ```text
-Import a bank statement CSV into Staged, review the rows flagged as possible duplicates, and commit the ones you approve
-Ask what you spent on a category last month, how a budget is tracking, or what your net worth was at the end of a month
-Clean up categories and payees: rename, group, archive and merge categories, and merge duplicate payees
-Set up budgets and recurring transactions such as rent, a salary or a subscription, and project balances forward
+See where your money goes: ask what a category cost you last month, or what a store has cost you this year
+Make a budget you'll keep: ask how this month's budget is doing, and set amounts for next month
+Bring in a bank statement: hand the assistant the file your bank gives you, then approve the rows it queued
+Tidy up: merge duplicate payees and categories, split a purchase across categories, and set up repeating payments
 ```
 
 FAQ, one question and answer per pair of fields:
 
 ```text
 Q: How do I connect Simple Balance to my AI assistant?
-A: Add https://app.smpl.money/mcp as a remote MCP server, with no token or header. The client registers itself, then opens a browser where you sign in to Simple Balance and approve the scopes it asked for. Setup steps for each client are at https://github.com/thtmnisamnstr/simple-balance-mcp-connectors.
+A: Add https://app.smpl.money/mcp as a remote MCP server, with no token or header. Your assistant registers itself, then opens a browser where you sign in to Simple Balance and approve what it asked for. Setup steps for each client are at https://github.com/thtmnisamnstr/simple-balance-mcp-connectors.
 
 Q: Can the assistant change my records without my approval?
-A: It can change your books only if you approved ledger:write when you connected it. With ledger:stage it can propose transactions, which wait on Staged and count in no balance or report until you commit them, and it can edit or delete rows on Staged, including imported ones. A deleted staged row can't be restored. With ledger:read it can only read. Everything an agent changes is listed on Activity with an Agent badge, and you can revoke a connection under Settings > Connected agents.
+A: You decide how far it goes when you connect it. With ledger:read it only reads. With ledger:stage it can also queue transactions for you to approve, and nothing it queues counts until you've looked at it; it can also edit or delete rows waiting on Staged, including imported ones, and a deleted one can't be restored. Only ledger:write lets it make the change itself. Settings lists what each assistant can do, and cuts an assistant off when you want it gone.
 
 Q: Does Simple Balance connect to my bank or move money?
-A: No. Simple Balance has no bank connection and can't move money. Statements come in as CSV files you download from your bank, and imported rows wait on Staged until you commit them.
+A: Not today, and it can't move money. There's no automatic pull from your bank: you download the file your bank gives you and bring it in, or hand it to your assistant. Nothing in it counts until you've looked at it.
 
 Q: What can an assistant never do?
-A: Delete your Simple Balance account, set a sign-in password, or change billing. Those happen only in a signed-in browser session at app.smpl.money, never over MCP.
+A: Delete your Simple Balance account, set a sign-in password, or change billing. Those happen only when you're signed in at app.smpl.money in a browser, never over MCP.
 
 Q: Is there a free plan?
-A: Yes. The free plan includes every feature, the MCP server among them, for up to three active accounts. Plans are listed at https://smpl.money/pricing/.
+A: Yes. Free gives you everything Simple Balance does, for three accounts you can use at once. Premium removes the limit and the ads. Plans are listed at https://smpl.money/pricing/.
 ```
 
 Paste each question and answer without its `Q: ` or `A: ` prefix.

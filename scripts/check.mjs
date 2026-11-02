@@ -440,7 +440,14 @@ else {
 }
 
 const dockerYaml = await readText(files.dockerServer);
-const yamlValue = (key) => dockerYaml.match(new RegExp(`^\\s*${key}:\\s*(.+)$`, "m"))?.[1].trim();
+const yamlValue = (key) =>
+  dockerYaml.match(new RegExp(`^\\s*${key}:\\s*(.+)$`, "m"))?.[1].trim().replace(/^"(.*)"$/, "$1");
+for (const [index, line] of dockerYaml.split("\n").entries()) {
+  const value = line.match(/^\s*(?:- )?[\w.-]+:\s+(.+)$/)?.[1];
+  if (value && !/^["']/.test(value) && /:\s/.test(value)) {
+    fail(`${files.dockerServer}:${index + 1}`, "has an unquoted value containing \": \", which YAML reads as a mapping; quote it");
+  }
+}
 if (yamlValue("name") !== NAME) fail(files.dockerServer, `name must be ${NAME}, the folder name`);
 if (yamlValue("type") !== "remote") fail(files.dockerServer, "type must be remote");
 if (yamlValue("url") !== URL_) fail(files.dockerServer, `remote.url must be ${URL_}, exactly the protected resource`);

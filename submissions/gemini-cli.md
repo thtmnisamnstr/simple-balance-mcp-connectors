@@ -57,9 +57,9 @@ page, so run it yourself:
 
 ```bash
 gh repo edit thtmnisamnstr/simple-balance-mcp-connectors \
-  --description "Plugin, manifests and directory listings for Simple Balance's hosted MCP server at https://app.smpl.money/mcp" \
+  --description "Plugin and directory listings that connect Simple Balance, a free budget app and spending tracker, to AI assistants over MCP" \
   --homepage https://smpl.money/docs/agents-and-mcp/ \
-  --add-topic gemini-cli-extension,gemini-cli-extensions,mcp,mcp-server,remote-mcp,personal-finance,ledger,oauth
+  --add-topic gemini-cli-extension,gemini-cli-extensions,mcp,mcp-server,remote-mcp,budget-app,spending-tracker,personal-finance,oauth
 ```
 
 - `gemini-cli-extension` is the documented topic. Until a fix announced on

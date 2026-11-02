@@ -177,7 +177,7 @@ PR's URL, so fill it in after step 5:
 | Field | Value |
 | --- | --- |
 | **Docker MCP Registry PR URL** | The PR's URL, `https://github.com/docker/mcp-registry/pull/<number>` |
-| **Your Email Address (in case we need to contact you privately)** | `info@smpl.money` |
+| **Your Email Address (in case we need to contact you privately)** | `gavin@smpl.money` |
 | **Test Credentials (API key, username/password etc.)** | The reviewer account's email and password, from [reviewer-account.md](../reviewer-account.md) |
 | **Additional Details** | The text below |
 

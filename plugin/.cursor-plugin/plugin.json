@@ -2,17 +2,17 @@
   "name": "simple-balance",
   "displayName": "Simple Balance",
   "version": "1.0.0",
-  "description": "Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money.",
+  "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.",
   "author": {
     "name": "Gavin Johnson",
-    "email": "info@smpl.money"
+    "email": "gavin@smpl.money"
   },
   "homepage": "https://smpl.money/docs/agents-and-mcp/",
   "repository": "https://github.com/thtmnisamnstr/simple-balance-mcp-connectors",
   "license": "MIT",
   "logo": "assets/logo.png",
-  "keywords": ["personal-finance", "budgeting", "bookkeeping", "ledger", "double-entry", "transactions", "csv-import"],
+  "keywords": ["budget-app", "spending-tracker", "budgeting", "personal-finance", "transactions", "csv-import", "double-entry"],
   "category": "integrations",
-  "tags": ["finance", "budgeting", "mcp"],
+  "tags": ["finance", "budget-app", "spending-tracker", "mcp"],
   "mcpServers": "./.mcp.json"
 }

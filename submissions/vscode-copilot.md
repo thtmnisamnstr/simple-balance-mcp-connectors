@@ -126,7 +126,7 @@ Open https://github.com/github/awesome-copilot/issues/new?template=external-plug
 | Author name | `Gavin Johnson` |
 | Author URL | `https://smpl.money/` |
 | Homepage URL | `https://smpl.money/docs/agents-and-mcp/` |
-| Keywords | `personal-finance, budgeting, bookkeeping, ledger, double-entry, transactions, csv-import, mcp` |
+| Keywords | `budget-app, spending-tracker, budgeting, personal-finance, transactions, csv-import, double-entry, mcp` |
 | Additional notes for reviewers | The second block below |
 | Submission checklist | Check all four boxes: the repository is public; the ref and SHA are immutable, not a branch; the submission follows the repository's contribution, security and responsible AI policies; the plugin isn't already listed |
 
@@ -135,19 +135,19 @@ Give both the ref and the SHA. The form needs at least one, and with both, the c
 Short description:
 
 ```text
-Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money. Adds Simple Balance's hosted MCP server, which signs in with OAuth (no API key), and a skill that has the agent stage changes for review first.
+Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow. Adds Simple Balance's hosted MCP server, which signs in with OAuth (no API key), and a skill that has the agent queue changes for your approval first.
 ```
 
 Additional notes for reviewers:
 
 ```text
-I build and run Simple Balance, a hosted double-entry ledger for one person's money, and I maintain this plugin.
+I build and run Simple Balance, a free budget app and spending tracker, and I maintain this plugin.
 
 - Contents: an Agent Plugins 1.0.0 manifest (plugin.json), an mcp.json that names one remote server, one skill, a README and the MIT license. Nothing runs locally.
-- Server: https://app.smpl.money/mcp, Streamable HTTP, OAuth 2.1 with PKCE and dynamic client registration. The consent screen lists the scopes requested: ledger:read reads, ledger:stage proposes entries for review, and ledger:write changes the books.
+- Server: https://app.smpl.money/mcp, Streamable HTTP, OAuth 2.1 with PKCE and dynamic client registration. The consent screen lists the scopes requested: ledger:read reads, ledger:stage queues transactions for the user to approve, and ledger:write makes the change itself.
 - Tools: 77, each with a title and annotations. By scope: 37 ledger:read, 5 ledger:stage and 35 ledger:write. The skill tells the agent to stage entries for review unless asked for a specific change, and to confirm permanent deletes.
-- Free path: every feature is on the free plan, for up to three active accounts, so a free account at https://app.smpl.money/ is enough to try every tool. The paid plan only lifts that limit and removes ads; the MCP server and its tools are the same on both. The skill only guides use of the server, and the plugin links to no pricing page or checkout.
-- Simple Balance doesn't connect to banks and can't move money.
+- Free path: the free plan gives you everything Simple Balance does, for three accounts you can use at once, so a free account at https://app.smpl.money/ is enough to try every tool. The paid plan only lifts that limit and removes ads; the MCP server and its tools are the same on both. The skill only guides use of the server, and the plugin links to no pricing page or checkout.
+- There's no automatic pull from a bank today, and Simple Balance can't move money.
 - Docs: https://smpl.money/docs/agents-and-mcp/
 - Server source (AGPL-3.0): https://github.com/thtmnisamnstr/simple-balance
 ```

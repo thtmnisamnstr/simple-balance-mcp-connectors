@@ -1,7 +1,7 @@
 # Simple Balance
 
 This extension connects Gemini CLI to Simple Balance (https://smpl.money), a
-hosted app that keeps one person's double-entry ledger. Its tools come from the
+budget app and spending tracker built on a double-entry ledger. Its tools come from the
 `simple-balance` MCP server at https://app.smpl.money/mcp, which also sends its
 own instructions. Follow them.
 

@@ -215,7 +215,7 @@ Cline's repository has no PR template.
 ```markdown
 ## What this adds
 
-`registry/mcps/simple-balance/` (`entry.json` and `icon.png`) for Simple Balance, a hosted double-entry ledger for one person's money. Install: `cline mcp install simple-balance --transport http https://app.smpl.money/mcp`
+`registry/mcps/simple-balance/` (`entry.json` and `icon.png`) for Simple Balance, a free budget app and spending tracker. Install: `cline mcp install simple-balance --transport http https://app.smpl.money/mcp`
 
 ## The server
 
@@ -229,7 +229,7 @@ Cline's repository has no PR template.
 
 - Tags `finance` and `productivity`. Icon: a 400x400 PNG. `verified` and `featured` are `false`.
 - `repo` and `license` point at https://github.com/thtmnisamnstr/simple-balance-mcp-connectors (MIT), which holds the setup guide and `llms-install.md`. The server's source is https://github.com/thtmnisamnstr/simple-balance (AGPL-3.0).
-- Maintainer: Gavin Johnson, info@smpl.money. Docs: https://smpl.money/docs/agents-and-mcp/
+- Maintainer: Gavin Johnson, gavin@smpl.money. Docs: https://smpl.money/docs/agents-and-mcp/
 
 ## Validation
 
@@ -257,13 +257,13 @@ The legacy README also asks for a reason for adding the server, which the form
 has no field for, so the first paragraph covers it:
 
 ```text
-Lets Cline read balances, budgets and reports in a person's own Simple Balance ledger, and stage transactions for them to review before anything is recorded. Simple Balance doesn't connect to banks and can't move money.
+Lets Cline ask about a person's accounts, spending and budgets in Simple Balance, a free budget app and spending tracker, and queue transactions for them to approve before anything counts. There's no automatic pull from a bank today, and Simple Balance can't move money.
 
 Hosted remote server, so there is nothing to clone or run: Streamable HTTP at https://app.smpl.money/mcp, OAuth 2.1 with dynamic client registration and PKCE, no API key. Cline config: {"type": "streamableHttp", "url": "https://app.smpl.money/mcp"}, then press Authenticate. llms-install.md at the repository root walks Cline through it.
 
 Server source (AGPL-3.0): https://github.com/thtmnisamnstr/simple-balance
 Docs: https://smpl.money/docs/agents-and-mcp/
-Maintainer: Gavin Johnson, info@smpl.money
+Maintainer: Gavin Johnson, gavin@smpl.money
 ```
 
 Check: `gh issue list --repo cline/mcp-marketplace --author @me` lists the

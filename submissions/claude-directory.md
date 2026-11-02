@@ -164,40 +164,39 @@ unconfirmed. Setting both is a change to `src/server/mcp.ts` in
 Anthropic's docs list these fields in prose, so the portal's exact labels may
 differ.
 
-One-liner. It matches the description in every plugin manifest:
+One-liner. It matches the description in every plugin manifest, as
+[copy.md](copy.md#taglines-and-one-liners) gives it:
 
 ```text
-Read balances, budgets and reports, and stage or record transactions in your Simple Balance ledger at app.smpl.money.
+Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.
 ```
 
 If the portal asks for a tagline of 55 characters or fewer instead (one
 third-party guide describes one, and Anthropic's listing-edit page mentions a
-tagline), use this, at 51 characters:
+tagline), use the site's own, at 36 characters:
 
 ```text
-Your personal ledger: balances, budgets and reports
+Free budget app and spending tracker
 ```
 
-Description. Anthropic can't edit it, so the card shows exactly what you paste:
+Description. Anthropic can't edit it, so the card shows exactly what you
+paste. It's the long description from [copy.md](copy.md#descriptions):
 
 ```text
-Simple Balance is a double-entry ledger for one person's money, kept in your own account at app.smpl.money: accounts, transactions, categories, payees, budgets, recurring transactions and reports.
+Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-With this connector, Claude can:
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
 
-- Answer questions about your money: balances by account, spending and income by category, net worth, cash flow, budget against actual, and balances projected from your recurring transactions.
-- Import a bank or card statement CSV into the Staged queue, flag likely duplicates, and commit only the rows you approve.
-- Keep the books tidy: categorize and split transactions, merge duplicate payees and categories, and set up budgets, templates and recurring transactions.
+There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
-Staged rows change no balance until they're committed. You approve each connection on Simple Balance's own consent screen, which lists the scopes requested (read, stage, write) and grants all of them or none. Tools outside the grant aren't offered. Tools that change or delete existing data are marked destructive, so Claude asks before running them. Deleting a transaction posts a reversal you can restore; other deletes and merges are permanent. Every change an assistant makes is listed on your Activity page with an Agent badge, and you can revoke the connection at any time under Settings > Connected agents.
+Settings lists what each assistant can do, and cuts an assistant off when you want it gone. Everything an assistant changes shows on Activity. Deleting a transaction can be undone, but deleting anything else, or merging categories or payees, is permanent. Each currency keeps its own totals instead of being blended.
 
-Simple Balance is a record-keeping tool. It doesn't connect to banks or move money, and isn't financial, tax or legal advice.
-
-Requires a Simple Balance account at app.smpl.money.
+Free gives you everything Simple Balance does, for three accounts you can use at once. Sign up at app.smpl.money.
 ```
 
-The record-keeping paragraph keeps the listing clear of the money-movement
-exclusion, as [Policy risks](#policy-risks) explains.
+"Simple Balance keeps track of your money; it can't move it" keeps the listing
+clear of the money-movement exclusion, as [Policy risks](#policy-risks)
+explains.
 
 Categories: on the public directory these are `financial-services` (shown as
 "Financial services"), `productivity` and `data-analytics` (shown as "Data &
@@ -254,7 +253,7 @@ Reads or writes: **Both**.
 | --- | --- |
 | Company name | `Gavin Johnson` |
 | Website | `https://smpl.money/` |
-| Primary contact for review updates | `info@smpl.money` |
+| Primary contact for review updates | `gavin@smpl.money` |
 
 Gavin Johnson is the publisher on every listing, and the privacy policy names
 him as data controller, so the listing and the policy identify the same
@@ -321,7 +320,7 @@ database you keep.
    [Test as a custom connector](#test-as-a-custom-connector).
 
 ```text
-Simple Balance keeps one person's double-entry ledger. This connector reaches only the signed-in account's own books at app.smpl.money.
+Simple Balance is a budget app and spending tracker. This connector reaches only the signed-in account's own records at app.smpl.money.
 
 1. Connect the Simple Balance connector. Claude opens the Simple Balance sign-in page at app.smpl.money.
 2. Sign in with the email and password given in this form. The account has no second factor.
@@ -348,7 +347,7 @@ select it:
 | --- | --- |
 | Directory guidelines | You've read the Software Directory Policy and Terms. All 77 tools have a title and `readOnlyHint` or `destructiveHint`, the longest name is 34 characters (the limit is 64), and reads and writes are separate tools. |
 | First-party API usage | The connector calls only Simple Balance's own API at app.smpl.money. |
-| Financial transactions | It records bookkeeping entries in the user's own ledger. It doesn't transfer money or financial assets, initiate payments or connect to bank accounts. The terms say: "It is a record-keeping tool. It is not financial, tax, accounting or legal advice, it does not file anything on your behalf, and it does not move money." |
+| Financial transactions | It records the transactions a user enters or imports, in their own account. It doesn't transfer money or financial assets, initiate payments or connect to bank accounts. The terms say: "It is a record-keeping tool. It is not financial, tax, accounting or legal advice, it does not file anything on your behalf, and it does not move money." |
 | AI media generation | It generates no images, video or audio. |
 | Prompt injection | Tool descriptions say what each tool does. Ledger text, such as payees, notes and imported rows, is treated as data. |
 | Conversation data collection | Tools receive only their own arguments. The server never logs tool arguments and never reads chat history, memory or files. What a tool writes is kept as [Data handling](#7-data-handling) describes. |
@@ -437,7 +436,7 @@ npx --yes @anthropic-ai/claude-code@2.1.316 plugin validate ./plugin --strict --
    | Display name | `displayName` | `Simple Balance` |
    | Short description | `description` | Same as the connector's one-liner |
    | Description | `plugin/README.md` | The whole README |
-   | Author | `author` | Gavin Johnson, `info@smpl.money` |
+   | Author | `author` | Gavin Johnson, `gavin@smpl.money` |
    | Icon | `icon` | `./assets/logo.png`, the 512 x 512 copy of `assets/logo-512.png`. Size rules are unpublished. |
    | Documentation | `documentationUrl` | `https://smpl.money/docs/agents-and-mcp/` |
    | Support | `supportUrl` | `https://smpl.money/docs/frequently-asked-questions/` |
@@ -458,7 +457,7 @@ npx --yes @anthropic-ai/claude-code@2.1.316 plugin validate ./plugin --strict --
    | How long it keeps data | The plugin keeps none. Simple Balance keeps ledger data until the user deletes their account, and keeps backups as its privacy policy describes (https://smpl.money/privacy/). |
    | Intended for people under 18 | No. The terms allow accounts from 16 ("You must be at least 16 to hold an account", https://smpl.money/terms/), so people aged 16 and 17 can sign up. Keep No only if you accept that, or raise the terms' minimum age to 18 first. |
 
-7. On **Compliance**, check that the contact email is `info@smpl.money`, then
+7. On **Compliance**, check that the contact email is `gavin@smpl.money`, then
    read and select all four acknowledgments. Anthropic doesn't publish their
    wording.
 8. On **Review and submit**, set **How new versions reach the directory** to
