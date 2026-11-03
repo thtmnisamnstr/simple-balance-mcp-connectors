@@ -331,6 +331,12 @@ for (const testCase of cases.negative ?? []) {
 for (const field of ["test_credentials", "reviewer_instructions"]) {
   if (openai?.review?.[field]) fail(files.plugin, `review.${field} is set; OpenAI takes these in the portal and rejects them in the ZIP`);
 }
+const DEMO_URL = openai?.review?.demo_recording_url;
+if (DEMO_URL === undefined) {
+  warn(files.plugin, "review.demo_recording_url is not set; OpenAI's review needs it (see submissions/demo-video.md)");
+} else if (typeof DEMO_URL !== "string" || !DEMO_URL.startsWith("https://")) {
+  fail(files.plugin, "review.demo_recording_url must be an https URL");
+}
 
 const toolList = JSON.parse(await readText("submissions/tools.json"));
 const knownTools = new Set(toolList.tools.map((tool) => tool.name));
@@ -345,6 +351,42 @@ for (const rel of ["plugin/skills/simple-balance/SKILL.md", "GEMINI.md", "llms-i
   for (const [, name] of (await readText(rel)).matchAll(/`([a-z]+(?:_[a-z]+)+)`/g)) {
     if (!knownTools.has(name) && !notTools.has(name)) fail(rel, `tells the model to use ${name}, which the server does not have`);
   }
+}
+
+const HINTS = ["readOnlyHint", "destructiveHint", "openWorldHint"];
+const justificationsFile = "submissions/annotation-justifications.md";
+const justified = new Map();
+let justifiedTool = null;
+for (const { line } of proseLines(await readText(justificationsFile))) {
+  const section = line.match(/^### `([a-z_]+)`$/);
+  if (section) {
+    justifiedTool = section[1];
+    if (justified.has(justifiedTool)) fail(justificationsFile, `has two sections for ${justifiedTool}`);
+    justified.set(justifiedTool, {});
+    continue;
+  }
+  if (/^#{1,3} /.test(line)) justifiedTool = null;
+  const hint = justifiedTool && line.match(/^- `(\w+Hint)` (true|false): \S/);
+  if (!hint) continue;
+  const entry = justified.get(justifiedTool);
+  if (!HINTS.includes(hint[1]) || hint[1] in entry) fail(justificationsFile, `${justifiedTool} has an unexpected or repeated ${hint[1]} line`);
+  entry[hint[1]] = hint[2] === "true";
+}
+for (const tool of toolList.tools) {
+  const entry = justified.get(tool.name);
+  if (!entry) {
+    fail(justificationsFile, `has no section for ${tool.name}`);
+    continue;
+  }
+  for (const hint of HINTS) {
+    if (!(hint in entry)) fail(justificationsFile, `${tool.name} has no ${hint} justification`);
+    else if (entry[hint] !== tool.annotations[hint]) {
+      fail(justificationsFile, `${tool.name} justifies ${hint} ${entry[hint]}, but the server advertises ${tool.annotations[hint]}`);
+    }
+  }
+}
+for (const name of justified.keys()) {
+  if (!knownTools.has(name)) fail(justificationsFile, `has a section for ${name}, which the server does not have`);
 }
 
 const pluginFiles = [];
@@ -638,11 +680,18 @@ if (LIVE) {
     ui.websiteURL, ui.supportURL, ui.privacyPolicyURL, ui.termsOfServiceURL,
     json.plugin.homepage, json.plugin.repository, json.server.websiteUrl, json.server.repository?.url,
     json.claudePlugin?.documentationUrl, json.claudePlugin?.supportUrl,
-    json.cline?.homepage, json.cline?.repo, yamlValue("icon"),
+    json.cline?.homepage, json.cline?.repo, yamlValue("icon"), DEMO_URL,
   ].filter(Boolean));
   for (const page of pages) {
     const response = await get(page).catch((error) => ({ status: error.message }));
     if (response.status !== 200) fail(page, `answers ${response.status}`);
+  }
+  // A private or deleted YouTube video still answers 200; its player status says whether it plays signed out.
+  if (DEMO_URL && /(^|\.)(youtube\.com|youtu\.be)$/.test(new URL(DEMO_URL).hostname)) {
+    const page = await get(DEMO_URL).then((response) => response.text()).catch(() => "");
+    if (!/"playabilityStatus":\{"status":"OK"/.test(page)) {
+      warn(DEMO_URL, "YouTube doesn't report this video as playable without a sign-in; open it in a private window");
+    }
   }
   for (const icon of json.server.icons ?? []) {
     const response = await get(icon.src).catch((error) => ({ status: error.message, headers: new Headers() }));

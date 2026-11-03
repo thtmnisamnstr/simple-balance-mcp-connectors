@@ -396,7 +396,9 @@ at $49 a month per listing, is optional paid placement.
       alone, and keep it empty. Don't connect your own ledger or the reviewer
       account in [reviewer-account.md](reviewer-account.md): the profile gives
       Glama a standing grant, and the consent screen grants every requested
-      scope or none, so the grant can't be narrowed.
+      scope or none, so the grant can't be narrowed. app.smpl.money verifies
+      each account's email before it signs in, so the account needs an address
+      of its own, such as a second routed address at smpl.money.
    2. On the listing, open **Admin > Test Profile** and set
       **Authentication Type** to **OAuth 2.0**. Leave
       **Use localhost redirect URI** off: Glama's own callback registers
@@ -424,6 +426,14 @@ at $49 a month per listing, is optional paid placement.
    description and URL. To keep edits made on Glama, open
    **Manage connector** and turn on
    **Use Glama listing details as the source of truth**.
+6. Optional: Glama's site code shows more listing fields after a claim, all
+   unconfirmed until you see them: up to three categories (choose Finance), a
+   thumbnail (square PNG, JPEG or WebP, at most 2 MB;
+   `assets/logo-512.png` fits), an internal support contact, and publisher
+   details. For the publisher, the operator is Gavin Johnson, the website
+   `https://smpl.money/`, the docs `https://smpl.money/docs/agents-and-mcp/`
+   and the privacy policy `https://smpl.money/privacy/`; Simple Balance's own
+   developer runs it, so it isn't a third party.
 
 ### GitHub MCP Registry and VS Code
 
@@ -444,12 +454,16 @@ and commands work without it; see [vscode-copilot.md](vscode-copilot.md).
    https://github.com/github/github-mcp-server/discussions/1257, paste the
    comment below and choose **Comment**. It carries the fields the thread's
    pinned notes ask for. If a later version is live by then, change the
-   **Version** row.
-4. Optional: send the same text from `gavin@smpl.money` to
-   `partnerships@github.com`, subject
-   `GitHub MCP Registry onboarding: money.smpl/simple-balance`. GitHub's
-   October 2025 blog post names that address. Whether anyone still reads it is
-   unconfirmed; the discussion comment is the route GitHub staff answer.
+   **Version** row. The discussion was marked answered and closed on
+   2026-07-02, but it isn't locked and still gets onboarding requests. Its
+   accepted answer, from May 2026, says onboarding is still curated by hand.
+   Whether staff act on comments in a closed thread is unconfirmed, so do
+   step 4 as well.
+4. Send the same text from `gavin@smpl.money` to `partnerships@github.com`,
+   subject `GitHub MCP Registry onboarding: money.smpl/simple-balance`.
+   GitHub's October 2025 blog post names that address. Whether anyone still
+   reads it is unconfirmed. Sending as `gavin@smpl.money` needs
+   [prerequisites.md, item 36](prerequisites.md#36-mail-from-gavin-and-infosmplmoney).
 5. Every two weeks, run
    `curl -s -o /dev/null -w '%{http_code}\n' "https://api.mcp.github.com/v0.1/servers/money.smpl%2Fsimple-balance/versions/latest"`.
    It prints `200` once Simple Balance is onboarded. Then, in VS Code 1.144 or

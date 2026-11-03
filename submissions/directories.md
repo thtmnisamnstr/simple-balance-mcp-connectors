@@ -111,7 +111,7 @@ Overview:
 ~~~markdown
 Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and recurring transactions.
 
 ## Connect
 
@@ -266,7 +266,7 @@ Put anything wrong in the claim email, or fix it yourself once you have edit acc
 
 ### Claim email
 
-To `hello@mcp.directory`, from `info@smpl.money`:
+To `hello@mcp.directory`, from `info@smpl.money`. Sending as that address needs [prerequisites.md, item 36](prerequisites.md#36-mail-from-gavin-and-infosmplmoney).
 
 ```text
 Subject: Claim request: Simple Balance (money.smpl/simple-balance)
@@ -330,7 +330,7 @@ Full description:
 ```text
 Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and recurring transactions.
 
 There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
@@ -360,7 +360,7 @@ Use cases, one per field:
 See where your money goes: ask what a category cost you last month, or what a store has cost you this year
 Make a budget you'll keep: ask how this month's budget is doing, and set amounts for next month
 Bring in a bank statement: hand the assistant the file your bank gives you, then approve the rows it queued
-Tidy up: merge duplicate payees and categories, split a purchase across categories, and set up repeating payments
+Tidy up: merge duplicate payees and categories, split a purchase across categories, and set up recurring transactions
 ```
 
 FAQ, one question and answer per pair of fields:

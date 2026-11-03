@@ -35,12 +35,15 @@ request (`GET`, `OPTIONS`, `dig` or `gh api`) on 2026-11-02.
 | 13 | [Keep DCR clients that were ever authorized](#13-keep-dcr-clients-that-were-ever-authorized) | App | OpenAI | Recommended | Pruned |
 | 14 | [Tool text that reads as moving money](#14-tool-text-that-reads-as-moving-money) | App | Claude, OpenAI | Recommended | 4 texts |
 | 34 | [Upgrade wording in refusals to agents](#34-upgrade-wording-in-refusals-to-agents) | App | OpenAI | Recommended | 2 messages |
+| 37 | [Annotations a reviewer may question](#37-annotations-a-reviewer-may-question) | App | OpenAI | Recommended | Decide |
 | 15 | [`scope` in the first 401](#15-scope-in-the-first-401) | App | Docker, Claude Code, Glama | Recommended | No scope |
 | 16 | [Redirect host on the consent screen](#16-redirect-host-on-the-consent-screen) | App | Claude, OpenAI | Recommended | Not shown |
 | 17 | [Revoke the presented refresh token](#17-revoke-the-presented-refresh-token) | App | Claude | Recommended | Not revoked |
 | 18 | [`annotations.title` on every tool](#18-annotationstitle-on-every-tool) | App | Claude | Recommended | Not set |
 | 19 | [Bounded tool results](#19-bounded-tool-results) | App | Claude Code, Claude | Recommended | Unbounded |
 | 35 | [Stored write responses in the privacy policy](#35-stored-write-responses-in-the-privacy-policy) | Website | Claude, OpenAI | Recommended | Not named |
+| 29 | [Tool output fields](#29-tool-output-fields) | App | OpenAI | Recommended | Not audited |
+| 36 | [Mail from gavin@ and info@smpl.money](#36-mail-from-gavin-and-infosmplmoney) | Accounts | Every listing's review contact | Recommended | Untested |
 | 20 | [Glama account and test profile](#20-glama-account-and-test-profile) | Accounts | Glama | Recommended | Not set up |
 | 21 | [Glama claim record](#21-glama-claim-record) | DNS | Glama | Recommended | Missing |
 | 22 | [Gemini CLI topic and the About fields](#22-gemini-cli-topic-and-the-about-fields) | GitHub | Gemini CLI, MCP.Directory | Recommended | Empty |
@@ -50,7 +53,6 @@ request (`GET`, `OPTIONS`, `dig` or `gh api`) on 2026-11-02.
 | 26 | [CORS on `OPTIONS /mcp`](#26-cors-on-options-mcp) | App | Browser-hosted clients | Optional | Missing |
 | 27 | [Client ID metadata documents](#27-client-id-metadata-documents) | App | Claude, Codex, VS Code | Optional | Not advertised |
 | 28 | [Rate-limit rules for Anthropic's traffic](#28-rate-limit-rules-for-anthropics-traffic) | App | Claude | Optional | Defaults |
-| 29 | [Tool output fields](#29-tool-output-fields) | App | OpenAI | Optional | Not audited |
 | 30 | [Anonymous `initialize`](#30-anonymous-initialize) | App | MCP.so, Glama | Optional | 401 only |
 | 31 | [`/support/` page](#31-support-page) | Website | OpenAI, Claude, Cursor | Optional | Missing |
 | 32 | [HTTP proof file for the registry](#32-http-proof-file-for-the-registry) | Website | MCP Registry, without DNS | Optional | Missing |
@@ -91,9 +93,10 @@ answers, the tool scan and the submission can't run.
 - Check: `curl -sS https://app.smpl.money/.well-known/openai-apps-challenge`
   prints the token and nothing else, and `npm run check:live` stops warning
   about it.
-- Unconfirmed: whether the portal accepts the parent domain, smpl.money,
-  instead. It shows the exact URL during setup; serving the token from
-  app.smpl.money avoids the question.
+- Parent domain: OpenAI's submission page now allows the MCP host or "an
+  eligible parent domain" without saying which parents qualify. The portal
+  shows the exact URL during setup. Serving the token from app.smpl.money
+  avoids the question.
 
 Status: verified missing. The live `GET` returns 404
 `{"error":"not_found","error_description":"No metadata is published here"}`.
@@ -180,6 +183,32 @@ account's reason, and two refusals written for agents point at a bigger plan:
   stay.
 
 Status: verified in source.
+
+### 37. Annotations a reviewer may question
+
+Recommended for OpenAI. Every tool's annotations follow OpenAI's rules, and
+[annotation-justifications.md](annotation-justifications.md#points-a-reviewer-may-question)
+explains the side effects a strict reviewer could catch. One is worth deciding
+before the first submission: `create_transaction` is additive, so its
+`destructiveHint` is false. It adds a committed entry and changes none, but
+the entry changes balances, OpenAI's guidelines treat irreversible transactions
+as destructive, and the description opens "Directly commit".
+`commit_staged_transactions`, which posts the same kind of entry from the
+review queue, is destructive because the staged rows leave the queue for good.
+
+- Decide: keep `false`, the default here. The tool overwrites and deletes
+  nothing and moves no money, and item 14's rewording says so. If a review
+  flags it, appeal or change it then. The alternative is `true`, which costs
+  little in ChatGPT, since it asks before every write anyway, but makes Codex
+  ask before every call. That needs an app release, a rescan and
+  `npm run sync-tools`, and its justification here changes too.
+- Also: `create_transaction_template`'s description says a category name
+  creates the category when nothing matches. The tool stores the name as text,
+  and the category is created only when an entry is made from the template
+  (`src/server/services/transaction-templates.ts:734-787`). Correct the
+  description, so the scan reads what the tool does.
+
+Status: decide.
 
 ### 15. `scope` in the first 401
 
@@ -395,12 +424,16 @@ Status: verified enabled.
 
 ### 29. Tool output fields
 
-Optional, for OpenAI, whose reviewers reject plugins that return user data the
-privacy policy doesn't disclose or internal identifiers a request doesn't need.
-`whoami` returns the person's name and email, the client id, the plan, the
-account limit and the scopes (`src/server/mcp.ts:812-843`).
+Recommended before the first OpenAI submission. OpenAI's review page lists
+undisclosed user data in tool results among its common rejection reasons, and
+asks plugins to drop internal identifiers, timestamps and internal account IDs
+a request doesn't need. `whoami` returns the person's name and email, the
+client id, the plan, the account limit and the scopes
+(`src/server/mcp.ts:812-843`).
 
-- Change: check each returned field against https://smpl.money/privacy/.
+- Change: check each returned field against https://smpl.money/privacy/, and
+  drop what no request needs. [openai.md, What to check](openai.md#what-to-check)
+  item 7 checks the results in ChatGPT.
 
 Status: not audited.
 
@@ -603,6 +636,12 @@ Required for OpenAI: "Publishing under an unverified individual or business
 name will result in rejection." Steps: [openai.md](openai.md#before-you-start),
 steps 1 to 3.
 
+Verification needs an original, physical government ID and a device that can
+photograph it, and sometimes a selfie. Scans, screenshots and digital IDs are
+refused, and no fee is mentioned. A person can verify only one organization, so
+if you've verified another one, such as an employer's, this one may be blocked
+(OpenAI Help Center, archived 2026-10-12; recheck it on the settings page).
+
 Status: unknown.
 
 ### 6. Paid Claude plan
@@ -617,12 +656,31 @@ Status: unknown.
 
 Required for OpenAI: final submission needs "a demo-recording URL that shows
 the main use cases and tools across supported platforms". Steps:
-[openai.md](openai.md#record-the-demo-video). Recording runs the fourth and
-fifth test cases, so
+[demo-video.md](demo-video.md). It needs the reviewer account (item 3), a
+ChatGPT plan that runs write tools or Codex for the write cases, and an
+unlisted video host. Recording runs the fourth and fifth test cases, so
 [refresh the reviewer account](reviewer-account.md#refresh-before-each-review)
 afterward.
 
 Status: not recorded.
+
+### 36. Mail from gavin@ and info@smpl.money
+
+Recommended for every listing. `gavin@smpl.money` is the contact on the
+Claude, Cursor and Docker submissions, and the guides send mail as it or as
+`info@smpl.money`: MCP.Directory, for one, wants mail from the endpoint's
+domain. smpl.money's mail goes through Cloudflare Email Routing, which
+forwards what it receives but doesn't send as these addresses. SPF allows only
+Cloudflare's routing servers, and there's no DMARC record.
+
+- Check: from an outside mailbox, send a message to each address and confirm
+  it arrives.
+- Change: to send as them, add a sending service for smpl.money, such as your
+  mail provider's send-as feature, and publish its SPF include and DKIM
+  records. Send a test to an outside mailbox and confirm the headers show SPF
+  and DKIM passing. A DMARC record, starting at `p=none`, helps delivery.
+
+Status: verified DNS (MX, SPF, no `_dmarc`); delivery untested.
 
 ### 9. Cursor account
 

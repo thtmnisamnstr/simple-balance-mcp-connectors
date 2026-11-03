@@ -185,7 +185,7 @@ paste. It's the long description from [copy.md](copy.md#descriptions):
 ```text
 Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and recurring transactions.
 
 There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
@@ -580,16 +580,19 @@ as money movement.
 
 The listing copy in this guide stays clear of it:
 
-- It says what happens to records: "stage or record transactions", import "into
-  the Staged queue", "commit only the rows you approve".
+- It says what happens to records: "queuing transactions for you to approve",
+  "record and fix transactions", and "Nothing it queues counts until you've
+  looked at it".
 - It states the limit twice, in the description and in the financial
   transactions acknowledgment: a record-keeping tool that doesn't connect to
   banks or move money, and isn't financial, tax or legal advice. The
   acknowledgment quotes the terms.
-- It mentions banks and moving money only to deny them. There's no "payment",
-  "send money" or "sync your bank", and no "transfer", even though Simple
-  Balance records transfers between accounts. [copy.md](copy.md) lists the
-  words to avoid in every listing.
+- It mentions banks and moving money only to deny them. Payments appear only
+  as ones the person made ("the payments behind it", the site's own line, and
+  "when you last paid the electric bill"). There's no "make payments", "send
+  money" or "sync your bank", and no "transfer", even though Simple Balance
+  records transfers between accounts. [copy.md](copy.md) lists the words to
+  avoid in every listing.
 - It names the human-in-the-loop safeguards: staged rows change no balance until
   committed, Claude asks before destructive tools, every change is on Activity,
   and the connection can be revoked.

@@ -17,7 +17,7 @@ reaching `main`.
 | GitHub MCP Registry and VS Code's gallery | Onboarding request to GitHub | Free | Registry | [mcp-registry.md](mcp-registry.md#github-mcp-registry-and-vs-code) |
 | MCP.Directory | Auto-discovery, then claim; or a form | Free | Registry or merge | [directories.md](directories.md#mcpdirectory) |
 | PulseMCP | Imports from the registry once it reopens | Free | PulseMCP (paused since September) | [directories.md](directories.md#pulsemcp) |
-| OpenAI plugins (ChatGPT and Codex) | ZIP upload in the portal, then review | Free, identity verification | App route, site naming the publisher, reviewer account, demo video | [openai.md](openai.md) |
+| OpenAI plugins (ChatGPT and Codex) | ZIP upload in the portal, then review | Free; identity verification needs a physical ID | App route, site naming the publisher, reviewer account, test runs (write tools need ChatGPT Business or Codex), demo video, skill scan, policy attestations | [openai.md](openai.md) |
 | Codex and ChatGPT desktop marketplace | Live from this repository | Free | Merge | [openai.md](openai.md#codex-marketplace-no-review) |
 | Claude Directory, connector | Portal form, then review | Paid Claude plan | Reviewer account, docs with examples | [claude-directory.md](claude-directory.md) |
 | Claude Directory, plugin bundle | Portal, read from this repository | Paid Claude plan | Merge | [claude-directory.md](claude-directory.md#submit-the-plugin-bundle) |
@@ -49,7 +49,11 @@ Update the table as listings go live, so it stays the one place to look.
 4. **Create and seed the reviewer account**
    ([reviewer-account.md](reviewer-account.md)). OpenAI, Claude and Docker need
    it. Glama gets a separate, empty account
-   ([mcp-registry.md](mcp-registry.md#glama)).
+   ([mcp-registry.md](mcp-registry.md#glama)). Then **record the OpenAI demo
+   video** with it ([demo-video.md](demo-video.md)) and put the link in
+   `plugin/plugin.json`, so the ZIP the release builds carries it. If the video
+   isn't ready by the `v1.0.0` tag, the next version's ZIP can carry it; upload
+   that one.
 5. **Publish to the MCP Registry**: the key, the DNS record, the environment
    secret, then the `v1.0.0` tag ([mcp-registry.md](mcp-registry.md)). The same
    tag's run builds the OpenAI ZIP.
@@ -74,7 +78,19 @@ gives the exact command or value.
 | What scopes clients ask for by default | Every scope, set by adding `scope` to the first 401 | [prerequisites.md](prerequisites.md#15-scope-in-the-first-401) |
 | MCP Market | Don't list: $69, no finance category, unlimited indemnity | [directories.md](directories.md#mcp-market) |
 | MCP.so | The free queue | [directories.md](directories.md#mcpso) |
-| Countries for the OpenAI listing | Left for the portal to decide | [openai.md](openai.md) |
+| Countries for the OpenAI listing | Set in the portal at submission. The ZIP leaves them out, and the portal's default is undocumented. | [openai.md](openai.md#submit-in-the-portal) |
+| OpenAI identity | Individual verification as Gavin Johnson | [openai.md](openai.md#before-you-start) |
+| Where the demo video lives | Unlisted on YouTube | [demo-video.md](demo-video.md#check-host-and-link-it) |
+| `create_transaction`'s `destructiveHint` | Keep `false` | [prerequisites.md](prerequisites.md#37-annotations-a-reviewer-may-question) |
+| A `/support/` page before the first OpenAI ZIP | None; the FAQ stays the support URL | [prerequisites.md](prerequisites.md#31-support-page) |
+| The Claude organization that owns both listings | A personal Pro, Max or Ultra account | [claude-directory.md](claude-directory.md#before-you-submit) |
+| Claude's documentation URL | Option A, the site's agents page | [claude-directory.md](claude-directory.md#documentation-requirement) |
+| Cursor's organization handle | `simple-balance`, settled before you apply | [cursor.md](cursor.md#apply-to-the-cursor-marketplace) |
+| Applying to Cursor before it answers about Premium | Wait for the answer | [cursor.md](cursor.md#ask-cursor-about-the-premium-plan) |
+| A public star on Awesome Remote | Your call; the list requires it | [awesome-remote/README.md](awesome-remote/README.md) |
+| When to file for awesome-copilot | After `v1.0.0`, or later once the repository has some history | [vscode-copilot.md](vscode-copilot.md#awesome-copilot) |
+| Cline's legacy marketplace issue | Skip it unless you want Cline 3.x users | [cline/README.md](cline/README.md) |
+| Glama Boost | Not bought | [mcp-registry.md](mcp-registry.md#glama) |
 | Claude's under-18 question | No, though the terms allow accounts from 16 | [claude-directory.md](claude-directory.md) |
 
 ## Keeping the listings current

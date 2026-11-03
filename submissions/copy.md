@@ -106,7 +106,7 @@ For a description or overview field of about 1,000 characters.
 ```text
 Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and recurring transactions.
 
 There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
@@ -120,7 +120,7 @@ For a description field of 2,000 characters or more, outside OpenAI.
 ```text
 Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and recurring transactions.
 
 There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
@@ -137,7 +137,7 @@ the ZIP. Change it there, not here.
 ```text
 Simple Balance is a budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. Once it's connected, your assistant reads the same records you do: ask what you have in each account, where last month's money went, how a budget is doing, or when you last paid the electric bill.
 
-You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and repeating payments.
+You decide how far it goes: reading only, queuing transactions for you to approve, or making the change itself. Nothing it queues counts until you've looked at it, including the rows of a bank statement file it brings in for you. Allowed to make changes, it can also record and fix transactions, split a purchase across categories, and set up budgets, templates and recurring transactions.
 
 There's no automatic pull from your bank today: you download the file your bank gives you and bring it in, or hand it to the assistant. Simple Balance keeps track of your money; it can't move it.
 
@@ -423,6 +423,7 @@ Screenshots of the web app: seven WebP images, 1200 x 750, at
 | --- | --- | --- |
 | Transfer money, send money, move money, as something it does | Claude's review criteria reject connectors that "Transfer money, cryptocurrency, or other financial assets", and OpenAI prohibits "Execution of money transfers". Simple Balance moves nothing, and an automated scan judges the wording. | "Keeps track of your money; it can't move it." Stating the limit is fine. |
 | Make payments, pay bills, as something it does | The same rules. The payments a person made are fine to talk about: the site's own line is "the payments behind them". | "Record a payment", "when you last paid the electric bill" |
+| Repeating or scheduled payments | Reads as the connector paying on a schedule. The site and the app call the feature recurring transactions. | "Recurring transactions" |
 | Syncs, connects to your bank, link your accounts, automatically updated, real time, live balances | False today, and banned by rule 1.4 of the site's content standard. | "There's no automatic pull from your bank today: you download the file your bank gives you and bring it in." |
 | Ledger, double-entry, bookkeeping, posting, staged, commit, CSV, in user-facing copy | The site keeps accounting and operations words off its pages unless the sentence explains them (rule 1.3). Scopes, tool names and agent instructions keep the app's words. | Budget app and spending tracker; queue for you to approve; make the change itself; a bank statement file |
 | Free trial, prices, upgrades | There's no trial, and OpenAI bars advertising "pricing, subscriptions, free trials, discounts, or promotions". | Outside OpenAI only: "Free gives you everything Simple Balance does, for three accounts you can use at once." |

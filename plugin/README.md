@@ -28,7 +28,7 @@ approve, or making the change itself. Nothing it queues counts until you've
 looked at it on **Staged**, including the rows of a bank statement file it
 brings in for you. Allowed to make changes, it can also record and fix
 transactions, split a purchase across categories, and set up budgets,
-templates and repeating payments.
+templates and recurring transactions.
 
 There's no automatic pull from your bank today: you download the file your
 bank gives you and bring it in, or hand it to the assistant. Simple Balance

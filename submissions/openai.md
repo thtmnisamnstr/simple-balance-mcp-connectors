@@ -44,9 +44,11 @@ OpenAI's documentation rather than a session. A label can differ slightly.
    operator. Add his name to the site footer and the terms before you submit
    ([prerequisites.md, item 33](prerequisites.md#33-publisher-named-on-every-listing-url)). Use business verification
    only if a company will publish, and change the privacy policy and the
-   manifests' `author` first. Unconfirmed: what verification costs and how it
-   works, because help.openai.com refuses automated reads. Check it on the
-   settings page.
+   manifests' `author` first. Verification takes an original, physical
+   government ID and a device that can photograph it, sometimes with a selfie,
+   and no fee is mentioned. One person can verify only one organization, so a
+   verification you've made for an employer's may block this one
+   ([prerequisites.md, item 4](prerequisites.md#4-openai-organization-and-identity-verification)).
 4. **App changes.** OpenAI checks that you control the MCP host by fetching a
    token it generates from
    `https://app.smpl.money/.well-known/openai-apps-challenge`, as plain text.
@@ -79,9 +81,10 @@ OpenAI's documentation rather than a session. A label can differ slightly.
 6. **Testing access.** Full custom MCP support in ChatGPT, write tools
    included, is for Business and Enterprise/Edu on the web. "Pro users can
    connect custom MCP servers with read/fetch permissions." Free, Go and Plus
-   aren't mentioned. (OpenAI Help Center, archived 2026-10-19; the live page
-   refuses automated reads, so recheck it.) OpenAI documents no MCP-specific
-   plan limit for Codex. Without Business, test the write tools in Codex.
+   aren't mentioned. On Business, only admins and owners can add one. (OpenAI
+   Help Center, archived 2026-10-19; the live page refuses automated reads, so
+   recheck it.) OpenAI documents no MCP-specific plan limit for Codex. Without
+   Business, test the write tools in Codex.
 
 ## Test in ChatGPT and Codex first
 
@@ -201,24 +204,14 @@ restart.
 
 ## Record the demo video
 
-Final submission needs "a demo-recording URL that shows the main use cases and
-tools across supported platforms".
-
-1. Record the eight cases in ChatGPT on the web and in Codex, with tool-call
-   details expanded so the tool names show. If your ChatGPT plan can't run
-   write tools, record cases 4 and 5 in Codex only. Before each run of them,
-   delete any Corner Market purchase an earlier run committed that day
-   ([What to check](#what-to-check), item 8). Include the sign-in and the
-   consent screen, but not the reviewer password. When you're done, refresh
-   the reviewer account
-   ([reviewer-account.md](reviewer-account.md#refresh-before-each-review)).
-2. Host it where a reviewer can watch without signing in, such as an unlisted
-   video.
-3. Paste the URL into **Review details** (step 6 of the portal flow). If that
-   field is read-only, add it to `plugin/plugin.json` as
-   `extensions["com.openai"].review.demo_recording_url` and ship a new
-   version. Unconfirmed: whether the field is editable when the ZIP leaves it
-   out. OpenAI's docs imply it is.
+Final submission needs a link to a video that shows the main use cases and
+tools on the supported platforms. [demo-video.md](demo-video.md) has the shot
+list and the steps: three takes (the connection, the eight cases in ChatGPT,
+then Codex), recorded with macOS's own screen recorder, hosted as an unlisted
+video, and linked from `plugin/plugin.json` as
+`extensions["com.openai"].review.demo_recording_url` before you tag the
+release. The ZIP then carries the link, so **Review details** shows it
+read-only.
 
 Plugins have to work in ChatGPT on mobile, but a custom MCP server can't be
 added there ("web only"). Unconfirmed: whether a plugin you created on the web
@@ -342,10 +335,11 @@ block with seven scopes.
      reviewer account, not yours, and the scan finishes with 77 tools, each
      showing the `readOnlyHint`, `destructiveHint` and `openWorldHint` recorded
      in [tools.json](tools.json).
-5. Open **Issues** under **MCPs**. If `justification_required` appears, paste
-   the text from [Annotation justifications](#annotation-justifications). Fix
-   server findings in the app, deploy, and select **Rescan**. Findings that
-   don't block submission go to the review team with it.
+5. Open **Issues** under **MCPs**. If `justification_required` appears, or
+   the portal asks for a justification per tool, paste them from
+   [annotation-justifications.md](annotation-justifications.md). Fix server
+   findings in the app, deploy, and select **Rescan**. Findings that don't
+   block submission go to the review team with it.
 6. In **Metadata & Skills**, open **Review information > Review details**:
    - Enter the login URL, email, password and sign-in steps from
      [reviewer-account.md](reviewer-account.md). Credentials go in the portal
@@ -353,7 +347,8 @@ block with seven scopes.
      `reviewer_instructions`.
    - Check that the five positive cases, three negative cases, release notes
      and commerce declaration came in from the ZIP. They're read-only here.
-   - Paste the demo recording URL.
+   - Check that the demo recording URL came in from the ZIP and plays in a
+     private window.
    - Set country availability. The ZIP leaves `publication.countries` out, so
      the portal's setting applies. This is your decision; the privacy policy
      already covers EEA, UK and US-state users.
@@ -396,11 +391,11 @@ upload a new version.
 | OAuth Client Secret | None | DCR registers a public client |
 | Domain verification | The portal's token at `https://app.smpl.money/.well-known/openai-apps-challenge` | App configuration ([prerequisites.md](prerequisites.md)) |
 | Tool annotations | Read from the live server | The scan. [tools.json](tools.json) has the expected values. |
-| Annotation justifications | One text per preset | [Annotation justifications](#annotation-justifications), only if asked |
+| Annotation justifications | Three per tool | [annotation-justifications.md](annotation-justifications.md) |
 | Reviewer credentials | Login URL, email, password, sign-in steps | [reviewer-account.md](reviewer-account.md). Portal only. |
 | Positive test cases | 5 | `review.test_cases.positive` |
 | Negative test cases | 3 | `review.test_cases.negative` |
-| Demo recording URL | Your video | **Review details**, or `review.demo_recording_url` |
+| Demo recording URL | Your unlisted video | `review.demo_recording_url` ([demo-video.md](demo-video.md)) |
 | Commerce | `false`, with a description | `review.commerce`, `review.commerce_description` |
 | Release notes | `First release: balances, spending and budget reports, ...` | `publication.release_notes` |
 | Countries | Your decision | Portal. `publication.countries` is not set; `[]` would remove every restriction. |
@@ -412,11 +407,12 @@ upload a new version.
 
 OpenAI's docs disagree on whether these are still collected. The plugin
 guidelines say "Annotation justifications are no longer required." The
-submission-errors page still lists `justification_required` for final
-submission, and the review-requirements page says justifications "should
-explain why those server-provided annotation values match each tool's
-behavior." Paste the text below only if the portal asks. A justification can't
-change an annotation: the portal shows what the scan read from the server.
+submission-errors page still lists a justification for each value on every
+tool among the final-submission requirements, with the error
+`justification_required`. [annotation-justifications.md](annotation-justifications.md)
+has all three for every tool, and `npm run check` keeps them in step with
+[tools.json](tools.json). A justification can't change an annotation: the
+portal shows what its scan read from the server.
 
 Every tool uses one of four annotation presets in the app's
 `src/server/mcp.ts`, recorded as `kind` in [tools.json](tools.json) (app
@@ -429,61 +425,11 @@ Every tool uses one of four annotation presets in the app's
 | Destructive | 20 | false | true | false |
 | Unrecoverable | 11 | false | true | false |
 
-To list each preset's tools:
-
-```bash
-node -e 'const t=require("./submissions/tools.json").tools;for(const k of ["read","additive","destructive","unrecoverable"])console.log(k+": "+t.filter(x=>x.kind===k).map(x=>x.name).join(", "))'
-```
-
-**Read** (`list_*`, `get_*`, `preview_*`, `whoami`, `summarize_own_data`,
-`export_transactions_csv`)
-
-- `readOnlyHint`: Only reads or computes over the signed-in user's own ledger.
-  It creates, changes, deletes and sends nothing.
-- `destructiveHint`: Read-only, so nothing can be lost or overwritten.
-- `openWorldHint`: Reaches only the signed-in user's private Simple Balance
-  ledger. No public internet access and no third parties.
-
-**Additive** (`create_*`, `stage_csv`)
-
-- `readOnlyHint`: Adds a new record to the user's ledger, so it changes state.
-  `create_staged_transaction` and `stage_csv` add rows to the staging queue,
-  which change no balance until they're committed.
-- `destructiveHint`: Only adds. It never deletes or overwrites existing data,
-  and repeating a call with the same idempotency key returns the original
-  result instead of creating a second record.
-- `openWorldHint`: Writes only to the signed-in user's private ledger.
-  Recurrence reminders, when turned on, go only to that user's own email
-  address.
-
-**Destructive** (`update_*`, `bulk_edit_*`, `set_*`, `archive_*`,
-`bulk_delete_transactions`, `commit_staged_transactions`,
-`revoke_connected_agent`)
-
-- `readOnlyHint`: Changes existing records in the user's ledger.
-- `destructiveHint`: Overwrites, archives, deletes, commits or revokes
-  existing data. Most of these can be reversed: deleting a transaction posts a
-  reversal that `set_transaction_deleted` restores, and archived records can be
-  restored. They are marked destructive because they overwrite what was there.
-  With `ledger:write`, `update_transaction`, `update_staged_transaction`,
-  `bulk_edit_transactions` and `bulk_edit_staged_transactions` also delete a
-  category the edit leaves with no references, which can't be undone. Both
-  bulk tools take `dryRun` to show the effect first.
-  `commit_staged_transactions` also takes `dryRun`, bulk selections can be
-  previewed with the `preview_bulk_*` tools, and changes to versioned records
-  require the version last read.
-- `openWorldHint`: Acts only on the signed-in user's private ledger.
-
-**Unrecoverable** (`delete_*`, `bulk_delete_transaction_templates`, `merge_*`)
-
-- `readOnlyHint`: Deletes or merges records in the user's ledger.
-- `destructiveHint`: Permanent. Deleted or merged records can't be restored,
-  and each tool's description says so. `delete_account` and `delete_category`
-  are refused while anything still references the record.
-- `openWorldHint`: Acts only on the signed-in user's private ledger.
-
 The guidelines back the destructive preset: "Being able to undo an action does
 not, by itself, justify setting `destructiveHint` to `false`."
+[prerequisites.md, item 37](prerequisites.md#37-annotations-a-reviewer-may-question)
+covers the one additive tool a reviewer might read as destructive,
+`create_transaction`.
 
 ## Policy notes
 
