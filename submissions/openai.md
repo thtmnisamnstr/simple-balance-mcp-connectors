@@ -114,19 +114,16 @@ ChatGPT plan can't run write tools, run cases 4 and 5 in Codex only.
 
 ### Codex
 
-1. Add this repository as a marketplace. Before the merge, use your checkout:
-
-   ```bash
-   codex plugin marketplace add ~/Documents/Development/simple-balance-mcp-connectors
-   ```
-
-   After the merge, use GitHub instead. Run
-   `codex plugin marketplace remove simple-balance` first, because both
-   sources carry the name `simple-balance`.
+1. Add this repository as a marketplace:
 
    ```bash
    codex plugin marketplace add thtmnisamnstr/simple-balance-mcp-connectors
    ```
+
+   To test changes that aren't on `main` yet, add your checkout instead,
+   `~/Documents/Development/simple-balance-mcp-connectors`. Run
+   `codex plugin marketplace remove simple-balance` before you switch, because
+   both sources carry the name `simple-balance`.
 
 2. Install the plugin, then sign in as the reviewer. `codex plugin add`
    doesn't start sign-in, and Codex stores each sign-in under the server's name
@@ -496,7 +493,7 @@ covers the one additive tool a reviewer might read as destructive,
 
 The repository is already a Codex marketplace:
 [`.agents/plugins/marketplace.json`](../.agents/plugins/marketplace.json)
-lists `simple-balance` from `./plugin`. Once it's on `main`, anyone with Codex
+lists `simple-balance` from `./plugin`, so anyone with Codex
 CLI or the ChatGPT desktop app can install it with no OpenAI review, with the
 commands in the
 [README](../README.md#openai-codex-cli-ide-extension-chatgpt-desktop-app) or

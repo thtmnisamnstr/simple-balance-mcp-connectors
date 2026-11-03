@@ -46,7 +46,7 @@ request (`GET`, `OPTIONS`, `dig` or `gh api`) on 2026-11-02.
 | 36 | [Mail from gavin@ and info@smpl.money](#36-mail-from-gavin-and-infosmplmoney) | Accounts | Every listing's review contact | Recommended | Untested |
 | 20 | [Glama account and test profile](#20-glama-account-and-test-profile) | Accounts | Glama | Recommended | Not set up |
 | 21 | [Glama claim record](#21-glama-claim-record) | DNS | Glama | Recommended | Missing |
-| 22 | [Gemini CLI topic and the About fields](#22-gemini-cli-topic-and-the-about-fields) | GitHub | Gemini CLI, MCP.Directory | Recommended | Empty |
+| 22 | [Gemini CLI topic and the About fields](#22-gemini-cli-topic-and-the-about-fields) | GitHub | Gemini CLI, MCP.Directory | Recommended | Done |
 | 23 | [Smaller `tools/list`](#23-smaller-toolslist) | App | OpenAI | Required if 11 fails | Untested |
 | 24 | [First 512 characters of the server instructions](#24-first-512-characters-of-the-server-instructions) | App | OpenAI | Optional | Not reordered |
 | 25 | [UserInfo endpoint](#25-userinfo-endpoint) | App | ChatGPT Enterprise workspaces | Optional | Missing |
@@ -613,7 +613,7 @@ Recommended for Gemini CLI's gallery, whose crawler finds extensions by the
 repository's description. Steps:
 [gemini-cli.md](gemini-cli.md#1-set-the-about-fields-and-topics), step 1.
 
-Status: verified empty: no description, no homepage, no topics.
+Status: done on 2026-11-03, checked with `gh repo view`.
 
 ## Accounts and recordings
 

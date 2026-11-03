@@ -4,7 +4,7 @@ Four MCP directories take Simple Balance through a web form. PulseMCP is paused 
 
 | Directory | Cost | Account | Depends on | Step in the order of work |
 | --- | --- | --- | --- | --- |
-| [MCP.so](#mcpso) | Free queue with no published wait, or $39 one-time | MCP.so account, signed in with GitHub | This repository merged to `main` | 9, with the other web forms |
+| [MCP.so](#mcpso) | Free queue with no published wait, or $39 one-time | MCP.so account, signed in with GitHub | Nothing: this repository is on `main` | 9, with the other web forms |
 | [MCP Servers](#mcp-servers-mcpserversorg) | Free (review within 2 weeks), or $39 one-time (24 hours) | None; a contact email | The MCP Registry entry | 6, after the registry entry is live |
 | [MCP.Directory](#mcpdirectory) | Free | None; claims go by email | The MCP Registry entry, then up to 2 weeks for auto-discovery | 6, after the registry entry is live |
 | [MCP Market](#mcp-market) | $69 one-time; no free option for a remote server | None to submit; an email | Your decision (recommendation: skip it) | 9, if at all |
@@ -42,7 +42,7 @@ curl -s -o /dev/null -w '%{http_code}\n' 'https://registry.modelcontextprotocol.
 - Cost: a free submission waits in a review queue with no published time. $39 one-time publishes it at once without review, with a Verified badge, featured placement and a dofollow link. The badge is bought, not a security review, so don't describe it as one. Recommendation: free.
 - Account: an MCP.so account. Sign in with GitHub: MCP.so accepts a claim on a listing only from a GitHub account that owns the listing's repository.
 - The submit form takes only the endpoint and a name. Everything else goes on an edit page afterward.
-- Submit once this repository is on `main`: the overview links its README.
+- The overview links this repository's README.
 
 ### Submit
 

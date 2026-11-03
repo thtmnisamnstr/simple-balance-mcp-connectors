@@ -69,7 +69,7 @@ Check: keep the reply. If the answer is no, skip the application. cursor.directo
 
 ## Apply to the Cursor Marketplace
 
-Cursor pins a listing to the commit it reviews, so apply once `main` holds the release you want listed (see [Releasing](../README.md#releasing)). The logo URL below also resolves only after the merge.
+Cursor pins a listing to the commit it reviews, so apply once `main` holds the release you want listed (see [Releasing](../README.md#releasing)).
 
 1. Sign in at cursor.com with the account that should own the listing. Signed out, the page shows **Sign in to apply** instead of the form.
 2. Open [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) (**Become a plugin publisher**) and fill in the form. Type the organization name first: the form copies it into the handle until you edit the handle.
@@ -79,7 +79,7 @@ Cursor pins a listing to the commit it reviews, so apply once `main` holds the r
    | Organization name | `Gavin Johnson` | Required. The publisher name: the `author` in every manifest and the data controller in the privacy policy. |
    | Organization handle | `simple-balance` | Required. A unique namespace in kebab-case. Replace the `gavin-johnson` the form fills in. Whether it can change after approval is unconfirmed, so settle it now. |
    | Contact email | `gavin@smpl.money` | Required. It starts as your Cursor login email. Replace it, or Cursor's follow-up goes to that address. |
-   | Logotype URL | `https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-512.png` | Required. The hint asks for a "1:1 SVG or PNG with background plate", and the mark sits on its own green plate. Before the merge, use `https://smpl.money/favicon.svg`. |
+   | Logotype URL | `https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-512.png` | Required. The hint asks for a "1:1 SVG or PNG with background plate", and the mark sits on its own green plate. |
    | Description | The block below this table | Optional. |
    | GitHub repository | `https://github.com/thtmnisamnstr/simple-balance-mcp-connectors` | Required. The form accepts only `https://github.com/<org>/<repo>`, so a link to `plugin/` is refused. `.cursor-plugin/marketplace.json` at the root points Cursor to `plugin/`, as approved listings such as `naturalpay/agent-plugins` do. |
    | Owner | Read-only | **Individual** and your login email, or **Team** and your team. It follows the account you're signed in with. |
@@ -150,7 +150,7 @@ Check: open the link on a computer with Cursor installed. Cursor asks to install
 
 ## cursor.directory
 
-cursor.directory is Cursor's community directory, built from `cursor/community-plugins`. There's no application: each submission gets an automated security scan, and admins moderate the queue. It reads the repository from GitHub, so submit after the merge to `main`.
+cursor.directory is Cursor's community directory, built from `cursor/community-plugins`. There's no application: each submission gets an automated security scan, and admins moderate the queue. It reads the repository from GitHub's `main`.
 
 1. Sign in at [cursor.directory](https://cursor.directory) with GitHub or Google.
 2. Open [cursor.directory/plugins/new](https://cursor.directory/plugins/new) and stay on the **Auto (GitHub)** tab.

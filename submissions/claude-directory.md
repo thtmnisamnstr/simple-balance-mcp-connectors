@@ -16,9 +16,8 @@ that can, costs $20 a month billed monthly or $17 a month billed annually.
 
 ## Before you submit
 
-1. Merge this branch to `main`. The plugin bundle is read from `main`, the
-   marketplace install works only from `main`, and the raw logo URL below
-   resolves only after the merge.
+1. Make sure `main` holds the version you submit. The plugin bundle, the
+   marketplace install and the raw logo URL below are all read from `main`.
 2. Choose the Claude organization that will own both listings: a personal Pro,
    Max or Ultra account you control, not an employer's Team or Enterprise
    organization. A listing belongs to the organization it was submitted from,
@@ -206,8 +205,7 @@ the ones that match.
 Icon: upload `assets/logo-512.png`, a 512 x 512 PNG. Anthropic publishes no icon
 size or format and the portal is behind a login, so the size is unconfirmed.
 Check what the upload control asks for. If it wants a URL, use
-https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-512.png
-which works once this branch is on `main`.
+https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-512.png.
 
 Slug: `simple-balance` makes the listing URL
 `https://claude.ai/directory/connectors/simple-balance`. One Anthropic page says
@@ -528,7 +526,7 @@ and Claude Code matches plugins and connectors by endpoint.
 ## Self-hosted marketplace
 
 `.claude-plugin/marketplace.json` makes this repository a plugin marketplace.
-It works as soon as this branch is on `main`, with no submission and no review.
+It works from `main`, with no submission and no review.
 Anthropic doesn't review third-party marketplaces.
 
 Claude Code 2.1.275 or later installs it in one step:
@@ -560,7 +558,7 @@ Start `claude`, run `/mcp`, authenticate `plugin:simple-balance:simple-balance`,
 ask Claude to run `whoami`, then remove the test marketplace with
 `claude plugin marketplace remove simple-balance`.
 
-Check: after the merge, the one-step install works in a fresh session, and
+Check: the one-step install works in a fresh session, and
 `/mcp` lists `plugin:simple-balance:simple-balance`.
 
 Installed copies update when the user runs

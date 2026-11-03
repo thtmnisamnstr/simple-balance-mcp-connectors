@@ -48,10 +48,9 @@ How the entry is set up:
 
 ## Before you submit
 
-1. Release this repository as the [repository README](../../README.md#releasing)
-   describes. Until the merge, `main` holds only `LICENSE`, so a reviewer who
-   follows the entry's `repo` link, or Cline reading the legacy form's
-   repository URL, finds no README.md or llms-install.md.
+1. Make sure `main` holds what you want reviewed. A reviewer who follows the
+   entry's `repo` link, or Cline reading the legacy form's repository URL,
+   reads README.md and llms-install.md from it.
 2. Make sure the `cline` job in [check.yml](../../.github/workflows/check.yml)
    passed. It copies this folder into cline/marketplace at commit `6969aa8`, the
    head of their `main` on 2026-11-02, and runs their own validator,
@@ -249,7 +248,7 @@ and fill it in:
 | --- | --- |
 | **Title** | `[Server Submission]: Simple Balance`. The form fills in the prefix. |
 | **GitHub Repository URL** | `https://github.com/thtmnisamnstr/simple-balance-mcp-connectors` |
-| **Logo Image** | Drag in `submissions/cline/icon.png`, the 400x400 PNG the form asks for. Or paste `https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-400.png`, which works once this repository is on `main`. |
+| **Logo Image** | Drag in `submissions/cline/icon.png`, the 400x400 PNG the form asks for. Or paste `https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-400.png`. |
 | **Installation Testing** | Check both boxes: "I have tested that Cline can successfully set up this server using only the README.md and/or llms-install.md file" and "The server is stable and ready for public use" |
 | **Additional Information** | The text below |
 

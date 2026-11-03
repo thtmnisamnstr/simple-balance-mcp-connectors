@@ -6,8 +6,8 @@ paste. Nothing in this folder submits anything on its own.
 
 ## Status
 
-As of 2026-11-02, nothing is listed yet. "Merge" means this repository's work
-reaching `main`.
+As of 2026-11-03, this repository is on `main`, so the plugin and the Gemini
+CLI extension install from it. No directory lists Simple Balance yet.
 
 | Listing | How it gets there | Cost | Waits on | Guide |
 | --- | --- | --- | --- | --- |
@@ -15,20 +15,20 @@ reaching `main`.
 | Glama connectors | Imported from the registry; claim it to add a test profile | Free | Registry | [mcp-registry.md](mcp-registry.md#glama) |
 | Awesome Remote MCP Servers | Pull request | Free | Glama's page, a star from your account | [awesome-remote/README.md](awesome-remote/README.md) |
 | GitHub MCP Registry and VS Code's gallery | Onboarding request to GitHub | Free | Registry | [mcp-registry.md](mcp-registry.md#github-mcp-registry-and-vs-code) |
-| MCP.Directory | Auto-discovery, then claim; or a form | Free | Registry or merge | [directories.md](directories.md#mcpdirectory) |
+| MCP.Directory | Auto-discovery, then claim; or a form | Free | Registry, or nothing for the form | [directories.md](directories.md#mcpdirectory) |
 | PulseMCP | Imports from the registry once it reopens | Free | PulseMCP (paused since September) | [directories.md](directories.md#pulsemcp) |
 | OpenAI plugins (ChatGPT and Codex) | ZIP upload in the portal, then review | Free; identity verification needs a physical ID | App route, site naming the publisher, reviewer account, test runs (write tools need ChatGPT Business or Codex), demo video, skill scan, policy attestations | [openai.md](openai.md) |
-| Codex and ChatGPT desktop marketplace | Live from this repository | Free | Merge | [openai.md](openai.md#codex-marketplace-no-review) |
+| Codex and ChatGPT desktop marketplace | Live from this repository | Free | Nothing: live | [openai.md](openai.md#codex-marketplace-no-review) |
 | Claude Directory, connector | Portal form, then review | Paid Claude plan | Reviewer account, docs with examples | [claude-directory.md](claude-directory.md) |
-| Claude Directory, plugin bundle | Portal, read from this repository | Paid Claude plan | Merge | [claude-directory.md](claude-directory.md#submit-the-plugin-bundle) |
-| Claude Code and claude.ai marketplace | Live from this repository | Free | Merge | [claude-directory.md](claude-directory.md#self-hosted-marketplace) |
-| Cursor Marketplace | Publisher application, then review | Free | Merge, Cursor's answer on the paid plan | [cursor.md](cursor.md) |
-| cursor.directory | Form with the repository URL | Free | Merge | [cursor.md](cursor.md#cursordirectory) |
+| Claude Directory, plugin bundle | Portal, read from this repository | Paid Claude plan | Your submission | [claude-directory.md](claude-directory.md#submit-the-plugin-bundle) |
+| Claude Code and claude.ai marketplace | Live from this repository | Free | Nothing: live | [claude-directory.md](claude-directory.md#self-hosted-marketplace) |
+| Cursor Marketplace | Publisher application, then review | Free | Cursor's answer on the paid plan | [cursor.md](cursor.md) |
+| cursor.directory | Form with the repository URL | Free | Your submission | [cursor.md](cursor.md#cursordirectory) |
 | awesome-copilot | Issue form | Free | The `v1.0.0` tag | [vscode-copilot.md](vscode-copilot.md#awesome-copilot) |
-| Gemini CLI extension gallery | Found by topic and manifest | Free | Merge, repository topics | [gemini-cli.md](gemini-cli.md) |
-| Cline catalog | Pull request to `cline/marketplace` | Free | Merge | [cline/README.md](cline/README.md) |
+| Gemini CLI extension gallery | Found by topic and manifest | Free | The gallery's next crawl, and maybe the `v1.0.0` tag | [gemini-cli.md](gemini-cli.md) |
+| Cline catalog | Pull request to `cline/marketplace` | Free | Your pull request | [cline/README.md](cline/README.md) |
 | Docker MCP Catalog | Pull request to `docker/mcp-registry` | Free | Reviewer account | [docker/README.md](docker/README.md) |
-| MCP.so | Form; free queue or $39 | Free or $39 | Merge | [directories.md](directories.md#mcpso) |
+| MCP.so | Form; free queue or $39 | Free or $39 | Your submission | [directories.md](directories.md#mcpso) |
 | MCP Servers (mcpservers.org) | Form; free or $39 | Free or $39 | Registry, for its lookup | [directories.md](directories.md#mcp-servers-mcpserversorg) |
 | MCP Market | Form; remote listings only paid | $69 | Your decision | [directories.md](directories.md#mcp-market) |
 | Smithery | Closed to submissions on 2026-10-31 | | | [directories.md](directories.md#smithery) |
@@ -38,10 +38,12 @@ Update the table as listings go live, so it stays the one place to look.
 
 ## Order of work
 
-1. **Merge this branch.** The Claude Code, claude.ai and Codex marketplaces, the
-   Gemini CLI extension, and every form that reads the repository depend on it.
+1. **Merge this branch.** Done on 2026-11-03. The Claude Code, claude.ai and
+   Codex marketplaces, the Gemini CLI extension, and every form that reads the
+   repository depend on it.
 2. **Set the repository's About box and topics**, as
    [gemini-cli.md](gemini-cli.md#1-set-the-about-fields-and-topics) gives them.
+   Done on 2026-11-03.
 3. **Start the application and website changes that block a listing**, in the
    order [prerequisites.md](prerequisites.md#order-of-work) sets. The first is
    the route OpenAI's domain check reads; no OpenAI submission can start without

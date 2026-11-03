@@ -1,6 +1,6 @@
 # VS Code and GitHub Copilot
 
-VS Code and Copilot users can install the MCP server today without any listing, and the plugin once `plugin/` is merged to `main`. Two optional listings help users find it.
+VS Code and Copilot users can install the MCP server and the plugin today without any listing. Two optional listings help users find it.
 
 | Route | What users get | What you do |
 | --- | --- | --- |
@@ -41,11 +41,11 @@ Copilot CLI keeps its own list in `~/.copilot/mcp-config.json`, which the README
    copilot plugin list
    ```
 
-   That form reads `main`, which holds only `LICENSE` until the merge. Before the merge, run `copilot plugin install ./plugin` from the repository root instead.
+   That form reads `main`. To try changes that aren't on `main` yet, run `copilot plugin install ./plugin` from the repository root instead.
 
    Check: `copilot plugin list` shows `simple-balance`. awesome-copilot's install smoke test also installs the plugin with Copilot CLI, so fix any failure here before you submit.
 
-   To install through the marketplace instead, after the merge:
+   To install through the marketplace instead:
 
    ```bash
    copilot plugin marketplace add thtmnisamnstr/simple-balance-mcp-connectors
@@ -53,7 +53,7 @@ Copilot CLI keeps its own list in `~/.copilot/mcp-config.json`, which the README
    ```
 
    The marketplace registers under the name in its `marketplace.json`, `simple-balance`.
-2. In VS Code, run **Chat: Open Customizations**, select **Browse**, open the source menu and choose **Configure Marketplaces**. Select **Add Marketplace** and enter `thtmnisamnstr/simple-balance-mcp-connectors`. Back in **Browse**, pick that marketplace, select `simple-balance` and choose **Install**. VS Code asks you to trust the marketplace the first time. Before the merge, run **Chat: Install Plugin from Source** and enter the full path of `plugin/` instead.
+2. In VS Code, run **Chat: Open Customizations**, select **Browse**, open the source menu and choose **Configure Marketplaces**. Select **Add Marketplace** and enter `thtmnisamnstr/simple-balance-mcp-connectors`. Back in **Browse**, pick that marketplace, select `simple-balance` and choose **Install**. VS Code asks you to trust the marketplace the first time. To try changes that aren't on `main` yet, run **Chat: Install Plugin from Source** and enter the full path of `plugin/` instead.
 
    VS Code also lists the plugins Copilot CLI installed, from `~/.copilot/installed-plugins/`. To test the VS Code route on its own, remove the CLI copy first with `copilot plugin uninstall simple-balance`.
 3. Run the server checks from the previous section against the plugin's server.

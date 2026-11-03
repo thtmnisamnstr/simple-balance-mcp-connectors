@@ -45,15 +45,16 @@ Why the manifest looks the way it does:
 
 ## Before you start
 
-Release 1.0.0 as the [repository README](../README.md#releasing) describes:
-merge this branch to `main`, tag the merge commit `v1.0.0` and push the tag.
-Until the merge, `main` holds only `LICENSE`, so code search, the crawler and
-`gemini extensions install` all come up empty.
+The extension has been on `main` since the merge on 2026-11-03, so
+`gemini extensions install` works from GitHub. The gallery may also want the
+release tag `v1.0.0` (step 3). The same tag publishes the MCP Registry entry,
+so push it once the registry's DNS record and secret are in place
+([Releasing](../README.md#releasing), [mcp-registry.md](mcp-registry.md)).
 
 ## 1. Set the About fields and topics
 
-The topic is what the crawler searches for. This changes the public repository
-page, so run it yourself:
+The topic is what the crawler searches for. These were set on 2026-11-03 with
+the command below. Run it again only to change them:
 
 ```bash
 gh repo edit thtmnisamnstr/simple-balance-mcp-connectors \
@@ -67,7 +68,7 @@ gh repo edit thtmnisamnstr/simple-balance-mcp-connectors \
   repository carries both.
 - The gallery index stores the repository description as `repoDescription` and
   uses it in search. The card itself shows the manifest's `description`.
-- The description, the website and the other six topics are the values
+- The description, the website and the other seven topics are the values
   [directories.md](directories.md) gives for the same **About** box, because
   MCP.Directory pulls the description from GitHub. Whichever guide you follow
   first fills the box. `--add-topic` adds to the topics already set, and
@@ -83,7 +84,7 @@ gh repo view thtmnisamnstr/simple-balance-mcp-connectors \
 ```
 
 It prints the description, `https://smpl.money/docs/agents-and-mcp/` and the
-eight topics. On 2026-11-02 all three were empty.
+nine topics.
 
 ## 2. Check that code search has indexed the manifest
 
@@ -95,8 +96,8 @@ repositories lazily.
 gh api 'search/code?q=repo:thtmnisamnstr/simple-balance-mcp-connectors+filename:gemini-extension.json' --jq .total_count
 ```
 
-Check: it prints `1`. On 2026-11-02, before the merge, it printed `0`. If it
-still prints `0` after the merge:
+Check: it prints `1`. Code search indexes new and quiet repositories lazily,
+so if it still prints `0` an hour after the merge:
 
 1. Signed in to GitHub, open
    https://github.com/search?q=repo%3Athtmnisamnstr%2Fsimple-balance-mcp-connectors+gemini-extension.json&type=code

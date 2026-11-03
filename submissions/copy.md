@@ -394,7 +394,7 @@ For a form that wants a URL:
 
 | URL | What it is | Used by |
 | --- | --- | --- |
-| `https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-512.png` | `assets/logo-512.png` on `main` | Cursor **Logotype URL**, and any form that takes a logo URL. It works only after this branch is merged to `main`. |
+| `https://raw.githubusercontent.com/thtmnisamnstr/simple-balance-mcp-connectors/main/assets/logo-512.png` | `assets/logo-512.png` on `main` | Cursor **Logotype URL**, and any form that takes a logo URL. |
 | `https://smpl.money/favicon.svg` | The same mark, served as `image/svg+xml` | `server.json` `icons` |
 | `https://smpl.money/apple-touch-icon.png` | 180 x 180 PNG | `server.json` `icons`, Docker `about.icon` |
 | `https://smpl.money/favicon-48.png` | 48 x 48 PNG | `server.json` `icons` |
