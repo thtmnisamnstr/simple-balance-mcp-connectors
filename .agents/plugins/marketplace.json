@@ -1,0 +1,20 @@
+{
+  "name": "simple-balance",
+  "interface": {
+    "displayName": "Simple Balance"
+  },
+  "plugins": [
+    {
+      "name": "simple-balance",
+      "source": {
+        "source": "local",
+        "path": "./plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Finance"
+    }
+  ]
+}

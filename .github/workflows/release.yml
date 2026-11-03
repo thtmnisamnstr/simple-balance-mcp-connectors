@@ -1,0 +1,77 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.resolve.outputs.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - id: resolve
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  # The same gates as a pull request, against the commit the tag points at, so
+  # nothing reaches a directory that would not have passed review.
+  check:
+    needs: resolve
+    uses: ./.github/workflows/check.yml
+    with:
+      ref: ${{ needs.resolve.outputs.sha }}
+
+  publish-registry:
+    needs: [resolve, check]
+    runs-on: ubuntu-latest
+    environment: mcp-registry
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.resolve.outputs.sha }}
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run check -- --tag="$GITHUB_REF_NAME" --live
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+      - run: ./scripts/install-mcp-publisher.sh
+      # An io.github.<owner> name proves itself with this run's OIDC token. A
+      # domain name proves itself with the key whose public half is in the
+      # domain's DNS, held as an environment secret.
+      - name: Log in to the MCP Registry
+        env:
+          MCP_REGISTRY_PRIVATE_KEY: ${{ secrets.MCP_REGISTRY_PRIVATE_KEY }}
+        run: |
+          namespace="$(jq -r '.name | split("/")[0]' server.json)"
+          if [[ "$namespace" == io.github.* ]]; then
+            ./mcp-publisher login github-oidc
+          else
+            domain="$(jq -rn --arg n "$namespace" '$n | split(".") | reverse | join(".")')"
+            if [ -z "$MCP_REGISTRY_PRIVATE_KEY" ]; then
+              echo "::error::The mcp-registry environment has no MCP_REGISTRY_PRIVATE_KEY secret. See submissions/mcp-registry.md."
+              exit 1
+            fi
+            ./mcp-publisher login dns --domain "$domain" --private-key "$MCP_REGISTRY_PRIVATE_KEY"
+          fi
+      - run: ./mcp-publisher publish server.json
+      - name: Read the entry back
+        run: |
+          name="$(jq -r '.name | @uri' server.json)"
+          version="$(jq -r .version server.json)"
+          curl --fail --silent --show-error \
+            "https://registry.modelcontextprotocol.io/v0.1/servers/${name}/versions/${version}" | jq .

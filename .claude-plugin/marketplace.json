@@ -1,0 +1,18 @@
+{
+  "name": "simple-balance",
+  "description": "Connect Claude Code, claude.ai and Cowork to Simple Balance, a budget app and spending tracker.",
+  "owner": {
+    "name": "Gavin Johnson",
+    "email": "gavin@smpl.money",
+    "url": "https://smpl.money/"
+  },
+  "plugins": [
+    {
+      "name": "simple-balance",
+      "source": "./plugin",
+      "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.",
+      "category": "finance",
+      "tags": ["budget-app", "spending-tracker", "budgeting", "personal-finance", "mcp"]
+    }
+  ]
+}

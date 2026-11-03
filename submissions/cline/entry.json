@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schemas/mcp.schema.json",
+  "id": "simple-balance",
+  "type": "mcp",
+  "name": "Simple Balance",
+  "tagline": "Free budget app and spending tracker: ask about your money, and queue or record transactions",
+  "description": "Simple Balance is a free budget app and spending tracker. Every account is on one page, and any total you doubt opens into the payments behind it. This is its hosted MCP server at `https://app.smpl.money/mcp` (Streamable HTTP), with up to 77 tools: accounts and balances, transactions and splits, categories and payees, budgets and forecasts, reports, bank statement imports, recurring transactions and templates, and the activity history.\n\nYou decide how far it goes. Sign-in is OAuth in your browser with dynamic client registration and PKCE, so there's no API key to paste, and the **Allow this MCP client?** screen lists the scopes being requested: `ledger:read` reads, `ledger:stage` queues transactions for you to approve, and `ledger:write` makes the change itself. Tools outside the grant are left out of the tool list. Deleting your account, setting a password and billing are never reachable over MCP, and Settings lists every connected assistant and cuts one off when you want it gone.\n\nThere's no automatic pull from your bank today: you download the file your bank gives you and bring it in. Simple Balance keeps track of your money; it can't move it. The server is open source (AGPL-3.0) at https://github.com/thtmnisamnstr/simple-balance, so you can also self-host it, on a computer you control.\n\nDocs: https://smpl.money/docs/agents-and-mcp/",
+  "author": {
+    "name": "Gavin Johnson",
+    "url": "https://smpl.money/"
+  },
+  "homepage": "https://smpl.money/docs/agents-and-mcp/",
+  "repo": "https://github.com/thtmnisamnstr/simple-balance-mcp-connectors",
+  "icon": "./icon.png",
+  "tags": [
+    "finance",
+    "productivity"
+  ],
+  "license": "MIT",
+  "verified": false,
+  "featured": false,
+  "install": {
+    "args": [
+      "simple-balance",
+      "--transport",
+      "http",
+      "https://app.smpl.money/mcp"
+    ],
+    "notes": "After installing, connect your Simple Balance account. In VS Code or JetBrains, open MCP Servers, find simple-balance and press Authenticate. In the CLI, run `cline mcp` and choose Authorize OAuth. Sign in, then choose Allow access. Cline asks before each tool call unless you auto-approve it, so keep write tools out of autoApprove."
+  }
+}

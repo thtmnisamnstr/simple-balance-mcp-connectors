@@ -1,0 +1,17 @@
+{
+  "name": "simple-balance",
+  "owner": {
+    "name": "Gavin Johnson",
+    "email": "gavin@smpl.money"
+  },
+  "metadata": {
+    "description": "Connect Cursor to Simple Balance, a budget app and spending tracker."
+  },
+  "plugins": [
+    {
+      "name": "simple-balance",
+      "source": "plugin",
+      "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow."
+    }
+  ]
+}

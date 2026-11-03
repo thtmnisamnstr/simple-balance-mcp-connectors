@@ -1,0 +1,18 @@
+{
+  "name": "simple-balance",
+  "displayName": "Simple Balance",
+  "version": "1.0.0",
+  "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.",
+  "author": {
+    "name": "Gavin Johnson",
+    "email": "gavin@smpl.money"
+  },
+  "homepage": "https://smpl.money/docs/agents-and-mcp/",
+  "repository": "https://github.com/thtmnisamnstr/simple-balance-mcp-connectors",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": ["budget-app", "spending-tracker", "budgeting", "personal-finance", "transactions", "csv-import", "double-entry"],
+  "category": "integrations",
+  "tags": ["finance", "budget-app", "spending-tracker", "mcp"],
+  "mcpServers": "./.mcp.json"
+}

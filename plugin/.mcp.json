@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "simple-balance": {
+      "type": "http",
+      "url": "https://app.smpl.money/mcp"
+    }
+  }
+}
