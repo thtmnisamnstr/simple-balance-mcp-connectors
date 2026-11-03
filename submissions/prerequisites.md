@@ -19,8 +19,8 @@ request (`GET`, `OPTIONS`, `dig` or `gh api`) on 2026-11-02.
 
 | # | Item | Where | Needed by | Need | Status |
 | --- | --- | --- | --- | --- | --- |
-| 1 | [Registry TXT record](#1-registry-txt-record) | DNS | MCP Registry, and every directory that reads it | Required | Missing |
-| 2 | [Registry publishing environment and secret](#2-registry-publishing-environment-and-secret) | GitHub | MCP Registry | Required | Missing |
+| 1 | [Registry TXT record](#1-registry-txt-record) | DNS | MCP Registry, and every directory that reads it | Required | Done |
+| 2 | [Registry publishing environment and secret](#2-registry-publishing-environment-and-secret) | GitHub | MCP Registry | Required | Done |
 | 3 | [Reviewer test account](#3-reviewer-test-account) | Accounts | OpenAI, Claude, Docker | Required | Not created |
 | 4 | [OpenAI organization and identity verification](#4-openai-organization-and-identity-verification) | Accounts | OpenAI | Required | Unknown |
 | 5 | [OpenAI domain-verification route](#5-openai-domain-verification-route) | App | OpenAI | Required | Missing |
@@ -567,9 +567,10 @@ Required for the MCP Registry, and through it for every listing that reads the
 registry. Steps: [mcp-registry.md](mcp-registry.md#1-generate-the-signing-key),
 steps 1 and 2.
 
-Status: verified missing. The apex holds only `google-site-verification=…` and
-`v=spf1 include:_spf.mx.cloudflare.net ~all`. The fallback name,
-`io.github.thtmnisamnstr/simple-balance`, needs no DNS.
+Status: done on 2026-11-03. The apex holds the `v=MCPv1; k=ed25519; p=…`
+record beside `google-site-verification=…` and
+`v=spf1 include:_spf.mx.cloudflare.net ~all`, and the registry accepted it when
+`v1.0.0` published. The signing key is in the password manager.
 
 ### 21. Glama claim record
 
@@ -594,8 +595,9 @@ Required for the MCP Registry: the `publish-registry` job in
 [mcp-registry.md](mcp-registry.md#3-create-the-mcp-registry-environment-and-secret),
 step 3.
 
-Status: verified missing: the repository has no environments
-(`gh api repos/thtmnisamnstr/simple-balance-mcp-connectors/environments`).
+Status: done on 2026-11-03. The `mcp-registry` environment admits only `v*`
+tags and holds `MCP_REGISTRY_PRIVATE_KEY`. Required reviewers are off, so a
+pushed tag publishes without waiting for approval.
 
 ### 10. Star on the Awesome Remote repository
 
@@ -697,8 +699,8 @@ Glama's search. The profile needs a separate, empty Simple Balance account, not
 the reviewer account. Steps: [mcp-registry.md](mcp-registry.md#glama), step 4,
 which also gives the scope to use.
 
-Status: the connector page answers 404 until the registry entry exists
-(verified).
+Status: the registry entry exists since 2026-11-03; Glama's connector page
+still answered 404 that day, before its import.
 
 ## Clients
 

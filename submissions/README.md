@@ -6,30 +6,37 @@ paste. Nothing in this folder submits anything on its own.
 
 ## Status
 
-As of 2026-11-03, this repository is on `main`, so the plugin and the Gemini
-CLI extension install from it. No directory lists Simple Balance yet.
+As of 2026-11-03, the MCP Registry lists `money.smpl/simple-balance` 1.0.0,
+published from the `v1.0.0` tag. No other directory lists Simple Balance yet.
+
+Anyone can install the plugin from this repository by adding it to Claude
+Code, claude.ai, Codex or the ChatGPT desktop app as a marketplace by hand, and
+the Gemini CLI extension installs from it the same way. None of that is a
+listing: nobody finds Simple Balance by browsing Claude's or OpenAI's
+directories until the Claude Directory and OpenAI submissions below pass
+review.
 
 | Listing | How it gets there | Cost | Waits on | Guide |
 | --- | --- | --- | --- | --- |
-| MCP Registry | `release.yml` publishes `server.json` on a `v*` tag | Free | DNS record, `mcp-registry` secret | [mcp-registry.md](mcp-registry.md) |
-| Glama connectors | Imported from the registry; claim it to add a test profile | Free | Registry | [mcp-registry.md](mcp-registry.md#glama) |
+| MCP Registry | `release.yml` publishes `server.json` on a `v*` tag | Free | Nothing: published 2026-11-03 as `1.0.0` | [mcp-registry.md](mcp-registry.md) |
+| Glama connectors | Imported from the registry; claim it to add a test profile | Free | Glama's import (its page answered 404 on 2026-11-03) | [mcp-registry.md](mcp-registry.md#glama) |
 | Awesome Remote MCP Servers | Pull request | Free | Glama's page, a star from your account | [awesome-remote/README.md](awesome-remote/README.md) |
-| GitHub MCP Registry and VS Code's gallery | Onboarding request to GitHub | Free | Registry | [mcp-registry.md](mcp-registry.md#github-mcp-registry-and-vs-code) |
-| MCP.Directory | Auto-discovery, then claim; or a form | Free | Registry, or nothing for the form | [directories.md](directories.md#mcpdirectory) |
+| GitHub MCP Registry and VS Code's gallery | Onboarding request to GitHub | Free | Your request | [mcp-registry.md](mcp-registry.md#github-mcp-registry-and-vs-code) |
+| MCP.Directory | Auto-discovery, then claim; or a form | Free | Up to two weeks of auto-discovery, then the form | [directories.md](directories.md#mcpdirectory) |
 | PulseMCP | Imports from the registry once it reopens | Free | PulseMCP (paused since September) | [directories.md](directories.md#pulsemcp) |
 | OpenAI plugins (ChatGPT and Codex) | ZIP upload in the portal, then review | Free; identity verification needs a physical ID | App route, site naming the publisher, reviewer account, test runs (write tools need ChatGPT Business or Codex), demo video, skill scan, policy attestations | [openai.md](openai.md) |
-| Codex and ChatGPT desktop marketplace | Live from this repository | Free | Nothing: live | [openai.md](openai.md#codex-marketplace-no-review) |
+| Codex and ChatGPT desktop, by marketplace URL | Users add this repository as a marketplace by hand. Not a directory listing | Free | Nothing; the OpenAI plugins row is the listing | [openai.md](openai.md#codex-marketplace-no-review) |
 | Claude Directory, connector | Portal form, then review | Paid Claude plan | Reviewer account, docs with examples | [claude-directory.md](claude-directory.md) |
 | Claude Directory, plugin bundle | Portal, read from this repository | Paid Claude plan | Your submission | [claude-directory.md](claude-directory.md#submit-the-plugin-bundle) |
-| Claude Code and claude.ai marketplace | Live from this repository | Free | Nothing: live | [claude-directory.md](claude-directory.md#self-hosted-marketplace) |
+| Claude Code and claude.ai, by marketplace URL | Users add this repository as a marketplace by hand. Not a directory listing | Free | Nothing; the Claude Directory rows are the listing | [claude-directory.md](claude-directory.md#self-hosted-marketplace) |
 | Cursor Marketplace | Publisher application, then review | Free | Cursor's answer on the paid plan | [cursor.md](cursor.md) |
 | cursor.directory | Form with the repository URL | Free | Your submission | [cursor.md](cursor.md#cursordirectory) |
-| awesome-copilot | Issue form | Free | The `v1.0.0` tag | [vscode-copilot.md](vscode-copilot.md#awesome-copilot) |
-| Gemini CLI extension gallery | Found by topic and manifest | Free | The gallery's next crawl, and maybe the `v1.0.0` tag | [gemini-cli.md](gemini-cli.md) |
+| awesome-copilot | Issue form | Free | Your timing: the repository is new and has no stars | [vscode-copilot.md](vscode-copilot.md#awesome-copilot) |
+| Gemini CLI extension gallery | Found by topic and manifest | Free | The gallery's next crawl | [gemini-cli.md](gemini-cli.md) |
 | Cline catalog | Pull request to `cline/marketplace` | Free | Your pull request | [cline/README.md](cline/README.md) |
 | Docker MCP Catalog | Pull request to `docker/mcp-registry` | Free | Reviewer account | [docker/README.md](docker/README.md) |
 | MCP.so | Form; free queue or $39 | Free or $39 | Your submission | [directories.md](directories.md#mcpso) |
-| MCP Servers (mcpservers.org) | Form; free or $39 | Free or $39 | Registry, for its lookup | [directories.md](directories.md#mcp-servers-mcpserversorg) |
+| MCP Servers (mcpservers.org) | Form; free or $39 | Free or $39 | Your submission | [directories.md](directories.md#mcp-servers-mcpserversorg) |
 | MCP Market | Form; remote listings only paid | $69 | Your decision | [directories.md](directories.md#mcp-market) |
 | Smithery | Closed to submissions on 2026-10-31 | | | [directories.md](directories.md#smithery) |
 | Microsoft Copilot | Business verification and certification | | Left out of this round | |
@@ -57,7 +64,8 @@ Update the table as listings go live, so it stays the one place to look.
    isn't ready by the `v1.0.0` tag, the next version's ZIP can carry it; upload
    that one.
 5. **Publish to the MCP Registry**: the key, the DNS record, the environment
-   secret, then the `v1.0.0` tag ([mcp-registry.md](mcp-registry.md)). The same
+   secret, then the `v1.0.0` tag ([mcp-registry.md](mcp-registry.md)). Done on
+   2026-11-03. The same
    tag's run builds the OpenAI ZIP.
 6. **Everything that reads the registry**: claim Glama and add its test profile,
    post GitHub's onboarding request, then MCP.Directory, mcpservers.org and,

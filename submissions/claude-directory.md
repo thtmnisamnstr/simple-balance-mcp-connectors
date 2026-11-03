@@ -9,8 +9,9 @@ organization in the developer portal at https://claude.ai/directory/manage:
 | MCP connector | A 10-step form in the portal | Automated policy scan, then listed as **Community** by default. Some submissions also get a person's review first; the card shows which path yours takes ([After you submit the connector](#after-you-submit-the-connector)). |
 | Plugin bundle | The `plugin/` folder on `main` of this repository | Validation and a security scan on every version, and a person reviews a new listing |
 
-The self-hosted plugin marketplace in this repository needs no submission: see
-[Self-hosted marketplace](#self-hosted-marketplace). Anthropic documents no
+The self-hosted plugin marketplace in this repository needs no submission, but
+it isn't a listing: people install from it only by adding this repository by
+hand. See [Self-hosted marketplace](#self-hosted-marketplace). Anthropic documents no
 submission fee, but free Claude accounts can't submit. Pro, the cheapest plan
 that can, costs $20 a month billed monthly or $17 a month billed annually.
 
@@ -527,7 +528,10 @@ and Claude Code matches plugins and connectors by endpoint.
 
 `.claude-plugin/marketplace.json` makes this repository a plugin marketplace.
 It works from `main`, with no submission and no review.
-Anthropic doesn't review third-party marketplaces.
+Anthropic doesn't review third-party marketplaces, and nothing in its directory
+points to one: people find this route only through this repository's README or
+a link you share. Only the two submissions above list Simple Balance where
+people browse.
 
 Claude Code 2.1.275 or later installs it in one step:
 

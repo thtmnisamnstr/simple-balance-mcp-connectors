@@ -508,6 +508,9 @@ the server alone.
   `codex plugin marketplace upgrade simple-balance`.
 - Check: `codex plugin list --marketplace simple-balance --available --json`
   lists `simple-balance` at the version in `plugin/plugin.json`.
+- It isn't a listing. People install from it only by adding this repository
+  by name; only the submission above puts Simple Balance in OpenAI's plugin
+  directory, where people browse.
 - No OpenAI review applies, but OpenAI's usage policies do, and workspace
   admins can block plugins.
 - A ChatGPT workspace admin can also import this marketplace for the
