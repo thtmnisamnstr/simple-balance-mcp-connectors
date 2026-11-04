@@ -220,11 +220,12 @@ at a time (the README says why). The tag starts
 | `resolve` | Records the commit the tag points at | |
 | `check` | Runs `check.yml` on that commit: `npm run check`, Claude Code's `plugin validate`, Gemini CLI's `extensions validate`, `mcp-publisher validate`, and the Cline and Docker validators. Builds the OpenAI ZIP and uploads it as the artifact `openai-plugin-zip` | Any check fails |
 | `publish-registry` | In environment `mcp-registry`: runs `npm run check -- --tag=<tag> --live`, installs `mcp-publisher` 1.8.7 after checking its Sigstore signature, logs in (DNS with `MCP_REGISTRY_PRIVATE_KEY` for `money.smpl`, GitHub OIDC for an `io.github.` name), runs `mcp-publisher publish server.json`, then reads the entry back from the registry | The tag isn't `v` plus the manifests' version, a live probe fails, the secret is missing, login fails, or the version exists already |
+| `github-release` | Downloads the `openai-plugin-zip` artifact, writes `SHA256SUMS` for it, and creates the release for the tag with both files and generated notes | A release for the tag exists already |
 
-Downloading the ZIP into `dist/` and uploading it are in
-[openai.md](openai.md#build-the-zip). Don't attach it to a GitHub Release:
-Gemini CLI installs from a release's only asset, so a release carrying the ZIP
-breaks `gemini extensions install`.
+After `publish-registry`, the `github-release` job creates the GitHub Release
+for the tag with two assets, the OpenAI ZIP and `SHA256SUMS`. Never one: see
+[gemini-cli.md](gemini-cli.md#updates-come-from-releases). Uploading the ZIP to
+OpenAI is in [openai.md](openai.md#build-the-zip).
 
 ### If the release fails
 

@@ -46,10 +46,9 @@ Why the manifest looks the way it does:
 ## Before you start
 
 The extension has been on `main` since the merge on 2026-11-03, so
-`gemini extensions install` works from GitHub. The gallery may also want the
-release tag `v1.0.0` (step 3). The same tag publishes the MCP Registry entry,
-so push it once the registry's DNS record and secret are in place
-([Releasing](../README.md#releasing), [mcp-registry.md](mcp-registry.md)).
+`gemini extensions install` works from GitHub. Release tags, each with its
+GitHub Release, exist since `v1.0.0` on 2026-11-03
+([Releasing](../README.md#releasing)).
 
 ## 1. Set the About fields and topics
 
@@ -143,7 +142,7 @@ the **MCP** and **Context** badges and the license.
   [#29395](https://github.com/google-gemini/gemini-cli/issues/29395) mentions
   "matching version tags", and the docs say "Once you tag your repository, your
   extension will appear in the gallery" without saying whether that means the
-  topic or a git tag. The release tag `v1.0.0` matches `version` in
+  topic or a git tag. Each release tag matches `version` in
   gemini-extension.json, which satisfies either reading.
 
 ## 4. Test sign-in end to end
@@ -189,14 +188,14 @@ RFC 8707 `resource` parameter Gemini CLI sends. Steps 4 to 6 settle it.
    Answer `Y`.
 
    Check: `gemini extensions list` shows `simple-balance`, and this prints
-   `git`:
+   `github-release`:
 
    ```bash
    jq -r .type ~/.gemini/extensions/simple-balance/.gemini-extension-install.json
    ```
 
-   `github-release` would mean the repository has a GitHub Release. See
-   [Updates come from main](#updates-come-from-main).
+   `git` would mean Gemini CLI found no release and cloned `main`. See
+   [Updates come from releases](#updates-come-from-releases).
 
 4. Start `gemini`, and trust the folder if it asks: in an untrusted folder
    Gemini CLI connects no MCP servers, so sign-in never starts. It prints
@@ -234,32 +233,30 @@ plugins with `agy plugin import gemini`. Nobody has tried it on this extension.
 To check, run it after step 3 on a machine with Antigravity CLI and look for
 `simple-balance` in its output.
 
-## Updates come from main
+## Updates come from releases
 
-This repository publishes no GitHub Releases, on purpose.
+Each `vX.Y.Z` tag gets a GitHub Release from
+[release.yml](../.github/workflows/release.yml), carrying two assets: the
+OpenAI ZIP and `SHA256SUMS`.
 
-- **No release means a git install.** `gemini extensions install` first asks
-  GitHub for the repository's Latest release. With none, it clones `main`
-  (`git clone --depth 1`), and Gemini CLI then checks for updates by comparing
-  the remote `HEAD` with the installed commit (`git ls-remote`). Every push to
-  `main` is therefore an update for every Gemini user, README, OpenAI and
-  Cursor edits included: Gemini CLI prompts them to update, and installs made
-  with `--auto-update` take it without asking. The manifest's `version` is only
-  displayed. Keep `main` installable, and merge only when check.yml passes.
-- **A release would take over.** Once one exists, new installs download the
-  Latest release instead of cloning, and updates follow release tags. If that
-  release has exactly one asset, Gemini CLI downloads the asset as the extension
-  itself. The OpenAI ZIP has no `gemini-extension.json` at its root, so a
-  release carrying only that ZIP breaks `gemini extensions install`, and Gemini
-  CLI doesn't fall back to cloning once a download succeeds. That's why
-  [release.yml](../.github/workflows/release.yml) leaves the ZIP as the
-  workflow artifact `openai-plugin-zip` and creates no release.
-- **Tags are fine.** The `vX.Y.Z` tags that start release.yml aren't GitHub
-  Releases, and a default install never looks at them.
-- **If a release is ever unavoidable**, give it no assets or at least two, and
-  keep `version` equal to the tag without its `v`. `npm run set-version` and
-  release.yml's tag check already keep those equal.
-- Every install downloads the current tree of `main`, so keep large files out
+- **A release install.** `gemini extensions install` first asks GitHub for the
+  repository's Latest release. Gemini CLI 0.66.0's `findReleaseAsset` takes an
+  asset only when its name starts with a platform (`darwin.`, `linux.`,
+  `win32.`) or when the release has exactly one. With two unprefixed assets it
+  takes neither and downloads the release's source tarball instead: this
+  repository at the tag, `gemini-extension.json` included. Updates follow the
+  Latest release, so a push to `main` alone reaches no release install.
+- **Never one asset.** A release whose only asset is the OpenAI ZIP would
+  install that ZIP as the extension, which has no `gemini-extension.json`, and
+  Gemini CLI doesn't fall back to cloning once a download succeeds. The
+  release job always attaches `SHA256SUMS` beside the ZIP. Never name an asset
+  with a platform prefix.
+- **Older installs.** Installs made before the first release, on 2026-11-03,
+  are git clones of `main`. They keep updating whenever `main` moves, so keep
+  `main` installable and merge only when check.yml passes.
+- `version` in `gemini-extension.json` must equal the tag without its `v`.
+  `npm run set-version` and release.yml's tag check keep those equal.
+- Every install downloads the whole repository tree, so keep large files out
   of it. `dist/` is in `.gitignore`, so the OpenAI ZIP never lands there.
 
 ## The name is a first-come claim
@@ -298,13 +295,12 @@ avatar is the mark. To move it:
    "migratedTo": "https://github.com/<organization>/simple-balance-mcp-connectors"
    ```
 
-3. Publish no GitHub Release in the new repository either. Existing installs
-   are git clones, and Gemini CLI 0.66.0 moves a git clone by cloning the
-   `migratedTo` repository's default branch when that repository has no
-   release. Gemini's releasing guide says the new repository needs a release,
-   but in Gemini CLI's code that holds only for installs made from a release.
-   A release there would move every user to release installs, with the risk in
-   [Updates come from main](#updates-come-from-main).
+3. Give the new repository the same release workflow, and release there
+   before merging the `migratedTo` change here. Release installs move by
+   downloading the new repository's Latest release, which has to exist, with
+   two assets as in [Updates come from releases](#updates-come-from-releases).
+   Git installs from before the first release move by cloning its default
+   branch.
 
 An install moves to the new repository on the update after the one that brings
 in `migratedTo`, and keeps its settings. The gallery listing stays with this

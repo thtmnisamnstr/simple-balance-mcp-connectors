@@ -317,7 +317,9 @@ Every listing carries one version. To release:
 
 The tag runs [`release.yml`](.github/workflows/release.yml): it checks
 everything again, probes the live server, publishes `server.json` to the MCP
-Registry and builds the OpenAI ZIP as a downloadable artifact. Uploading that
+Registry, and creates the GitHub Release for the tag with the OpenAI ZIP and
+its `SHA256SUMS`. Don't create releases by hand: one with a single asset
+breaks Gemini CLI installs. Uploading that
 ZIP to OpenAI, asking Cursor to re-index, selecting **Publish** on the new
 version in Claude's directory, and updating the awesome-copilot entry stay
 manual. See [submissions/README.md](submissions/README.md).

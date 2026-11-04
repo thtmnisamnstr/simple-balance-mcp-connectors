@@ -3,7 +3,7 @@
   "name": "money.smpl/simple-balance",
   "title": "Simple Balance",
   "description": "Free budget app and spending tracker: ask about your money, and queue or record transactions.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://smpl.money/docs/agents-and-mcp/",
   "repository": {
     "url": "https://github.com/thtmnisamnstr/simple-balance",

@@ -100,7 +100,7 @@ gives the exact command or value.
 | Cursor's organization handle | `simple-balance`, settled before you apply | [cursor.md](cursor.md#apply-to-the-cursor-marketplace) |
 | Applying to Cursor before it answers about Premium | Wait for the answer | [cursor.md](cursor.md#ask-cursor-about-the-premium-plan) |
 | A public star on Awesome Remote | Your call; the list requires it | [awesome-remote/README.md](awesome-remote/README.md) |
-| When to file for awesome-copilot | After `v1.0.0`, or later once the repository has some history | [vscode-copilot.md](vscode-copilot.md#awesome-copilot) |
+| When to file for awesome-copilot | After a release tag, or later once the repository has some history | [vscode-copilot.md](vscode-copilot.md#awesome-copilot) |
 | Cline's legacy marketplace issue | Skip it unless you want Cline 3.x users | [cline/README.md](cline/README.md) |
 | Glama Boost | Not bought | [mcp-registry.md](mcp-registry.md#glama) |
 | Claude's under-18 question | No, though the terms allow accounts from 16 | [claude-directory.md](claude-directory.md) |

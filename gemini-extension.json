@@ -1,6 +1,6 @@
 {
   "name": "simple-balance",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ask Gemini CLI about your accounts, spending and budgets in Simple Balance, the free budget app and spending tracker, and queue or record transactions. Signs in with OAuth; no API key.",
   "mcpServers": {
     "simple-balance": {

@@ -217,33 +217,32 @@ after step 5 of the ChatGPT test.
 
 ## Build the ZIP
 
-The release run builds it. After you merge and push the tag (see
-[Releasing](../README.md#releasing)), `release.yml` calls `check.yml`, which
-uploads the ZIP as the artifact `openai-plugin-zip`. Download it from that run:
+The release run builds it. After you push the tag (see
+[Releasing](../README.md#releasing)), `release.yml` builds the ZIP and attaches
+it, with a `SHA256SUMS` file, to the GitHub Release for that tag. Download it
+from there:
 
 ```bash
-gh run list --workflow release.yml --limit 1
-gh run download <run-id> --name openai-plugin-zip --dir dist
+gh release download v1.0.1 --repo thtmnisamnstr/simple-balance-mcp-connectors --dir dist
+(cd dist && shasum -a 256 -c SHA256SUMS)
 ```
 
-`gh run download` unpacks the artifact, leaving
-`dist/simple-balance-plugin-1.0.0.zip`. From the browser (**Actions**, the
-release run, **Artifacts**), the file comes wrapped in a second ZIP: unzip it
-once and upload the inner file. Artifacts expire after the repository's
-retention period.
+Check: `simple-balance-plugin-1.0.1.zip: OK`. In the browser, the release page's
+**Assets** list has the same file. The run's `openai-plugin-zip` artifact holds
+it too, until it expires.
 
 To build it yourself, check out the tag so the ZIP matches the release:
 
 ```bash
-git checkout v1.0.0
+git checkout v1.0.1
 npm ci
 npm run check
 npm run build:openai
 ```
 
-That writes `dist/simple-balance-plugin-1.0.0.zip` and lists what it packed.
-Don't attach the ZIP to a GitHub release
-([gemini-cli.md](gemini-cli.md#updates-come-from-main)).
+That writes `dist/simple-balance-plugin-1.0.1.zip` and lists what it packed.
+Don't attach a ZIP to a release by hand: a release with one asset breaks Gemini
+CLI installs ([gemini-cli.md](gemini-cli.md#updates-come-from-releases)).
 
 ### What's in it
 
@@ -283,8 +282,8 @@ the tools the grant reaches.
 Check:
 
 ```bash
-unzip -l dist/simple-balance-plugin-1.0.0.zip
-unzip -p dist/simple-balance-plugin-1.0.0.zip mcp.json
+unzip -l dist/simple-balance-plugin-1.0.1.zip
+unzip -p dist/simple-balance-plugin-1.0.1.zip mcp.json
 ```
 
 Seven entries with `plugin.json` and `mcp.json` at the root, and the auth
@@ -300,7 +299,7 @@ block with seven scopes.
    drops the MCP configuration (`mcp_configuration_excluded`).
    - Expect the warning `developer_name_defaulted`. If `manifest_normalized`
      lists changed fields, confirm only if they're formatting changes.
-   - Check: the plugin detail page opens on a draft at version `1.0.0`.
+   - Check: the plugin detail page opens on a draft at version `1.0.1`.
 3. Open **Metadata & Skills** and wait for the checks. Skill scans can take up
    to 2 hours. **Issues** lists findings, and **Copy issues** copies them. To
    fix one, change the file, release a new version and select
@@ -377,9 +376,9 @@ upload a new version.
 | Organization and project | Yours, with global data residency | Portal |
 | Developer identity | Gavin Johnson, verified individual | Portal. Overrides `interface.developerName` in the listing. |
 | Upload path | **With MCP** | Portal |
-| Plugin ZIP | `simple-balance-plugin-1.0.0.zip` | `npm run build:openai`, or the `openai-plugin-zip` artifact |
+| Plugin ZIP | `simple-balance-plugin-1.0.1.zip` | The `v1.0.1` release's assets, or `npm run build:openai` |
 | Package name | `simple-balance` | Top-level `name`. It can never change (`plugin_name_mismatch`). |
-| Version | `1.0.0` | Top-level `version`. New for every upload, or the portal warns (`plugin_version_unchanged`). |
+| Version | `1.0.1` | Top-level `version`. New for every upload, or the portal warns (`plugin_version_unchanged`). |
 | Listing text, URLs, starter prompts, brand colors, logo and composer icon | As in `plugin/plugin.json` | `interface.*` |
 | Screenshots | None | Not set. Without a UI the portal rejects them (`screenshots_not_allowed`), and the directory no longer shows them. |
 | Onboarding skill | `./skills/simple-balance/SKILL.md` | `onboardingSkill` |

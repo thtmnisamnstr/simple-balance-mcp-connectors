@@ -91,12 +91,12 @@ A rejection closes the issue for good, and trying again takes a new issue that s
 
 ### Before you open the issue
 
-1. Release `v1.0.0` (see [Releasing](../README.md#releasing)): merge to `main`, tag the merge commit, push the tag, and let `release.yml` pass. The tag is the immutable ref the form asks for. Don't make a GitHub Release from it. This repository uses none, for the reason in [gemini-cli.md](gemini-cli.md).
+1. Release `v1.0.1` or later (see [Releasing](../README.md#releasing)): merge to `main`, tag the merge commit, push the tag, and let `release.yml` pass. The tag is the immutable ref the form asks for. `release.yml` creates the GitHub Release for it; don't make one by hand ([gemini-cli.md](gemini-cli.md#updates-come-from-releases)).
 2. Get the tag's commit SHA:
 
    ```bash
    git fetch --tags
-   git rev-parse 'v1.0.0^{commit}'
+   git rev-parse 'v1.0.1^{commit}'
    ```
 
    The quotes keep zsh from reading `^` and the braces. Check: the output is 40 hexadecimal characters.
@@ -119,9 +119,9 @@ Open https://github.com/github/awesome-copilot/issues/new?template=external-plug
 | Short description | The first block below |
 | GitHub repository | `thtmnisamnstr/simple-balance-mcp-connectors` |
 | Plugin path inside the repository | `plugin`, the folder where the plugin starts, not `plugin/plugin.json` |
-| Ref to review | `v1.0.0` |
+| Ref to review | `v1.0.1` |
 | Commit SHA to review | The 40-character SHA from the previous section |
-| Version | `1.0.0`. It must match `version` in `plugin/plugin.json`. |
+| Version | `1.0.1`. It must match `version` in `plugin/plugin.json`. |
 | License identifier | `MIT` |
 | Author name | `Gavin Johnson` |
 | Author URL | `https://smpl.money/` |
@@ -130,7 +130,7 @@ Open https://github.com/github/awesome-copilot/issues/new?template=external-plug
 | Additional notes for reviewers | The second block below |
 | Submission checklist | Check all four boxes: the repository is public; the ref and SHA are immutable, not a branch; the submission follows the repository's contribution, security and responsible AI policies; the plugin isn't already listed |
 
-Give both the ref and the SHA. The form needs at least one, and with both, the checks also confirm that they name the same commit. Never move or delete the `v1.0.0` tag afterward: the listing records both.
+Give both the ref and the SHA. The form needs at least one, and with both, the checks also confirm that they name the same commit. Never move or delete the `v1.0.1` tag afterward: the listing records both.
 
 Short description:
 
@@ -164,7 +164,7 @@ Submit the issue.
    - Agent Plugins 1.0.0 compliance of `plugin/plugin.json`: the exact `$schema`, a non-empty `version` and `description`, and no top-level field outside the spec. `npm run check` validates the same file against the same schema.
    - `vally lint` on the plugin folder at your ref and SHA: Agent Skills spec compliance and valid file references in the skill.
    - An install smoke test: Copilot CLI adds a temporary marketplace that holds your entry and installs `simple-balance` from it.
-   - Version and ref checks: `1.0.0` matches the manifest at the ref, and the ref and SHA agree.
+   - Version and ref checks: `1.0.1` matches the manifest at the ref, and the ref and SHA agree.
 4. When everything passes, the label changes to `ready-for-review`. A maintainer reviews the plugin and comments `/approve` or `/reject <reason>`. Commands from anyone else are ignored.
 5. On `/approve`, the issue gets `approved` and closes, and automation opens a pull request that adds the entry to `plugins/external.json`. The plugin is listed once that pull request merges. On `/reject`, the issue gets `rejected` and closes for good.
 
@@ -180,7 +180,7 @@ The first command prints the entry's line, and the install succeeds.
 
 ### Updates and re-review
 
-- The entry pins `v1.0.0` and its SHA, so a new release reaches awesome-copilot users only after the entry changes. That change is a pull request to `github/awesome-copilot` that updates the entry's `version`, `source.ref` and `source.sha` in `plugins/external.json`, and the same quality gates run on it. Unconfirmed: whether you open that pull request or a maintainer does. The contributing guide tells public contributors not to edit that file to add a plugin and says nothing about who updates one, so ask on the approved issue the first time.
+- The entry pins `v1.0.1` and its SHA, so a new release reaches awesome-copilot users only after the entry changes. That change is a pull request to `github/awesome-copilot` that updates the entry's `version`, `source.ref` and `source.sha` in `plugins/external.json`, and the same quality gates run on it. Unconfirmed: whether you open that pull request or a maintainer does. The contributing guide tells public contributors not to edit that file to add a plugin and says nothing about who updates one, so ask on the approved issue the first time.
 - Six months after the approved issue closes, the listing comes up for re-review. A maintainer keeps it, asks for follow-up or removes it.
 
 ## Organization policy
