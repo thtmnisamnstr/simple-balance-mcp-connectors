@@ -8,7 +8,7 @@
 | Published from | [`server.json`](../server.json), by [`release.yml`](../.github/workflows/release.yml) on a `v*` tag |
 | Key in CI | Secret `MCP_REGISTRY_PRIVATE_KEY` in the GitHub environment `mcp-registry` |
 | Entry | https://registry.modelcontextprotocol.io/v0.1/servers/money.smpl%2Fsimple-balance/versions/latest |
-| Published | `1.0.0` on 2026-11-03, from the `v1.0.0` tag. The TXT record and the tag-only `mcp-registry` environment are in place |
+| Published | `1.0.0` and `1.0.1` on 2026-11-03, from the `v1.0.0` and `v1.0.1` tags. The TXT record and the tag-only `mcp-registry` environment are in place |
 
 Steps 1 to 4 are one-time setup, and step 4 is optional. Then
 [release](#5-release) and [check the entry](#6-check-the-entry). Downstream,

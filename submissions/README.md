@@ -6,9 +6,11 @@ paste. Nothing in this folder submits anything on its own.
 
 ## Status
 
-As of 2026-11-03, the MCP Registry lists `money.smpl/simple-balance` 1.0.0,
-published from the `v1.0.0` tag, and mcptry picked it up from there. No other
-directory lists Simple Balance yet.
+As of 2026-11-03, the MCP Registry lists `money.smpl/simple-balance` 1.0.1,
+published from the `v1.0.1` tag, mcptry picked it up from there, and
+mcpservers.org has published it. No other directory lists Simple Balance yet.
+Each release tag has a GitHub Release carrying the OpenAI ZIP and its
+`SHA256SUMS`.
 
 Anyone can install the plugin from this repository by adding it to Claude
 Code, claude.ai, Codex or the ChatGPT desktop app as a marketplace by hand, and
@@ -19,7 +21,7 @@ review.
 
 | Listing | How it gets there | Cost | Waits on | Guide |
 | --- | --- | --- | --- | --- |
-| MCP Registry | `release.yml` publishes `server.json` on a `v*` tag | Free | Nothing: published 2026-11-03 as `1.0.0` | [mcp-registry.md](mcp-registry.md) |
+| MCP Registry | `release.yml` publishes `server.json` on a `v*` tag | Free | Nothing: `1.0.0` and `1.0.1` published 2026-11-03 | [mcp-registry.md](mcp-registry.md) |
 | Glama connectors | Imported from the registry; claim it to add a test profile | Free | Glama's import (its page answered 404 on 2026-11-03) | [mcp-registry.md](mcp-registry.md#glama) |
 | Awesome Remote MCP Servers | Pull request | Free | Glama's page, a star from your account | [awesome-remote/README.md](awesome-remote/README.md) |
 | GitHub MCP Registry and VS Code's gallery | Onboarding request to GitHub | Free | GitHub's curation: [requested](https://github.com/github/github-mcp-server/discussions/1257#discussioncomment-19385092) 2026-11-03 | [mcp-registry.md](mcp-registry.md#github-mcp-registry-and-vs-code) |
@@ -38,7 +40,7 @@ review.
 | Cline catalog | Pull request to `cline/marketplace` | Free | Your pull request | [cline/README.md](cline/README.md) |
 | Docker MCP Catalog | Pull request to `docker/mcp-registry` | Free | Reviewer account | [docker/README.md](docker/README.md) |
 | MCP.so | Form; free queue or $39 | Free or $39 | Your submission | [directories.md](directories.md#mcpso) |
-| MCP Servers (mcpservers.org) | Form; free or $39 | Free or $39 | Review: submitted 2026-11-03, approval email to `info@smpl.money` | [directories.md](directories.md#mcp-servers-mcpserversorg) |
+| MCP Servers (mcpservers.org) | Form; free or $39 | Free or $39 | Nothing: [published](https://mcpservers.org/servers/smpl-money) 2026-11-03. Changes go by email to `contact@mcpservers.org` | [directories.md](directories.md#mcp-servers-mcpserversorg) |
 | MCP Market | Form; remote listings only paid | $69 | Your decision | [directories.md](directories.md#mcp-market) |
 | Smithery | Closed to submissions on 2026-10-31 | | | [directories.md](directories.md#smithery) |
 | Microsoft Copilot | Business verification and certification | | Left out of this round | |
