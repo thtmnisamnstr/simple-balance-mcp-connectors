@@ -135,7 +135,7 @@ Give both the ref and the SHA. The form needs at least one, and with both, the c
 Short description:
 
 ```text
-Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow. Adds Simple Balance's hosted MCP server, which signs in with OAuth (no API key), and a skill that has the agent queue changes for your approval first.
+Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions. Adds Simple Balance's hosted MCP server, which signs in with OAuth (no API key), and a skill that has the agent queue changes for your approval first.
 ```
 
 Additional notes for reviewers:

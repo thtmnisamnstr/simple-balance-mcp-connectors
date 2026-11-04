@@ -17,10 +17,10 @@ The steps are those of the [order of work](README.md#order-of-work). The release
 
 Both come from [copy.md](copy.md#taglines-and-one-liners), so these listings say what every other one does.
 
-Short description, 139 characters. MCP.so, MCP Servers and MCP Market use it; MCP Market's limit is 200. It's the plugin manifests' description with "Free" in front, which every directory but OpenAI may say.
+Short description, 118 characters. MCP.so, MCP Servers and MCP Market use it; MCP Market's limit is 200. It's the plugin manifests' description with "Free" in front, which every directory but OpenAI may say.
 
 ```text
-Free budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.
+Free budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions.
 ```
 
 One-line description, 93 characters, for MCP.Directory's 100-character field. It's the `description` in `server.json`, so a listing built from the MCP Registry and one built from the form say the same thing.

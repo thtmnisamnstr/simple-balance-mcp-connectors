@@ -490,7 +490,7 @@ Simple Balance is published to the official MCP Registry, and its entry is activ
 | Repository | https://github.com/thtmnisamnstr/simple-balance |
 | License | AGPL-3.0 |
 | Docs | https://smpl.money/docs/agents-and-mcp/ |
-| What it does | Connects an assistant to Simple Balance, a free budget app and spending tracker: ask about your accounts, spending and budgets, bring in a bank statement file, and queue or record transactions, as far as the person allows. 77 tools, each with a title and annotations. Tools outside the granted scopes are left out of `tools/list`. There's no automatic pull from a bank today, and it can't move money. |
+| What it does | Connects an assistant to Simple Balance, a free budget app and spending tracker: ask about your accounts, spending and budgets, bring in a bank statement file, and queue or record transactions. 77 tools, each with a title and annotations. Tools outside the granted scopes are left out of `tools/list`. There's no automatic pull from a bank today, and it can't move money. |
 
 Lookup: `curl -s "https://registry.modelcontextprotocol.io/v0.1/servers/money.smpl%2Fsimple-balance/versions/latest"`
 ```

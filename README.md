@@ -37,7 +37,8 @@ say where a client needs a nudge. Sign in, read the scopes on the
 | `ledger:write` | Also commit, create, edit and delete transactions, accounts, categories and budgets, merge categories and payees, change preferences and revoke connected agents |
 
 Your assistant decides which scopes to ask for, and the screen grants all of
-them or none. A client that asks for none gets `ledger:read`. Tools outside the grant don't appear in the tool list, so to
+them or none. A client that asks for none gets `ledger:read`. Claude and Codex
+ask for every scope the server offers, `ledger:write` included. Tools outside the grant don't appear in the tool list, so to
 check what a connection got, ask the assistant to run `whoami`, or open
 **Settings** in Simple Balance and look under **Connected agents**. That's also
 where you revoke one. Everything an agent changes shows on **Activity** with an
@@ -56,14 +57,16 @@ Use the **Add to Claude** button above, or:
 1. Open **Customize > Connectors** at
    [claude.ai/customize/connectors](https://claude.ai/customize/connectors).
 2. Choose **+ Add**, then **Add custom connector**.
-3. Name it `Simple Balance` and enter `https://app.smpl.money/mcp`.
-4. Keep the OAuth client on **Register automatically**, add the connector,
-   then choose **Connect** and sign in.
+3. Name it `Simple Balance` and enter `https://app.smpl.money/mcp`. If Claude
+   then shows the sign-in settings it found, leave them as they are.
+4. Choose **Add**, then sign in when Claude opens Simple Balance.
 
 Turn it on in a chat from **+ > Connectors**. On the free Claude plan you can
 add one custom connector. On Team and Enterprise plans, an owner adds it under
-**Organization settings > Connectors**. A connector added on claude.ai also
-appears in Claude Code when you're signed in with the same account.
+**Organization settings > Connectors**. Claude asks for every scope, so the
+approval screen lists `ledger:write`. A connector added on claude.ai also
+appears in Claude Code when you sign in to Claude Code with the same Claude
+subscription.
 
 ### Claude Code
 
@@ -71,9 +74,9 @@ appears in Claude Code when you're signed in with the same account.
 claude mcp add --transport http --scope user simple-balance https://app.smpl.money/mcp
 ```
 
-Then run `/mcp`, choose `simple-balance` and **Authenticate**. If `whoami`
-then shows only `ledger:read`, Claude Code asked for no scope. Add the server
-with its scopes pinned instead:
+Then run `/mcp`, choose `simple-balance` and sign in. Unless you set them,
+Claude Code leaves the scopes to the server, which may mean all of them. To
+choose, add the server with its scopes pinned instead:
 
 ```bash
 claude mcp add-json --scope user simple-balance '{"type":"http","url":"https://app.smpl.money/mcp","oauth":{"scopes":"openid profile email offline_access ledger:read ledger:stage ledger:write"}}'
@@ -100,16 +103,20 @@ Then run `/mcp`, choose `plugin:simple-balance:simple-balance` and
 
 ### ChatGPT
 
-1. Open [chatgpt.com/plugins](https://chatgpt.com/plugins), choose **+**, then
-   **Add custom MCP server**.
-2. Name it `Simple Balance`, enter `https://app.smpl.money/mcp`, and choose
-   **OAuth** with the client ID and secret left empty.
-3. Create it, install it from your plugins, and sign in.
-4. In a new chat, type `@` and pick **Simple Balance**.
+1. Open **Plugins** at [chatgpt.com/plugins](https://chatgpt.com/plugins),
+   choose **+**, then **Add custom MCP server**.
+2. Name it `Simple Balance`. Under **Connection**, enter
+   `https://app.smpl.money/mcp`.
+3. For authentication, choose **OAuth**, with the client ID and secret left
+   empty.
+4. Tick **I understand and want to continue**, then **Create as a plugin**.
+5. Install it from your plugins, and sign in when ChatGPT asks.
+6. In a new chat, type `@` and pick **Simple Balance**.
 
-Which plans can add a custom MCP server, and whether it may use write tools,
-depends on your ChatGPT plan and workspace settings. OpenAI's help center has
-the current rules.
+OpenAI's help center says custom MCP servers are for ChatGPT Business,
+Enterprise and Edu, on the web. On Business only an admin or owner can add
+one, and on Enterprise and Edu an admin grants permission. On Pro, ChatGPT can
+connect one for reading only. Write actions need your confirmation by default.
 
 ### OpenAI Codex (CLI, IDE extension, ChatGPT desktop app)
 
@@ -117,8 +124,21 @@ the current rules.
 codex mcp add simple-balance --url https://app.smpl.money/mcp
 ```
 
-Sign-in starts on its own. To run it again, use
-`codex mcp login simple-balance`. In Codex CLI or the ChatGPT desktop app you
+Sign-in starts on its own, asking for every scope the server offers,
+`ledger:write` included. To run it again, use
+`codex mcp login simple-balance`. To choose the scopes, don't run
+`codex mcp add`. Put the server in `~/.codex/config.toml` with its scopes, then
+run `codex mcp login simple-balance`:
+
+```toml
+[mcp_servers.simple-balance]
+url = "https://app.smpl.money/mcp"
+scopes = ["openid", "profile", "email", "offline_access", "ledger:read", "ledger:stage"]
+```
+
+`codex mcp login --scopes` overrides the list for one sign-in only. On a
+computer with no browser, add `--no-browser` and paste the address you end on
+back into Codex. In Codex CLI or the ChatGPT desktop app you
 can install the plugin instead (the IDE extension has no plugins):
 
 ```bash
@@ -189,7 +209,26 @@ To install the plugin, which adds the skill as well as the server, run
 in VS Code open **Chat: Open Customizations**, add the marketplace
 `thtmnisamnstr/simple-balance-mcp-connectors` and install `simple-balance`.
 
+### Gemini
+
+In the Gemini app, add Simple Balance on the web at gemini.google.com, and it
+appears in the phone app too. Google offers custom apps to people in the US
+who are 18 or older, with a personal Google account, Gemini in English and
+**Keep Activity** on.
+
+1. Open **Settings > Connected Apps** (or **Personal Intelligence >
+   Connected Apps**).
+2. Under **Custom apps**, choose **Add a custom app**.
+3. Enter `https://app.smpl.money/mcp`, choose **Next**, and sign in.
+
+Type `@` in a chat and pick Simple Balance. Gemini asks you to confirm every
+write.
+
 ### Gemini CLI
+
+Gemini CLI is for Gemini Code Assist Standard and Enterprise, Code Assist for
+GitHub, and legacy paid Gemini API or Vertex keys. Free and Google AI Pro or Ultra accounts moved to Antigravity CLI
+on June 18, 2026, which this README doesn't cover yet.
 
 Install the extension, which adds the server and a short context file:
 
@@ -203,12 +242,12 @@ Or add the server alone:
 gemini mcp add --transport http --scope user simple-balance https://app.smpl.money/mcp
 ```
 
-Start `gemini`, and trust the folder if it asks: in an untrusted folder it
-connects no MCP servers. With the extension, it asks to open a browser to sign
-in. With the server added alone, run `/mcp auth simple-balance` to sign in,
-because Gemini CLI opens the browser by itself only for servers set to
-`"oauth": {"enabled": true}`, as the extension's is. Gemini CLI needs a paid
-Gemini API key or a Gemini Code Assist Standard or Enterprise license.
+Start `gemini` in a trusted folder: in an untrusted one it connects no MCP
+servers, and `/permissions trust` trusts the folder you're in. With the
+extension, it asks to open a browser to sign in. With the server added alone,
+run `/mcp auth simple-balance` to sign in, because Gemini CLI opens the
+browser by itself only for servers set to `"oauth": {"enabled": true}`, as the
+extension's is.
 
 ### Cline
 

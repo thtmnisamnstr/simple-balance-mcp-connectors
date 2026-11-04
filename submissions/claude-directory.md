@@ -152,7 +152,7 @@ unconfirmed. Setting both is a change to `src/server/mcp.ts` in
 | Field | Limit | Value |
 | --- | --- | --- |
 | Server name | 100 characters | `Simple Balance` |
-| One-liner | 200 characters | Below, 117 characters |
+| One-liner | 200 characters | Below, 113 characters |
 | Description | 2,000 characters | Below, 1,498 characters |
 | Categories | 1 to 5 | Financial services, Productivity, Data & analytics |
 | Documentation URL | | The URL you chose under [Documentation requirement](#documentation-requirement) |
@@ -168,7 +168,7 @@ One-liner. It matches the description in every plugin manifest, as
 [copy.md](copy.md#taglines-and-one-liners) gives it:
 
 ```text
-Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.
+Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions.
 ```
 
 If the portal asks for a tagline of 55 characters or fewer instead (one

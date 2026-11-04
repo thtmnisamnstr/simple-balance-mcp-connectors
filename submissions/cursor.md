@@ -163,7 +163,7 @@ cursor.directory is Cursor's community directory, built from `cursor/community-p
    | --- | --- | --- |
    | Logo | Upload `assets/logo-512.png` | Optional, but the scan finds none for a plugin in a subfolder. Images only, 1 MB at most. |
    | Name | `Simple Balance` | The scan fills `simple-balance`, the marketplace's id. |
-   | Description | `Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.` | The scan fills `simple-balance-mcp-connectors plugin for Cursor`. |
+   | Description | `Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions.` | The scan fills `simple-balance-mcp-connectors plugin for Cursor`. |
 
 5. Choose **Publish Plugin**.
 

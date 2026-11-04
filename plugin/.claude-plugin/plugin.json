@@ -2,7 +2,7 @@
   "name": "simple-balance",
   "displayName": "Simple Balance",
   "version": "1.0.0",
-  "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow.",
+  "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions.",
   "author": {
     "name": "Gavin Johnson",
     "email": "gavin@smpl.money",

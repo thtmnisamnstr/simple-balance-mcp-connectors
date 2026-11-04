@@ -11,7 +11,7 @@
     {
       "name": "simple-balance",
       "source": "plugin",
-      "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions, as far as you allow."
+      "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions."
     }
   ]
 }
