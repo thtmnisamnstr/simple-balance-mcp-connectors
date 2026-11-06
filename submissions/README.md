@@ -8,7 +8,9 @@ paste. Nothing in this folder submits anything on its own.
 
 As of 2026-11-03, the MCP Registry lists `money.smpl/simple-balance` 1.0.1,
 published from the `v1.0.1` tag, mcptry picked it up from there, and
-mcpservers.org has published it. No other directory lists Simple Balance yet.
+mcpservers.org has published it. M8ven also lists this repository, which it
+found by searching GitHub, though its listing describes the repository rather
+than the server. No other directory lists Simple Balance yet.
 Each release tag has a GitHub Release carrying the OpenAI ZIP and its
 `SHA256SUMS`.
 
@@ -27,6 +29,7 @@ review.
 | GitHub MCP Registry and VS Code's gallery | Onboarding request to GitHub | Free | GitHub's curation: [requested](https://github.com/github/github-mcp-server/discussions/1257#discussioncomment-19385092) 2026-11-03 | [mcp-registry.md](mcp-registry.md#github-mcp-registry-and-vs-code) |
 | MCP.Directory | Auto-discovery, then claim; or a form | Free | Up to two weeks of auto-discovery, then the form | [directories.md](directories.md#mcpdirectory) |
 | mcptry | Imported from the registry; claimed | Free | Nothing: [listed](https://mcptry.com/servers/money.smpl/simple-balance) and claimed 2026-11-03 |
+| M8ven | Found this repository by searching GitHub; claiming is optional | Free | Nothing: [listed](https://m8ven.ai/mcp/thtmnisamnstr/simple-balance-mcp-connectors) and graded 2026-11-03, unclaimed | [directories.md](directories.md#m8ven) |
 | PulseMCP | Imports from the registry once it reopens | Free | PulseMCP (paused since September) | [directories.md](directories.md#pulsemcp) |
 | OpenAI plugins (ChatGPT and Codex) | ZIP upload in the portal, then review | Free; identity verification needs a physical ID | App route, site naming the publisher, reviewer account, test runs (write tools need ChatGPT Business or Codex), demo video, skill scan, policy attestations | [openai.md](openai.md) |
 | Codex and ChatGPT desktop, by marketplace URL | Users add this repository as a marketplace by hand. Not a directory listing | Free | Nothing; the OpenAI plugins row is the listing | [openai.md](openai.md#codex-marketplace-no-review) |
@@ -92,6 +95,7 @@ gives the exact command or value.
 | What scopes clients ask for by default | Every scope, set by adding `scope` to the first 401 | [prerequisites.md](prerequisites.md#15-scope-in-the-first-401) |
 | MCP Market | Don't list: $69, no finance category, unlimited indemnity | [directories.md](directories.md#mcp-market) |
 | MCP.so | The free queue | [directories.md](directories.md#mcpso) |
+| Claiming the M8ven listing | Leave it unclaimed, unless you want to change how it describes Simple Balance | [directories.md](directories.md#m8ven) |
 | Countries for the OpenAI listing | Set in the portal at submission. The ZIP leaves them out, and the portal's default is undocumented. | [openai.md](openai.md#submit-in-the-portal) |
 | OpenAI identity | Individual verification as Gavin Johnson | [openai.md](openai.md#before-you-start) |
 | Where the demo video lives | Unlisted on YouTube | [demo-video.md](demo-video.md#check-host-and-link-it) |

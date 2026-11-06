@@ -1,6 +1,6 @@
 # Web-form directories
 
-Four MCP directories take Simple Balance through a web form. PulseMCP is paused and Smithery is closed, so neither needs anything now. [cursor.md](cursor.md) covers cursor.directory, and [README.md](README.md) indexes every other listing.
+Four MCP directories take Simple Balance through a web form. PulseMCP is paused and Smithery is closed, so neither needs anything now, and M8ven listed this repository without a submission. [cursor.md](cursor.md) covers cursor.directory, and [README.md](README.md) indexes every other listing.
 
 | Directory | Cost | Account | Depends on | Step in the order of work |
 | --- | --- | --- | --- | --- |
@@ -10,6 +10,7 @@ Four MCP directories take Simple Balance through a web form. PulseMCP is paused 
 | [MCP Market](#mcp-market) | $69 one-time; no free option for a remote server | None to submit; an email | Your decision (recommendation: skip it) | 9, if at all |
 | [PulseMCP](#pulsemcp) | Free | None | The MCP Registry entry, and PulseMCP reopening | No action |
 | [Smithery](#smithery) | n/a | None possible | n/a | No action (closed) |
+| [M8ven](#m8ven) | Free | None; claiming takes an M8ven sign-in | Nothing: it found this repository on GitHub | No action (claiming is optional) |
 
 The steps are those of the [order of work](README.md#order-of-work). The release workflow publishes the MCP Registry entry: see [mcp-registry.md](mcp-registry.md).
 
@@ -395,6 +396,18 @@ Submissions and changes to existing listings have been paused since September 20
 
 Closed. Smithery, now part of Arcade.dev, shut down its submissions on October 31, 2026, along with its accounts, API, CLI and connection proxy. It remains as a curated, read-only list, and https://smithery.ai/new returns 404. There's nothing to submit, and nothing in this repository or the app should change for it: no `smithery.yaml`, server card or Smithery workflow.
 
+## M8ven
+
+M8ven's MCP Trust Index found this repository by searching GitHub and graded it on 2026-11-03, with no submission: https://m8ven.ai/mcp/thtmnisamnstr/simple-balance-mcp-connectors. Nothing is needed to keep it listed. It describes this repository, not the server:
+
+- It's named `simple-balance-mcp-connectors`, takes its description from the repository's About box, and says to install from GitHub. It never mentions `https://app.smpl.money/mcp`, and its score API refuses that URL ("Could not parse identifier").
+- It graded the four JavaScript files in `scripts/` at `e18f185` as the server's code, and says it hasn't read the tool surface. The tools are in the application's repository, behind sign-in.
+- The grade was C, "Emerging", with no concerning findings. M8ven says a new project's grade rises as it builds adoption. Its one suggestion, "No test files found", is about this repository, whose checks run as `npm run check` in CI. The tools' tests are in the application's repository.
+
+Claiming is optional. Recommendation: leave it unclaimed unless you want to change how it describes Simple Balance. **Claim this MCP** on the listing starts a claim, and M8ven says one brings a verified-publisher badge, its full audit, and a way to dispute a finding or send a correction. Unconfirmed: how it checks that you own the repository. **Connect GitHub** is separate and isn't needed for the listing: it installs M8ven's read-only `m8ven-verify` GitHub App on the repositories you choose, and M8ven says connecting doesn't change the score. It can't read tools this repository doesn't have.
+
+A lookup through M8ven's score API, `https://m8ven.ai/api/mcp/score?url=<GitHub URL>`, can start a grade. One for `thtmnisamnstr/simple-balance` on 2026-11-06 answered "pending", so the application's repository may get a listing of its own.
+
 ## Sources
 
 - https://mcp.so/submit?type=remote-server (submit form, the $39 option)
@@ -413,5 +426,8 @@ Closed. Smithery, now part of Arcade.dev, shut down its submissions on October 3
 - https://mcp.directory/api/v1/servers?q=pachca&limit=3 (a registry entry auto-discovery missed)
 - https://www.pulsemcp.com/submit and http://web.archive.org/web/20260703000743/https://www.pulsemcp.com/submit (pause notice; ingestion and contact before the pause)
 - https://www.smithery.ai/future and https://www.smithery.ai/new (shutdown, 404)
+- https://m8ven.ai/mcp/thtmnisamnstr/simple-balance-mcp-connectors (the listing: grade, files read, claim, badge)
+- https://m8ven.ai/connect and https://m8ven.ai/connect/data-handling (Connect GitHub, and what the `m8ven-verify` app reads and keeps)
+- https://m8ven.ai/api/mcp/score?url=https%3A%2F%2Fgithub.com%2Fthtmnisamnstr%2Fsimple-balance-mcp-connectors (the score API)
 - https://registry.modelcontextprotocol.io/v0.1/servers/money.smpl%2Fsimple-balance/versions/latest (registry status)
 - https://smpl.money/pricing/ (free plan)
