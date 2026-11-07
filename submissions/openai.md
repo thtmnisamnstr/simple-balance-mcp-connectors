@@ -223,24 +223,24 @@ it, with a `SHA256SUMS` file, to the GitHub Release for that tag. Download it
 from there:
 
 ```bash
-gh release download v1.0.1 --repo thtmnisamnstr/simple-balance-mcp-connectors --dir dist
+gh release download v1.0.2 --repo thtmnisamnstr/simple-balance-mcp-connectors --dir dist
 (cd dist && shasum -a 256 -c SHA256SUMS)
 ```
 
-Check: `simple-balance-plugin-1.0.1.zip: OK`. In the browser, the release page's
+Check: `simple-balance-plugin-1.0.2.zip: OK`. In the browser, the release page's
 **Assets** list has the same file. The run's `openai-plugin-zip` artifact holds
 it too, until it expires.
 
 To build it yourself, check out the tag so the ZIP matches the release:
 
 ```bash
-git checkout v1.0.1
+git checkout v1.0.2
 npm ci
 npm run check
 npm run build:openai
 ```
 
-That writes `dist/simple-balance-plugin-1.0.1.zip` and lists what it packed.
+That writes `dist/simple-balance-plugin-1.0.2.zip` and lists what it packed.
 Don't attach a ZIP to a release by hand: a release with one asset breaks Gemini
 CLI installs ([gemini-cli.md](gemini-cli.md#updates-come-from-releases)).
 
@@ -282,8 +282,8 @@ the tools the grant reaches.
 Check:
 
 ```bash
-unzip -l dist/simple-balance-plugin-1.0.1.zip
-unzip -p dist/simple-balance-plugin-1.0.1.zip mcp.json
+unzip -l dist/simple-balance-plugin-1.0.2.zip
+unzip -p dist/simple-balance-plugin-1.0.2.zip mcp.json
 ```
 
 Seven entries with `plugin.json` and `mcp.json` at the root, and the auth
@@ -299,7 +299,7 @@ block with seven scopes.
    drops the MCP configuration (`mcp_configuration_excluded`).
    - Expect the warning `developer_name_defaulted`. If `manifest_normalized`
      lists changed fields, confirm only if they're formatting changes.
-   - Check: the plugin detail page opens on a draft at version `1.0.1`.
+   - Check: the plugin detail page opens on a draft at version `1.0.2`.
 3. Open **Metadata & Skills** and wait for the checks. Skill scans can take up
    to 2 hours. **Issues** lists findings, and **Copy issues** copies them. To
    fix one, change the file, release a new version and select
@@ -376,12 +376,13 @@ upload a new version.
 | Organization and project | Yours, with global data residency | Portal |
 | Developer identity | Gavin Johnson, verified individual | Portal. Overrides `interface.developerName` in the listing. |
 | Upload path | **With MCP** | Portal |
-| Plugin ZIP | `simple-balance-plugin-1.0.1.zip` | The `v1.0.1` release's assets, or `npm run build:openai` |
+| Plugin ZIP | `simple-balance-plugin-1.0.2.zip` | The `v1.0.2` release's assets, or `npm run build:openai` |
 | Package name | `simple-balance` | Top-level `name`. It can never change (`plugin_name_mismatch`). |
-| Version | `1.0.1` | Top-level `version`. New for every upload, or the portal warns (`plugin_version_unchanged`). |
+| Version | `1.0.2` | Top-level `version`. New for every upload, or the portal warns (`plugin_version_unchanged`). |
 | Listing text, URLs, starter prompts, brand colors, logo and composer icon | As in `plugin/plugin.json` | `interface.*` |
 | Screenshots | None | Not set. Without a UI the portal rejects them (`screenshots_not_allowed`), and the directory no longer shows them. |
 | Onboarding skill | `./skills/simple-balance/SKILL.md` | `onboardingSkill` |
+| Runs without the desktop app | `false`: the plugin needs no local executor | `requires_local_executor`. Without it, installing the ZIP from chatgpt.com hands off to the desktop app (seen 2026-11-06). `npm run check` requires it. |
 | MCP Server URL | `https://app.smpl.money/mcp` | `mcp.json`: `mcpServers["simple-balance"].url` |
 | Authentication | OAuth, DCR, seven scopes | The ZIP's `mcp.json`: `mcpServers["simple-balance"].extensions["com.openai"].auth`, added by the build |
 | OAuth Client Secret | None | DCR registers a public client |
