@@ -1,7 +1,7 @@
 {
   "name": "simple-balance",
   "displayName": "Simple Balance",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions.",
   "author": {
     "name": "Gavin Johnson",

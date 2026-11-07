@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "simple-balance",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Budget app and spending tracker. Ask about your accounts, spending and budgets, and queue or record transactions.",
   "author": {
     "name": "Gavin Johnson",
@@ -107,7 +107,8 @@
       },
       "publication": {
         "release_notes": "First release: ask about balances, spending, budgets and forecasts; queue transactions for your approval, including a bank statement file; and, when allowed, record and fix transactions and manage accounts, categories, budgets, templates and recurring transactions."
-      }
+      },
+      "requires_local_executor": false
     }
   }
 }

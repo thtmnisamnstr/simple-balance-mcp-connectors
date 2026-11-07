@@ -296,6 +296,9 @@ for (const prompt of prompts) {
 for (const capability of ui.capabilities ?? []) text(files.plugin, "a capability", capability, 120, { line: true });
 if ((ui.capabilities ?? []).length > 20) fail(files.plugin, "interface.capabilities holds more than 20 entries");
 if (ui.screenshots) fail(files.plugin, "interface.screenshots is set; OpenAI rejects screenshots for a server with no UI");
+if (openai?.requires_local_executor !== false) {
+  fail(files.plugin, "extensions[\"com.openai\"].requires_local_executor must be false, or ChatGPT on the web hands the install to the desktop app");
+}
 
 function luminance(hex) {
   const channel = (offset) => {
